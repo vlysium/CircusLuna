@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CircusLuna/CircusLuna.csproj" />
+  <Project Path="CircusLunaLibrary/CircusLunaLibrary.csproj" />
+</Solution>
