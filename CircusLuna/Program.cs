@@ -1,3 +1,5 @@
+using CircusLunaLibrary.Repositories;
+
 namespace CircusLuna.Pages
 {
     public class Program
@@ -8,6 +10,7 @@ namespace CircusLuna.Pages
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddSingleton<IPerformanceRepository, PerformanceRepository>();
 
             var app = builder.Build();
 
