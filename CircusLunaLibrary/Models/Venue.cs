@@ -6,39 +6,36 @@ namespace CircusLunaLibrary.Models
 {
     public class Venue
     {
-        public int StandardSeatCount { get; private set; }
-        public int VipSeatCount { get; private set; }
+        public int MaxSeats { get; set; }
         public List<Seat> AllSeats { get; private set; } = new List<Seat>();
         public string Name { get; set; }
 
-        public Venue(string name, int standardSeatCount, int vipSeatCount)
+        public Venue(string name, int maxSeats)
         {
             Name = name;
-            StandardSeatCount = standardSeatCount;
-            VipSeatCount = vipSeatCount;
+            MaxSeats = maxSeats;
             InitializeSeats();
         }
         public void InitializeSeats()
         {
-            AddSeatsToSection("VIP", VipSeatCount, SeatType.VIP);
-
-            int seatCountPerSection = StandardSeatCount / 3;
-            AddSeatsToSection("A", seatCountPerSection, SeatType.standard);
-            AddSeatsToSection("B", seatCountPerSection, SeatType.standard);
-            AddSeatsToSection("C", seatCountPerSection, SeatType.standard);         
-           
-        }
-
-        public void AddSeatsToSection(string sectionName, int count, SeatType type)
-        {
-            for(int i = 1; i <= count; i++)
+            int seatsPerRow = 10;
+            for(int i = 0; i <= MaxSeats; i++)
             {
-                AllSeats.Add(new Seat(sectionName, i.ToString(), type));
+                char charRow = (char)('A'+ (i / seatsPerRow)); //TYPE CASTING: computeren ser chars som tal. Derfor A+1=B. (char) er typecasting. Vi caster tallet til en char efter udregningen.
+                int seatNumber = (i % seatsPerRow)+1;  //MODULUS: Vi tager det, der er tilbage. 0/10=0+1 -> nr 1. 5/10=5+1 -> nr 6. 27/10=7+1 -> nr 8 osv. Ignorer 10'erne som udgør ROWS.
+                if (charRow == 'A')
+                {
+                    AllSeats.Add(new Seat(charRow, seatNumber, SeatType.VIP));
+                }
+                else
+                {
+                    AllSeats.Add(new Seat(charRow, seatNumber, SeatType.standard));
+                }
             }
         }
         public override string ToString()
         {
-            return $"Teltet {Name} indeholder {StandardSeatCount} standardsiddepladser og {VipSeatCount} VIP pladser.";
+            return $"Teltet {Name} indeholder {MaxSeats} standardsiddepladser og 10 VIP pladser.";
         }
 
     }

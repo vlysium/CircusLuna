@@ -3,20 +3,20 @@ namespace CircusLunaLibrary.Models
 		public class Seat
 		{
 			public string SeatID { get; set; }
-			public string Section { get; set; }		
-			public string Number { get; set; }
+			public char Row { get; set; }		
+			public int Number { get; set; }
 			public SeatType SeatType { get; set; }		
 
-			public Seat(string section, string number, SeatType seatType)
+			public Seat(char row, int number, SeatType seatType)
 			{
 				SeatID = Guid.NewGuid().ToString().Substring(0,8);
-				Section = section;			
+				Row = row;			
 				Number = number;
 				SeatType = seatType;				
 			}
 			public override string ToString()
 			{
-				return $"Siddeplads:{Section}, {Number}\nType: {SeatType}";
+				return $"Siddeplads:{Row}{Number}\nType: {SeatType}";
 			}
 		}
 }
