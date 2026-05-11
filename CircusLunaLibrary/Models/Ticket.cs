@@ -6,6 +6,7 @@ namespace CircusLunaLibrary.Models
 		public TicketType Type { get; set; }
 		public Seat Seat { get; set; }
 		public double Price { get; set; }
+		
 
 		public Ticket(TicketType type, Seat seat)
 		{
@@ -15,7 +16,7 @@ namespace CircusLunaLibrary.Models
 		}
         public override string ToString()
         {
-			return $"BilletID: {TicketID} | Billettype: {Type} | Siddeplads: {Seat.Section}{Seat.Number}";
+			return $"BilletID: {TicketID} | Billettype: {Type} | Siddeplads: {Seat.Row}{Seat.Number}";
         }
 	}
 }

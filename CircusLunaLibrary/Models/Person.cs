@@ -1,9 +1,14 @@
 using System.Net;
 using System.Net.Sockets;
+using System.Text.Json.Serialization;
 
 namespace CircusLunaLibrary.Models
 {
-	public abstract class Person
+    [JsonPolymorphic(TypeDiscriminatorPropertyName = "$type")]
+    [JsonDerivedType(typeof(Customer), typeDiscriminator: "customer")]
+    [JsonDerivedType(typeof(Employee), typeDiscriminator: "employee")]
+    [JsonDerivedType(typeof(Artist), typeDiscriminator: "artist")]
+    public abstract class Person
 	{
 		public string ID { get; set; }
 		public string Name { get; set; }

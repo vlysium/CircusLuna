@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CircusLuna.Pages
 {
-    public class CreatePersonModel : PageModel
+    public class ReservationModel : PageModel
     {
         public void OnGet()
         {

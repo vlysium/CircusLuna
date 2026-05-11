@@ -8,6 +8,7 @@ namespace CircusLunaLibrary.Models
 		public string PaymentInfo { get; set; }
         public string Role { get; set; }
 
+        public Employee() : base(){ }
         public Employee(string paymentinfo, string role, string name, string number, string email, Address address)
             : base(name, number, email, address)           
 		{

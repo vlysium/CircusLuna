@@ -1,5 +1,1 @@
-[
-  {
-
-  }
-]
+[{"$type":"customer","ID":"36b63687","Name":"Linda johnson","Number":"56826951","Address":{"AddressLine1":"Lindavejen 4","AddressLine2":"5B","PostalCode":"4100","City":"Ringsted"},"Email":"Linda@hotmail.com"}]

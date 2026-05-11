@@ -1,3 +1,6 @@
+using CircusLunaLibrary.Repositories;
+using CircusLunaLibrary.Services;
+
 namespace RagnarockGasolin
 {
     public class Program
@@ -8,6 +11,8 @@ namespace RagnarockGasolin
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddSingleton<IPersonRepository, PersonRepository>();
+            builder.Services.AddSingleton<PersonService>();
 
             var app = builder.Build();
 
