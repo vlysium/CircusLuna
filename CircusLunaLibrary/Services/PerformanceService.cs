@@ -18,6 +18,54 @@ namespace CircusLunaLibrary.Services
 		}
 
 		/// <summary>
+		/// Reserves a seat for a specific performance.
+		/// It retrieves the performance, reserves the seat in the venue, and updates the performance in the repository.
+		/// </summary>
+		/// <param name="performanceId">The ID of the performance for which to reserve a seat.</param>
+		/// <param name="seatId">The ID of the seat to reserve.</param>
+		/// <param name="customerId">The ID of the customer reserving the seat.</param>
+		/// <exception cref="Exception">Thrown when the performance is not foundor when there is an error reserving the seat.</exception>
+		public void ReserveSeat(string performanceId, string seatId, string customerId)
+		{
+
+			// Check if the performance exists
+			Performance performance = _performanceRepository.GetById(performanceId);
+			if (performance == null)
+			{
+				throw new Exception($"Performance with ID {performanceId} was not found.");
+			}
+
+			// Find the seat in the venue
+			Seat? seatToReserve = null;
+			foreach (Seat seat in performance.Venue.Seats)
+			{
+				if (seat.SeatId == seatId)
+				{
+					seatToReserve = seat;
+					break;
+				}
+			}
+
+			// If the seat was not found, throw an exception
+			if (seatToReserve == null)
+			{
+				throw new Exception($"Seat with ID {seatId} was not found.");
+			}
+
+			// Check if the seat is already reserved by another customer
+			if (seatToReserve.ReservedBy != null)
+			{
+				throw new Exception($"Seat {seatId} is already reserved.");
+			}
+
+			// Reserve the seat for the customer
+			seatToReserve.ReservedBy = customerId;
+
+			// Update the performance in the repository to reflect the reserved seat
+			_performanceRepository.Update(performance);
+		}
+
+		/// <summary>
 		/// Gets all performances from the repository.
 		/// </summary>
 		/// <returns>A list of all performances.</returns>

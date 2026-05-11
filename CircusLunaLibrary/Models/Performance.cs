@@ -18,14 +18,9 @@ namespace CircusLunaLibrary.Models
 		public City City { get; set; }
 
 		/// <summary>
-		/// List of standard seats for the performance.
+		/// The venue includes the list of seats available for the performance.
 		/// </summary>
-		public List<Seat> Seats { get; set; }
-
-		/// <summary>
-		/// List of VIP seats for the performance.
-		/// </summary>
-		public List<Seat> VipSeats { get; set; }
+		public Venue Venue { get; set; }
 
 		/// <summary>
 		/// List of artists performing in the performance.
@@ -41,22 +36,18 @@ namespace CircusLunaLibrary.Models
 		/// <param name="city">
 		/// The city where the performance takes place.
 		/// </param>
-		/// <param name="seats">
-		/// The list of standard seats for the performance.
-		/// </param>
-		/// <param name="vipSeats">
-		/// The list of VIP seats for the performance.
+		/// <param name="venue">
+		/// The venue includes the list of seats available for the performance.
 		/// </param>
 		/// <param name="artists">
 		/// The list of artists performing in the performance.
 		/// </param>
-		public Performance(DateTime date, City city, List<Seat> seats, List<Seat> vipSeats, List<Artist> artists)
+		public Performance(DateTime date, City city, Venue venue, List<Artist> artists)
 		{
 			PerformanceId = Guid.NewGuid().ToString().Substring(0, 8); // Generate a 8-character unique ID
 			Date = date;
 			City = city;
-			Seats = seats;
-			VipSeats = vipSeats;
+			Venue = venue;
 			Artists = artists;
 		}
 	}
