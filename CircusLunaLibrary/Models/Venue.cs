@@ -69,5 +69,24 @@ namespace CircusLunaLibrary.Models
 				}
 			}
 		}
-	}
+        //public void InitializeSeats()
+		//kræver VipSeats og StandardSeats properties.
+        //{
+        //    int seatsPerRow = 10;
+        //    for (int i = 0; i < VipSeats; i++)
+        //    {
+        //        AllSeats.Add(new Seat('0', i, SeatType.standard));
+        //    }
+
+        //    for (int i = 0; i < StandardSeats; i++)
+        //    {
+        //        char charRow = (char)('A' + (i / seatsPerRow)); //TYPE CASTING: computeren ser chars som tal. Derfor A+1=B. (char) er typecasting. Vi caster tallet til en char efter udregningen.
+        //        int seatNumber = (i % seatsPerRow) + 1;  //MODULUS: Vi tager det, der er tilbage. 0/10=0+1 -> nr 1. 5/10=5+1 -> nr 6. 27/10=7+1 -> nr 8 osv. Ignorer 10'erne som udgør ROWS.
+        //        if (charRow == 'A' && (i >= 0 && i <= 9))
+        //            AllSeats.Add(new Seat(charRow, seatNumber, SeatType.standard));
+
+        //    }
+        //}
+
+    }
 }
