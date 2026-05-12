@@ -55,15 +55,5 @@ namespace CircusLunaLibrary.Repositories
             }
             return null;
         }
-
-        public void CreatePerson()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetByid(string id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
