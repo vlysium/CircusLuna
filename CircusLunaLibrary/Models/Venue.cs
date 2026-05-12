@@ -22,7 +22,7 @@ namespace CircusLunaLibrary.Models
             int seatsPerRow = 10;
             for (int i = 0; i < VipSeats; i++)
             {
-                AllSeats.Add(new Seat('Z',i, SeatType.standard));
+                AllSeats.Add(new Seat('0',i, SeatType.standard));
             }
                 
             for(int i = 0; i < StandardSeats; i++)
