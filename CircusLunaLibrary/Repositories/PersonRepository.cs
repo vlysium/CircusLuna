@@ -29,6 +29,11 @@ namespace CircusLunaLibrary.Repositories
             string json = JsonSerializer.Serialize<List<Person>>(People);
             File.WriteAllText(_filePath, json);
         }
+        public List<Person> GetAll()
+        {
+            LoadFile();
+            return People;
+        }
         public void CreatePerson(Person person)
         {
             People.Add(person);
@@ -43,7 +48,17 @@ namespace CircusLunaLibrary.Repositories
                 SaveFile();
             }
         }
-
+        public void UpdatePerson(string id, Person updatedPerson)
+        {
+            LoadFile();
+            for (int i = 0; i < People.Count; i++)
+            {
+                if (People[i].ID == id)
+                {
+                    People[i] = updatedPerson;
+                }
+            }
+        }
         public Person GetById(string id)
         {
 
@@ -55,15 +70,6 @@ namespace CircusLunaLibrary.Repositories
                 }
             }
             return null;
-        }
-
-        public void CreatePerson()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetByid(string id)
-        {
-            throw new NotImplementedException();
-        }
+        }        
+    }
     }

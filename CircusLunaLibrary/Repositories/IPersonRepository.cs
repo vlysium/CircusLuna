@@ -9,9 +9,11 @@ namespace CircusLunaLibrary.Repositories
     {
         public void LoadFile();
         public void SaveFile();
-        public void CreatePerson(Person person);
-        public Person GetById(string id);
+        public List<Person> GetAll();
+        public void CreatePerson(Person person);        
         public void DeletePerson(string id);
+        public void UpdatePerson(string id, Person updatedPerson);
+        public Person GetById(string id);
 
 
     }
