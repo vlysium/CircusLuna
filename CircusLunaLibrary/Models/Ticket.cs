@@ -16,7 +16,7 @@ namespace CircusLunaLibrary.Models
         }
         public override string ToString()
         {
-            return $"BilletID: {TicketID} | Billettype: {Type} | Siddeplads: {Seat.Row}{Seat.Number}";
+            return $"BilletID: {TicketID} | Billettype: {Type} | Siddeplads: {Seat.SeatRow}{Seat.SeatColumn}";
         }
     }
 }
