@@ -2,6 +2,10 @@ namespace CircusLunaLibrary.Models
 {
 	public class Performance
 	{
+        /// <summary>
+        /// Name of the performance
+        /// </summary>
+        public string Name { get; set; }
 		/// <summary>
 		/// GUID unique identifier for the performance.
 		/// </summary>

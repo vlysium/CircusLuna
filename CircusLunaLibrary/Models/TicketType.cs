@@ -1,7 +1,9 @@
 namespace CircusLunaLibrary.Models
 {
-	public enum TicketType
-	{
-
-	}
+    public enum TicketType
+    {
+        Standard,
+        VIP,
+        Barn
+    }
 }

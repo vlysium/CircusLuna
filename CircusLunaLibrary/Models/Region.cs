@@ -1,7 +1,11 @@
 namespace CircusLunaLibrary.Models
 {
-	public enum Region
-	{
-
-	}
+    public enum Region
+    {
+        Hovedstaden,
+        Sjælland,
+        Nordjylland,
+        Midtjylland,
+        Syddanmark
+    }
 }
