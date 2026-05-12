@@ -1,4 +1,4 @@
-using CircusLunaLibrary.Models.CircusLunaLibrary.Models;
+using CircusLunaLibrary.Models;
 using System.Net;
 
 namespace CircusLunaLibrary.Models

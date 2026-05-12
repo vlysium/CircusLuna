@@ -1,4 +1,4 @@
-namespace CircusLunaLibrary.Models
+
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 
