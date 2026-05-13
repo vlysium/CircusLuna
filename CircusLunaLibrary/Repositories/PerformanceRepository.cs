@@ -28,27 +28,55 @@ namespace CircusLunaLibrary.Repositories
 
 		public void Add(Performance performance)
 		{
-			throw new NotImplementedException();
+			performances.Add(performance);
+			SaveToFile();
 		}
 
 		public void Delete(string performanceId)
 		{
-			throw new NotImplementedException();
+			foreach (Performance performance in performances)
+			{
+				// Find the performance with the matching `PerformanceId`, delete it from the list, and save the changes to the file
+				if (performance.PerformanceId == performanceId)
+				{
+					performances.Remove(performance);
+					SaveToFile();
+					return;
+				}
+			}
 		}
 
 		public List<Performance> GetAll()
 		{
-			throw new NotImplementedException();
+			return performances;
 		}
 
 		public Performance GetById(string performanceId)
 		{
-			throw new NotImplementedException();
+			foreach (Performance performance in performances)
+			{
+				if (performance.PerformanceId == performanceId)
+				{
+					return performance;
+				}
+			}
+			return null;
 		}
 
 		public void Update(Performance performance)
 		{
-			throw new NotImplementedException();
+			for (int i = 0; i < performances.Count; i++)
+			{
+				// Find the performance with the matching `PerformanceId`
+				if (performances[i].PerformanceId == performance.PerformanceId)
+				{
+					// Update the performance in the list and save the changes to the file
+					performances[i] = performance;
+					SaveToFile();
+					return;
+				}
+			}
+			throw new Exception("Performance not found");
 		}
 
 		/// <summary>
