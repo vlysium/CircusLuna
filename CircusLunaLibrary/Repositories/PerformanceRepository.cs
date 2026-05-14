@@ -22,28 +22,38 @@ namespace CircusLunaLibrary.Repositories
 			else
 			{
 				// If the file does not exist, create an empty file
-				File.WriteAllText(path, "[]");
+				performances = new List<Performance>();
 			}
 		}
 
 		public void Add(Performance performance)
 		{
-			throw new NotImplementedException();
+			performances.Add(performance);
+			SaveToFile();
 		}
 
 		public void Delete(string performanceId)
 		{
-			throw new NotImplementedException();
+			performances.Remove(GetById(performanceId));
+			SaveToFile();
+
 		}
 
 		public List<Performance> GetAll()
 		{
-			throw new NotImplementedException();
+			return performances;
 		}
 
 		public Performance GetById(string performanceId)
 		{
-			throw new NotImplementedException();
+			foreach(Performance p in performances)
+			{
+				if (p.PerformanceId == performanceId)
+				{
+					return p;
+				}
+			}
+			return null;
 		}
 
 		public void Update(Performance performance)

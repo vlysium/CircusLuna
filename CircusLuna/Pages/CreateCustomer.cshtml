@@ -2,3 +2,75 @@
 @model CircusLuna.Pages.CreateCustomerModel
 @{
 }
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Kundeinformation</h3>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <!-- CRITICAL: Hidden inputs to keep data alive -->
+                <input type="hidden" asp-for="PerformanceId" />
+                @foreach (var id in Model.SelectedSeats)
+                {
+                    <input type="hidden" name="SelectedSeats" value="@id" />
+                }
+                <div class="row">
+                    <!-- Basic Information -->
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Customer.Name" class="form-label">Full Name</label>
+                        <input asp-for="Customer.Name" class="form-control" placeholder="John Doe" />
+                        <span asp-validation-for="Customer.Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Customer.Email" class="form-label">Email Address</label>
+                        <input asp-for="Customer.Email" type="email" class="form-control" placeholder="john@example.com" />
+                        <span asp-validation-for="Customer.Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Customer.Number" class="form-label">Phone Number</label>
+                        <input asp-for="Customer.Number" class="form-control" placeholder="+45 12 34 56 78" />
+                        <span asp-validation-for="Customer.Number" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <hr />
+  @*               <h5 class="mb-3 text-secondary">Address Details</h5>
+
+                <div class="mb-3">
+                    <label asp-for="Customer.Address.AddressLine1" class="form-label">Address Line 1</label>
+                    <input asp-for="Customer.Address.AddressLine1" class="form-control" placeholder="Street name and number" />
+                    <span asp-validation-for="Customer.Address.AddressLine1" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Customer.Address.AddressLine2" class="form-label">Address Line 2 (Optional)</label>
+                    <input asp-for="Customer.Address.AddressLine2" class="form-control" placeholder="Apartment, suite, etc." />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <label asp-for="Customer.Address.City" class="form-label">City</label>
+                        <input asp-for="Customer.Address.City" class="form-control" />
+                        <span asp-validation-for="Customer.Address.City" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="Customer.Address.PostalCode" class="form-label">Postal Code</label>
+                        <input asp-for="Customer.Address.PostalCode" class="form-control" />
+                        <span asp-validation-for="Customer.Address.PostalCode" class="text-danger"></span>
+                    </div>
+                </div> *@
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success px-4">Fortsæt</button>
+                    <a asp-page="Proceed to confirmation" class="btn btn-outline-secondary px-4 ms-2">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

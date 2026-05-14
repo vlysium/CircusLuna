@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace CircusLunaLibrary.Models
 {
 	public class Seat
@@ -25,20 +27,24 @@ namespace CircusLunaLibrary.Models
 		/// <summary>
 		/// The id of the customer who reserved the seat, if any. Null if the seat is not reserved.
 		/// </summary>
-		public string? ReservedBy { get; set; }
+		//public string? ReservedBy { get; set; }
 
 		/// <summary>
 		/// Initializes a new instance of the Seat class with the specified row and column.
 		/// </summary>
 		/// <param name="seatRow">The row of the seat.</param>
 		/// <param name="seatColumn">The column of the seat.</param>
+		[JsonConstructor]
+		public Seat()
+		{
+		}
 		public Seat(char seatRow, int seatColumn)
 		{
 			SeatId = $"{seatRow}{seatColumn}"; // Unique identifier based on row and column
 			SeatRow = seatRow;
 			SeatColumn = seatColumn;
 			SeatType = SeatType.Standard;
-			ReservedBy = null;
+			//ReservedBy = null;
 		}
 
 		/// <summary>

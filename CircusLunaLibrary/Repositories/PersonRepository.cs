@@ -1,17 +1,22 @@
 using CircusLunaLibrary.Models;
 using System.Text.Json;
+using System.IO;
 
 namespace CircusLunaLibrary.Repositories
 {
     public class PersonRepository : IPersonRepository
     {
-        private readonly string _filePath = Path.Combine("Data", "Person.json");
+        private readonly string _filePath = Path.Combine("Data", "people.json");
         private List<Person> People = new List<Person>();
         public PersonRepository()
         {
             if (File.Exists(_filePath))
             {
                 LoadFile();
+            }
+            else
+            {
+                People = new List<Person>();
             }
         }
         public void LoadFile()

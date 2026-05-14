@@ -1,0 +1,18 @@
+﻿@page
+@model CircusLuna.Pages.ConfirmationModel
+@{
+}
+<h3>Review your Order, @Model.CustName</h3>
+<p>Number: @Model.CustNumber</p>
+<p>Email: @Model.CustEmail</p>
+<p>Show: @Model.Performance.Name</p>
+<p>Seats: @string.Join(", ", Model.SeatIds)</p>
+
+<form method="post">
+    <input type="hidden" name="performanceId" value="@Model.Performance.PerformanceId" />
+    @foreach (var id in Model.SeatIds)
+    {
+        <input type="hidden" name="seatIds" value="@id" />
+    }
+    <button type="submit" class="btn btn-success">Confirm and Pay</button>
+</form>

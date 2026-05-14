@@ -10,12 +10,15 @@ namespace CircusLunaLibrary.Models
 		/// <summary>
 		/// List of seats available in the venue. The first row (A) is VIP, and the rest are standard.
 		/// </summary>
-		public List<Seat> Seats { get; set; }
-
-		public Venue(string name)
+		public List<Seat> AllSeats { get; set; }
+		public Venue()
 		{
-			Name = name;
-			InitializeSeats();
+            InitializeSeats();
+        }
+
+		public Venue(string name):this()
+		{
+			Name = name;			
 		}
 
 		/// <summary>
@@ -24,26 +27,26 @@ namespace CircusLunaLibrary.Models
 		/// <param name="seatId">The ID of the seat to reserve.</param>
 		/// <param name="customerId">The ID of the customer reserving the seat.</param>
 		/// <exception cref="Exception">Thrown when the seat is already reserved or does not exist.</exception>
-		public void ReserveSeat(string seatId, string customerId)
-		{
-			foreach (Seat seat in Seats)
-			{
-				// Find the seat by its id
-				if (seat.SeatId == seatId)
-				{
-					// Check if the seat is already reserved
-					if (seat.ReservedBy != null)
-					{
-						throw new Exception($"Seat {seatId} is already reserved.");
-					}
+		//public void ReserveSeat(string seatId, string customerId)
+		//{
+		//	foreach (Seat seat in Seats)
+		//	{
+		//		// Find the seat by its id
+		//		if (seat.SeatId == seatId)
+		//		{
+		//			// Check if the seat is already reserved
+		//			if (seat.ReservedBy != null)
+		//			{
+		//				throw new Exception($"Seat {seatId} is already reserved.");
+		//			}
 
-					// Reserve the seat for the customer
-					seat.ReservedBy = customerId;
-					return;
-				}
-			}
-			throw new Exception($"Seat with ID {seatId} does not exist.");
-		}
+		//			// Reserve the seat for the customer
+		//			seat.ReservedBy = customerId;
+		//			return;
+		//		}
+		//	}
+		//	throw new Exception($"Seat with ID {seatId} does not exist.");
+		//}
 
 		/// <summary>
 		/// Initializes the seats for the venue. The first row (A) is VIP, and the rest are standard.
@@ -51,7 +54,7 @@ namespace CircusLunaLibrary.Models
 		/// </summary>
 		private void InitializeSeats()
 		{
-			Seats = new List<Seat>();
+			AllSeats = new List<Seat>();
 
 			for (char i = 'A'; i <= 'O'; i++) // 15 rows (A to O)
 			{
@@ -65,17 +68,17 @@ namespace CircusLunaLibrary.Models
 						newSeat.SeatType = SeatType.VIP;
 					}
 
-					Seats.Add(newSeat);
+					AllSeats.Add(newSeat);
 				}
 			}
 		}
         //public void InitializeSeats()
-		//kræver VipSeats og StandardSeats properties.
+		//kræver VipSeats og StandardSeats properties. Mulighed for flere telte.
         //{
         //    int seatsPerRow = 10;
         //    for (int i = 0; i < VipSeats; i++)
         //    {
-        //        AllSeats.Add(new Seat('0', i, SeatType.standard));
+        //        AllSeats.Add(new Seat('0', i, SeatType.VIP));
         //    }
 
         //    for (int i = 0; i < StandardSeats; i++)
