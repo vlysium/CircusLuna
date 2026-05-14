@@ -1,6 +1,8 @@
+using System.Text.Json.Serialization;
+
 namespace CircusLunaLibrary.Models
 {
-	public class Performance
+    public class Performance
 	{
         /// <summary>
         /// Name of the performance
@@ -31,27 +33,32 @@ namespace CircusLunaLibrary.Models
 		/// </summary>
 		public List<Artist> Artists { get; set; }
 
-		/// <summary>
-		/// Constructor to initialize a new performance with the specified date, city, and artists.
-		/// </summary>
-		/// <param name="date">
-		/// The date and time of the performance.
-		/// </param>
-		/// <param name="city">
-		/// The city where the performance takes place.
-		/// </param>
-		/// <param name="venue">
-		/// The venue includes the list of seats available for the performance.
-		/// </param>
-		/// <param name="artists">
-		/// The list of artists performing in the performance.
-		/// </param>
-		public Performance(DateTime date, City city, Venue venue, List<Artist> artists)
+        /// <summary>
+        /// Constructor to initialize a new performance with the specified date, city, and artists.
+        /// </summary>
+        /// <param name="date">
+        /// The date and time of the performance.
+        /// </param>
+        /// <param name="city">
+        /// The city where the performance takes place.
+        /// </param>
+        /// <param name="venue">
+        /// The venue includes the list of seats available for the performance.
+        /// </param>
+        /// <param name="artists">
+        /// The list of artists performing in the performance.
+        /// </param>
+        public Performance()
+		{
+            PerformanceId = Guid.NewGuid().ToString().Substring(0, 8);
+        }
+        public Performance(DateTime date, string name, string venueName, City city, List<Artist> artists)
 		{
 			PerformanceId = Guid.NewGuid().ToString().Substring(0, 8); // Generate a 8-character unique ID
+			Name = name;
 			Date = date;
 			City = city;
-			Venue = venue;
+			Venue = new Venue(venueName);
 			Artists = artists;
 		}
 	}

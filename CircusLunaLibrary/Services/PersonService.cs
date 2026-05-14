@@ -33,6 +33,18 @@ namespace CircusLunaLibrary.Services
             }
             return _personRepository.GetById(id);
         }
-
+        public List<Artist> GetAllArtists()
+        {
+            List<Person> AllPeople=_personRepository.GetAll();
+            List<Artist> AllArtists= new List<Artist>();
+            foreach(Person p in AllPeople)
+            {
+                if (p is Artist)
+                {
+                    AllArtists.Add((Artist)p);
+                }
+            }
+            return AllArtists;
+        }
     }
 }

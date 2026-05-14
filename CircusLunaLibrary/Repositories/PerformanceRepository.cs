@@ -22,7 +22,7 @@ namespace CircusLunaLibrary.Repositories
 			else
 			{
 				// If the file does not exist, create an empty file
-				File.WriteAllText(path, "[]");
+				performances = new List<Performance>();
 			}
 		}
 
