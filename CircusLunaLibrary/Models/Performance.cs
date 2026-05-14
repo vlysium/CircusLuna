@@ -6,6 +6,7 @@ namespace CircusLunaLibrary.Models
         /// Name of the performance
         /// </summary>
         public string Name { get; set; }
+
 		/// <summary>
 		/// GUID unique identifier for the performance.
 		/// </summary>
@@ -46,9 +47,10 @@ namespace CircusLunaLibrary.Models
 		/// <param name="artists">
 		/// The list of artists performing in the performance.
 		/// </param>
-		public Performance(DateTime date, City city, Venue venue, List<Artist> artists)
+		public Performance(string name, DateTime date, City city, Venue venue, List<Artist> artists)
 		{
 			PerformanceId = Guid.NewGuid().ToString().Substring(0, 8); // Generate a 8-character unique ID
+			Name = name;
 			Date = date;
 			City = city;
 			Venue = venue;

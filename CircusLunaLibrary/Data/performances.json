@@ -1,1 +1,84 @@
-[]
+[
+	{
+    "Name": "Klovnefiesta Sommer",
+    "PerformanceId": "52f8b901",
+    "Date": "2026-07-14T14:00:00",
+    "City": {
+      "CityID": "8acb901",
+      "Name": "Vesterbro",
+      "PostalCode": "1620",
+      "Region": 0
+    },
+    "Venue": {
+      "Name": "Cirkuspladsen"
+    },
+    "Artists": [
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "111",
+        "Role": "Klovn",
+        "ID": "2a32b867",
+        "Name": "Klovnen Jesper",
+        "Number": "111",
+        "Address": null,
+        "Email": "jesper@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "111",
+        "Role": "Klovn",
+        "ID": "ba23b867",
+        "Name": "Klovnen Magnus",
+        "Number": "111",
+        "Address": null,
+        "Email": "magnus@cirkusluna.dk"
+      },
+			{
+        "IsPermanent": true,
+        "PaymentInfo": "111",
+        "Role": "Klovn",
+        "ID": "4523b867",
+        "Name": "Klovnen Lars",
+        "Number": "111",
+        "Address": null,
+        "Email": "lars@cirkusluna.dk"
+      }
+    ]
+  },
+  {
+    "Name": "Ild og Vand",
+    "PerformanceId": "88f8b901",
+    "Date": "2026-07-18T12:00:00",
+    "City": {
+      "CityID": "27cb901",
+      "Name": "Roskilde",
+      "PostalCode": "4000",
+      "Region": 1
+    },
+    "Venue": {
+      "Name": "Roskilde Festivalpladsen"
+    },
+    "Artists": [
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "111",
+        "Role": "Magiker",
+        "ID": "ea32b867",
+        "Name": "Magikeren Günther",
+        "Number": "111",
+        "Address": null,
+        "Email": "gunther@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "111",
+        "Role": "Pyrotekniker",
+        "ID": "f123b860",
+        "Name": "Pyroteknikeren Sofie",
+        "Number": "111",
+        "Address": null,
+        "Email": "sofie@cirkusluna.dk"
+      }
+    ]
+  }
+]

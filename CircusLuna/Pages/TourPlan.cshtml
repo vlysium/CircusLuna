@@ -1,6 +1,37 @@
-﻿@page
+﻿@page "/tour-plan"
+@using CircusLunaLibrary.Models
 @model CircusLuna.Pages.TourPlanModel
 @{
 }
+<h1>Tour Plan</h1>
 
-choose seat(s)
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Performance</th>
+      <th scope="col">Date</th>
+      <th scope="col">Location</th>
+      <th scope="col">Artists</th>
+      <th scope="col">Tickets</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (Performance performance in Model.Performances)
+    {
+      <tr>
+        <th scope="row">@performance.Name</th>
+        <td>@performance.Date.ToString("MMMM d, HH:mm")</td>
+        <td>@performance.City.Name - @performance.Venue.Name</td>
+        <td>
+          <ul class="list-unstyled mb-0">
+            @foreach (Artist artist in performance.Artists)
+            {
+              <li>@artist.Name</li>
+            }
+          </ul>
+        </td>
+				<td><a asp-page="BuyTicket" class="btn btn-primary">Buy Tickets</a></td>
+      </tr>
+    }
+  </tbody>
+</table>

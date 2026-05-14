@@ -5,7 +5,7 @@ namespace CircusLunaLibrary.Repositories
 {
 	public class PerformanceRepository : IPerformanceRepository
 	{
-		private readonly string path = Path.Combine("Data", "performances.json");
+		private readonly string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "performances.json");
 		private List<Performance> performances = new List<Performance>();
 
 		/// <summary>
