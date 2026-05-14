@@ -43,7 +43,7 @@ namespace CircusLunaLibrary.Models
 			SeatId = $"{seatRow}{seatColumn}"; // Unique identifier based on row and column
 			SeatRow = seatRow;
 			SeatColumn = seatColumn;
-			SeatType = SeatType.Standard;
+			
 			//ReservedBy = null;
 		}
 

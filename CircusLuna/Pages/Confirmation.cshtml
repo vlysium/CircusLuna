@@ -2,17 +2,24 @@
 @model CircusLuna.Pages.ConfirmationModel
 @{
 }
+
+<p>Debug - Seats Count: @Model.SeatIds?.Count</p>
+<p>Debug - Ticket Type: @Model.TicketTypeString</p>
+
 <h3>Review your Order, @Model.CustName</h3>
 <p>Number: @Model.CustNumber</p>
 <p>Email: @Model.CustEmail</p>
 <p>Show: @Model.Performance.Name</p>
 <p>Seats: @string.Join(", ", Model.SeatIds)</p>
+<p>Total Price: @Model.TotalPrice</p>
 
 <form method="post">
-    <input type="hidden" name="performanceId" value="@Model.Performance.PerformanceId" />
-    @foreach (var id in Model.SeatIds)
+
+    <input type="hidden" asp-for="PerformanceId" />
+    <input type="hidden" asp-for="TicketTypeString" />
+    @for (int i = 0; i < Model.SeatIds.Count; i++)
     {
-        <input type="hidden" name="seatIds" value="@id" />
+        <input type="hidden" asp-for="SeatIds[i]" />
     }
     <button type="submit" class="btn btn-success">Confirm and Pay</button>
 </form>

@@ -25,16 +25,25 @@ namespace CircusLuna.Pages
             BusySeatIds = _reservationService.GetBusySeatIds(id);
         }
 
-        public IActionResult OnPost(string performanceId, List<string> selectedSeatIds)
+        public IActionResult OnPost(string performanceId, List<string> selectedSeatIds, string ticketType)
         {
-            if (selectedSeatIds == null || !selectedSeatIds.Any()) return Page();
+            if (selectedSeatIds == null || !selectedSeatIds.Any())
+            {
+                return OnGetWithId(performanceId);
+            }
 
             // Pass data to CreateCustomer via Redirect with Route Values
             return RedirectToPage("CreateCustomer", new
             {
                 performanceId = performanceId,
-                selectedSeats = selectedSeatIds
+                selectedSeats = selectedSeatIds,
+                ticketType = ticketType
             });
+        }
+        private IActionResult OnGetWithId(string id)
+        {
+            OnGet(id);
+            return Page();
         }
     }
 }

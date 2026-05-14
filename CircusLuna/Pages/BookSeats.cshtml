@@ -4,6 +4,16 @@
 }
 
 <form method="post">
+    <div class="text-center mt-4">
+        <h5 class="mb-3">Select Ticket Type:</h5>
+        <div class="btn-group" role="group" aria-label="Ticket Type">
+            <input type="radio" class="btn-check" name="ticketType" id="standard" value="Standard" checked autocomplete="off">
+            <label class="btn btn-outline-dark px-4" for="standard">Standard</label>
+
+            <input type="radio" class="btn-check" name="ticketType" id="vip" value="VIP" autocomplete="off">
+            <label class="btn btn-outline-warning px-4" for="vip">🌟 VIP</label>
+        </div>
+    </div>
     <div class="container mt-5">
         <h2 class="text-center mb-4">Pick Your Seats for @Model.CurrentPerformance.Name</h2>
         

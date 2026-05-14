@@ -12,6 +12,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
                 <!-- CRITICAL: Hidden inputs to keep data alive -->
                 <input type="hidden" asp-for="PerformanceId" />
+                <input type="hidden" asp-for="TicketType" />
                 @foreach (var id in Model.SelectedSeats)
                 {
                     <input type="hidden" name="SelectedSeats" value="@id" />
