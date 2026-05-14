@@ -34,9 +34,16 @@ namespace CircusLunaLibrary.Repositories
 
 		public void Delete(string performanceId)
 		{
-			performances.Remove(GetById(performanceId));
-			SaveToFile();
-
+			foreach (Performance performance in performances)
+			{
+				// Find the performance with the matching `PerformanceId`, delete it from the list, and save the changes to the file
+				if (performance.PerformanceId == performanceId)
+				{
+					performances.Remove(performance);
+					SaveToFile();
+					return;
+				}
+			}
 		}
 
 		public List<Performance> GetAll()
@@ -46,11 +53,11 @@ namespace CircusLunaLibrary.Repositories
 
 		public Performance GetById(string performanceId)
 		{
-			foreach(Performance p in performances)
+			foreach (Performance performance in performances)
 			{
-				if (p.PerformanceId == performanceId)
+				if (performance.PerformanceId == performanceId)
 				{
-					return p;
+					return performance;
 				}
 			}
 			return null;
@@ -58,7 +65,18 @@ namespace CircusLunaLibrary.Repositories
 
 		public void Update(Performance performance)
 		{
-			throw new NotImplementedException();
+			for (int i = 0; i < performances.Count; i++)
+			{
+				// Find the performance with the matching `PerformanceId`
+				if (performances[i].PerformanceId == performance.PerformanceId)
+				{
+					// Update the performance in the list and save the changes to the file
+					performances[i] = performance;
+					SaveToFile();
+					return;
+				}
+			}
+			throw new Exception("Performance not found");
 		}
 
 		/// <summary>
