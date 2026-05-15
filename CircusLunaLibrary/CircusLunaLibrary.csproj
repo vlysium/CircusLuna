@@ -11,12 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\people.json">
+    <Content Include="Data\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Data\performances.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
 
 </Project>

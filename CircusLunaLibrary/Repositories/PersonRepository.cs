@@ -6,7 +6,7 @@ namespace CircusLunaLibrary.Repositories
 {
     public class PersonRepository : IPersonRepository
     {
-        private readonly string _filePath = Path.Combine("Data", "people.json");
+        private readonly string _filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "people.json");
         private List<Person> People = new List<Person>();
         public PersonRepository()
         {

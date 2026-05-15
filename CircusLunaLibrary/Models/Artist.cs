@@ -6,7 +6,8 @@ namespace CircusLunaLibrary.Models
     public class Artist : Employee
     {
         public bool IsPermanent { get; set; }
-        public Artist() {}
+
+        public Artist() : base() { }
         public Artist(string paymentinfo, string role, bool isPermanent, string name, string number, string email, Address address)
             : base(paymentinfo, role, name, number, email, address)
         {

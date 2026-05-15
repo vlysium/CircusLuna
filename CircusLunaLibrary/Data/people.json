@@ -1,1 +1,1 @@
-[]
+[{"$type":"artist","IsPermanent":true,"PaymentInfo":"IBAN468732423","Role":"Clown","ID":"39cb9b58","Name":"Klovnen","Number":"12244567","Address":null,"Email":"klovn@cirkusluna.dk"},{"$type":"artist","IsPermanent":true,"PaymentInfo":"IBAN468732423","Role":"Clown","ID":"244d2e07","Name":"Klovnen","Number":"12244567","Address":null,"Email":"klovn@cirkusluna.dk"},{"$type":"artist","IsPermanent":false,"PaymentInfo":"IBAN4684322423","Role":"Magiker","ID":"da32b867","Name":"Magimand","Number":"12244524","Address":null,"Email":"magi@cirkusluna.dk"}]

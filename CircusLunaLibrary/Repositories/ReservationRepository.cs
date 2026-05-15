@@ -6,7 +6,7 @@ namespace CircusLunaLibrary.Repositories
     public class ReservationRepository : IReservationRepository
     {
         private List<Reservation> _reservations;
-        private readonly string _filePath = Path.Combine("Data", "reservations.json");
+        private readonly string _filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "reservations.json");
 
         public ReservationRepository()
         {
