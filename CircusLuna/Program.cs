@@ -13,6 +13,10 @@ namespace CircusLuna.Pages
             builder.Services.AddRazorPages();
             builder.Services.AddSingleton<IPerformanceRepository, PerformanceRepository>();
             builder.Services.AddSingleton<PerformanceService>();
+            builder.Services.AddSingleton<IPersonRepository, PersonRepository>();
+            builder.Services.AddSingleton<PersonService>();
+            builder.Services.AddSingleton<IReservationRepository, ReservationRepository>();
+            builder.Services.AddSingleton<ReservationService>();
 
             var app = builder.Build();
 

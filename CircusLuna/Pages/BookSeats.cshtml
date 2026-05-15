@@ -1,4 +1,80 @@
-﻿@page
+﻿@page "{id}"
 @model CircusLuna.Pages.BookSeatsModel
 @{
 }
+
+<form method="post">
+    <div class="text-center mt-4">
+        <h5 class="mb-3">Select Ticket Type:</h5>
+        <div class="btn-group" role="group" aria-label="Ticket Type">
+            <input type="radio" class="btn-check" name="ticketType" id="standard" value="Standard" checked autocomplete="off">
+            <label class="btn btn-outline-dark px-4" for="standard">Standard</label>
+
+            <input type="radio" class="btn-check" name="ticketType" id="vip" value="VIP" autocomplete="off">
+            <label class="btn btn-outline-warning px-4" for="vip">🌟 VIP</label>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Pick Your Seats for @Model.CurrentPerformance.Name</h2>
+        
+        <!-- Legend -->
+        <div class="d-flex justify-content-center mb-4">
+            <div class="me-3"><span class="badge bg-primary">&nbsp;</span> Available</div>
+            <div class="me-3"><span class="badge bg-secondary">&nbsp;</span> Occupied</div>
+            <div><span class="badge bg-success">&nbsp;</span> Selected</div>
+        </div>
+
+        <div class="card p-4 shadow-sm bg-light">
+            <div class="text-center border-bottom mb-4 pb-2">
+                <strong>MANAGE / STAGE</strong>
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-center" style="gap: 10px;">
+                @foreach (var seat in Model.CurrentPerformance.Venue.AllSeats)
+                {
+                    bool isBusy = Model.BusySeatIds.Contains(seat.SeatId);
+                    
+                    <div class="seat-container">
+                        <input type="checkbox"
+                               name="SelectedSeatIds"
+                               value="@seat.SeatId"
+                               id="seat-@seat.SeatId"
+                               class="btn-check"
+                               autocomplete="off"
+                        @(isBusy ? "disabled" : "")>
+                        
+                        <label class="btn @(isBusy ? "btn-secondary" : "btn-outline-primary") seat-label"
+                               for="seat-@seat.SeatId"
+                               style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">
+                            @seat.SeatRow@seat.SeatColumn
+                        </label>
+                    </div>
+                }
+            </div>
+            <input type="hidden" name="performanceId" value="@Model.CurrentPerformance.PerformanceId" />
+            <div class="text-center mt-5">
+                <button type="submit" class="btn btn-success btn-lg px-5">Confirm Reservation</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<style>
+    /* Makes the "Available" seat turn green when checked */
+    .btn-check:checked + .btn-outline-primary {
+        background-color: #198754 !important; /* Bootstrap Success Green */
+        border-color: #198754 !important;
+        color: white;
+    }
+    
+    .seat-label {
+        transition: all 0.2s;
+        cursor: pointer;
+    }
+
+    /* Visual style for disabled seats */
+    .btn-secondary {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+</style>

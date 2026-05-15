@@ -1,10 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <!-- <ItemGroup>
+    <Content Remove="Data\people.json" />
+    <Content Remove="Data\performances.json" />
+    <Content Remove="Data\reservations.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Data\people.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\performances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\reservations.json" />
+  </ItemGroup> -->
 
   <ItemGroup>
     <ProjectReference Include="..\CircusLunaLibrary\CircusLunaLibrary.csproj" />

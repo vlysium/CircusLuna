@@ -8,6 +8,7 @@ namespace CircusLunaLibrary.Models
         public Customer Customer { get; set; }
         public Performance Performance { get; set; }
         public List<Ticket> Tickets { get; set; }
+        public double TotalPrice { get; set; }
 
         public Reservation()
         {
@@ -18,6 +19,16 @@ namespace CircusLunaLibrary.Models
             Customer = customer;
             Performance = performance;
             Tickets = tickets;
+            TotalPrice = GetTotalPrice();
+        }
+        public double GetTotalPrice()
+        {
+            double totalPrice = 0;
+            foreach (Ticket t in Tickets)
+            {
+                totalPrice += t.Price;
+            }
+            return totalPrice;
         }
         public override string ToString()
         {
