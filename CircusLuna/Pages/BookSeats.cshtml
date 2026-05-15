@@ -4,19 +4,10 @@
 }
 
 <form method="post">
-    <div class="text-center mt-4">
-        <h5 class="mb-3">Select Ticket Type:</h5>
-        <div class="btn-group" role="group" aria-label="Ticket Type">
-            <input type="radio" class="btn-check" asp-for="TicketType" id="standard" value="Standard" checked autocomplete="off">
-            <label class="btn btn-outline-dark px-4" for="standard">Standard</label>
-
-            <input type="radio" class="btn-check" asp-for="TicketType" id="vip" value="VIP" autocomplete="off">
-            <label class="btn btn-outline-warning px-4" for="vip">🌟 VIP</label>
-        </div>
-    </div>
+ 
     <div class="container mt-5">
         <h2 class="text-center mb-4">Pick Your Seats for @Model.CurrentPerformance.Name</h2>
-        
+
         <!-- Legend -->
         <div class="d-flex justify-content-center mb-4">
             <div class="me-3"><span class="badge bg-primary">&nbsp;</span> Available</div>
@@ -28,8 +19,17 @@
             <div class="text-center border-bottom mb-4 pb-2">
                 <strong>MANAGE / STAGE</strong>
             </div>
+            <div class="text-center">
+                <h5 class="mb-3">Select Ticket Type:</h5>
+                <div class="btn-group" role="group" aria-label="Ticket Type">
+                    <input type="radio" class="btn-check" asp-for="TicketType" id="standard" value="Standard" checked autocomplete="off">
+                    <label class="btn btn-outline-dark px-4" for="standard">Standard</label>
 
-            <div class="d-flex flex-wrap justify-content-center" style="gap: 10px;">
+                    <input type="radio" class="btn-check" asp-for="TicketType" id="vip" value="VIP" autocomplete="off">
+                    <label class="btn btn-outline-warning px-4" for="vip">🌟 VIP</label>
+                </div>
+            </div>
+            <div class="seat-grid-container mt-4">
                 @foreach (var seat in Model.CurrentPerformance.Venue.AllSeats)
                 {
                     bool isBusy = Model.BusySeatIds.Contains(seat.SeatId);
@@ -59,6 +59,20 @@
 </form>
 
 <style>
+    .seat-grid-container {
+        display: grid;
+        /* This creates exactly 20 columns of equal width */
+        grid-template-columns: repeat(20, auto);
+        gap: 10px;
+        justify-content: center; /* Centers the whole grid */
+        margin: 0 auto;
+    }
+
+    /* Optional: Add a little extra space every 10 seats for better readability */
+    .seat-container {
+        width: 38px;
+        height: 45px;
+    }
     /* Makes the "Available" seat turn green when checked */
     .btn-check:checked + .btn-outline-primary {
         background-color: #198754 !important; /* Bootstrap Success Green */
