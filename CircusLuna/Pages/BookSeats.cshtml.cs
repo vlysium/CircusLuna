@@ -2,6 +2,7 @@ using CircusLunaLibrary.Models;
 using CircusLunaLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel;
 
 namespace CircusLuna.Pages
 {
@@ -9,41 +10,45 @@ namespace CircusLuna.Pages
     {
         private readonly PerformanceService _performanceService;
         private readonly ReservationService _reservationService;
-
-        public Performance CurrentPerformance { get; set; }
-        public List<string> BusySeatIds { get; set; }
-
         public BookSeatsModel(PerformanceService pService, ReservationService rService)
         {
             _performanceService = pService;
             _reservationService = rService;
         }
 
-        public void OnGet(string id)
+        public Performance CurrentPerformance { get; set; }
+        public List<string> BusySeatIds { get; set; }
+
+
+        [BindProperty]
+        public string PerformanceId { get; set; }
+        [BindProperty]
+        public string TicketType { get; set; }
+        [BindProperty]
+        public List<string> SelectedSeatIds { get; set; }
+             
+
+        public void OnGet(string performanceId)
         {
-            CurrentPerformance = _performanceService.GetPerformance(id);
-            BusySeatIds = _reservationService.GetBusySeatIds(id);
+            CurrentPerformance = _performanceService.GetPerformance(performanceId);
+            BusySeatIds = _reservationService.GetBusySeatIds(performanceId);
         }
 
-        public IActionResult OnPost(string performanceId, List<string> selectedSeatIds, string ticketType)
+        public IActionResult OnPost(string performanceId, List<string> SelectedSeatIds, string ticketType)
         {
-            if (selectedSeatIds == null || !selectedSeatIds.Any())
+            if (SelectedSeatIds == null || SelectedSeatIds.Count==0)
             {
-                return OnGetWithId(performanceId);
+                OnGet(performanceId);
+                return Page();
             }
 
             // Pass data to CreateCustomer via Redirect with Route Values
             return RedirectToPage("CreateCustomer", new
             {
                 performanceId = performanceId,
-                selectedSeats = selectedSeatIds,
+                selectedSeatIds = SelectedSeatIds,
                 ticketType = ticketType
             });
-        }
-        private IActionResult OnGetWithId(string id)
-        {
-            OnGet(id);
-            return Page();
         }
     }
 }
