@@ -6,13 +6,13 @@
 <form method="post">
  
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Pick Your Seats for @Model.CurrentPerformance.Name</h2>
+        <h2 class="text-center mb-4">Vælg siddepladser til @Model.CurrentPerformance.Name</h2>
 
         <!-- Legend -->
         <div class="d-flex justify-content-center mb-4">
-            <div class="me-3"><span class="badge bg-primary">&nbsp;</span> Available</div>
-            <div class="me-3"><span class="badge bg-secondary">&nbsp;</span> Occupied</div>
-            <div><span class="badge bg-success">&nbsp;</span> Selected</div>
+            <div class="me-3"><span class="badge bg-primary">&nbsp;</span> Ldeig</div>
+            <div class="me-3"><span class="badge bg-secondary">&nbsp;</span> Optaget</div>
+            <div><span class="badge bg-success">&nbsp;</span> Valgt</div>
         </div>
 
         <div class="card p-4 shadow-sm bg-light">
@@ -20,7 +20,7 @@
                 <strong>MANAGE / STAGE</strong>
             </div>
             <div class="text-center">
-                <h5 class="mb-3">Select Ticket Type:</h5>
+                <h5 class="mb-3">Vælg Billettype:</h5>
                 <div class="btn-group" role="group" aria-label="Ticket Type">
                     <input type="radio" class="btn-check" asp-for="TicketType" id="standard" value="Standard" checked autocomplete="off">
                     <label class="btn btn-outline-dark px-4" for="standard">Standard</label>
@@ -52,7 +52,7 @@
             </div>
             <input type="hidden" asp-for="PerformanceId"/>
             <div class="text-center mt-5">
-                <button type="submit" class="btn btn-success btn-lg px-5">Confirm Reservation</button>
+                <button type="submit" class="btn btn-success btn-lg px-5">Bekræft Reservation</button>
             </div>
         </div>
     </div>

@@ -49,6 +49,7 @@ namespace CircusLuna.Pages
                 ticketType = TicketType
             });
             
-        }
+        }      
+
     }
 }

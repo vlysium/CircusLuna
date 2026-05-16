@@ -69,7 +69,9 @@
 
                 <div class="mt-4">
                     <button type="submit" class="btn btn-success px-4">Fortsæt</button>
-                    <a asp-page="Proceed to confirmation" class="btn btn-outline-secondary px-4 ms-2">Cancel</a>
+                    <a asp-page="BookSeats"
+                       asp-route-performanceId="@Model.PerformanceId"
+                       class="btn btn-outline-secondary px-4 ms-2">Tilbage</a>
                 </div>
             </form>
         </div>
