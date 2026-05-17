@@ -10,17 +10,25 @@
     <Content Remove="Data\people.json" />
     <Content Remove="Data\performances.json" />
     <Content Remove="Data\reservations.json" />
-  </ItemGroup>
+  </ItemGroup> -->
+
+  <!-- <ItemGroup>
+    <None Include="CircusLunaLibrary\Data\people.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CircusLunaLibrary\Data\performances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CircusLunaLibrary\Data\reservations.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup> -->
 
   <ItemGroup>
-    <None Include="Data\people.json">
+    <None Include="Data\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Data\performances.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Data\reservations.json" />
-  </ItemGroup> -->
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CircusLunaLibrary\CircusLunaLibrary.csproj" />
