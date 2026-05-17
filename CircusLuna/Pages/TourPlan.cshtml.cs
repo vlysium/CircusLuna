@@ -9,6 +9,9 @@ namespace CircusLuna.Pages
     {
         public List<Performance> Performances { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
+
         private readonly PerformanceService _performanceService;
 
         public TourPlanModel(PerformanceService performanceService)
@@ -18,7 +21,16 @@ namespace CircusLuna.Pages
 
         public void OnGet()
         {
-            Performances = _performanceService.GetAllPerformances();
+            // If no search term is provided, get all performances
+            if (string.IsNullOrEmpty(SearchTerm))
+            {
+                Performances = _performanceService.GetAllPerformances();
+            }
+            // If a search term is provided, search for performances that match the term
+            else
+            {
+                Performances = _performanceService.SearchPerformances(SearchTerm);
+            }
         }
     }
 }

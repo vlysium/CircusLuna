@@ -1,0 +1,12 @@
+.tour-plan-search-form {
+	display: flex;
+	flex-direction: row;
+}
+
+.tour-plan-search-form-input {
+	border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
+}
+
+.tour-plan-search-form-submit {
+	border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+}
