@@ -1,4 +1,4 @@
-﻿@page "/book-seats/{id}"
+@page "/book-seats/{performanceId}"
 @model CircusLuna.Pages.BookSeatsModel
 @{
 }
@@ -7,10 +7,10 @@
     <div class="text-center mt-4">
         <h5 class="mb-3">Select Ticket Type:</h5>
         <div class="btn-group" role="group" aria-label="Ticket Type">
-            <input type="radio" class="btn-check" name="ticketType" id="standard" value="Standard" checked autocomplete="off">
+            <input type="radio" class="btn-check" asp-for="TicketType" id="standard" value="Standard" checked autocomplete="off">
             <label class="btn btn-outline-dark px-4" for="standard">Standard</label>
 
-            <input type="radio" class="btn-check" name="ticketType" id="vip" value="VIP" autocomplete="off">
+            <input type="radio" class="btn-check" asp-for="TicketType" id="vip" value="VIP" autocomplete="off">
             <label class="btn btn-outline-warning px-4" for="vip">🌟 VIP</label>
         </div>
     </div>
@@ -39,8 +39,7 @@
                                name="SelectedSeatIds"
                                value="@seat.SeatId"
                                id="seat-@seat.SeatId"
-                               class="btn-check"
-                               autocomplete="off"
+                               class="btn-check"                               
                         @(isBusy ? "disabled" : "")>
                         
                         <label class="btn @(isBusy ? "btn-secondary" : "btn-outline-primary") seat-label"
@@ -51,7 +50,7 @@
                     </div>
                 }
             </div>
-            <input type="hidden" name="performanceId" value="@Model.CurrentPerformance.PerformanceId" />
+            <input type="hidden" asp-for="PerformanceId"/>
             <div class="text-center mt-5">
                 <button type="submit" class="btn btn-success btn-lg px-5">Confirm Reservation</button>
             </div>

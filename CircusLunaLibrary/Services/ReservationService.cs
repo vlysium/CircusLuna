@@ -32,22 +32,7 @@ namespace CircusLunaLibrary.Services
 			}
 			return busySeatIds;
 		}
-
-		public double CalculatTotalPrice(string reservationId)
-		{
-			double TotalPrice = 0;
-			foreach(Reservation r in _allReservations)
-			{
-				if (r.ReservationID == reservationId)
-				{
-					foreach(Ticket t in r.Tickets)
-					{
-						TotalPrice += t.Price;					
-                    }					
-				}
-			}
-			return TotalPrice;
-		}
+		
 
 		public void AddReservation(Reservation reservation)
 		{			

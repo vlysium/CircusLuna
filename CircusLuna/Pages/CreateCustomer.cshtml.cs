@@ -19,15 +19,15 @@ namespace CircusLuna.Pages
         public string PerformanceId { get; set; }
 
         [BindProperty]
-        public List<string> SelectedSeats { get; set; }
+        public List<string> SelectedSeatIds { get; set; }
         [BindProperty]
         public string TicketType { get; set; }
 
 
-        public void OnGet(string performanceId, List<string> selectedSeats, string ticketType)
+        public void OnGet(string performanceId, List<string> selectedSeatIds, string ticketType)
         {
             PerformanceId = performanceId;
-            SelectedSeats = selectedSeats;
+            SelectedSeatIds = selectedSeatIds;
             TicketType = ticketType;
         }
 
@@ -45,7 +45,7 @@ namespace CircusLuna.Pages
             return RedirectToPage("Confirmation", new
             {
                 performanceId = PerformanceId,
-                selectedSeats = SelectedSeats,
+                selectedSeatIds = SelectedSeatIds,
                 ticketType = TicketType
             });
             

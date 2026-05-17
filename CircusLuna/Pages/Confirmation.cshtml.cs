@@ -11,7 +11,13 @@ namespace CircusLuna.Pages
         private readonly ReservationService _rService;
         private readonly PerformanceService _pService;
 
-        
+        public ConfirmationModel(ReservationService rService, PerformanceService pService)
+        {
+            _rService = rService;
+            _pService = pService;
+        }
+
+
         [BindProperty]
         public string PerformanceId { get; set; }
         [BindProperty]
@@ -20,23 +26,19 @@ namespace CircusLuna.Pages
         public List<string> SeatIds { get; set; }
 
 
+
         public double TotalPrice { get; set; }
         public Performance Performance { get; set; }
         public string CustName { get; set; }
         public string CustEmail { get; set; }
-        public string CustNumber { get; set; }
-        
+        public string CustNumber { get; set; }        
 
-        public ConfirmationModel(ReservationService rService, PerformanceService pService)
-        {
-            _rService = rService;
-            _pService = pService;
-        }
+       
 
-        public void OnGet(string performanceId, List<string> selectedSeats, string ticketType)
+        public void OnGet(string performanceId, List<string> selectedSeatIds, string ticketType)
         {
             PerformanceId = performanceId;             
-            SeatIds = selectedSeats;
+            SeatIds = selectedSeatIds;
             TicketTypeString = ticketType;
 
             
@@ -53,6 +55,8 @@ namespace CircusLuna.Pages
             {
                 chosenType = TicketType.Standard; // Default fallback
             }            
+
+            
             List<Ticket> tempTickets = new List<Ticket>();
             foreach (string id in SeatIds)
             {
@@ -104,6 +108,7 @@ namespace CircusLuna.Pages
                     {                         
                         Ticket t = new Ticket(chosenType,s);
                         tickets.Add(t);
+                        break;
                     }
                 }
             }            
@@ -112,7 +117,7 @@ namespace CircusLuna.Pages
             Reservation finalRes = new Reservation(customer, performance, tickets);
             _rService.AddReservation(finalRes);
 
-            return RedirectToPage("Success");
+            return RedirectToPage("Index");
         }
     }
 }
