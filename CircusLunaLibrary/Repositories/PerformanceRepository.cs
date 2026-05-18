@@ -5,7 +5,7 @@ namespace CircusLunaLibrary.Repositories
 {
 	public class PerformanceRepository : IPerformanceRepository
 	{
-		private readonly string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "performances.json");
+		private readonly string _path = Path.Combine("Data", "performances.json");
 		private List<Performance> performances = new List<Performance>();
 
 		/// <summary>
@@ -15,7 +15,7 @@ namespace CircusLunaLibrary.Repositories
 		/// </summary>
 		public PerformanceRepository()
 		{
-			if (File.Exists(path))
+			if (File.Exists(_path))
 			{
 				LoadFromFile();
 			}
@@ -63,6 +63,41 @@ namespace CircusLunaLibrary.Repositories
 			return null;
 		}
 
+		public List<Performance> Search(string searchTerm)
+		{
+			List<Performance> results = new List<Performance>();
+
+			foreach (Performance performance in performances)
+			{
+				// Variables for readability
+				string lowerSearchTerm = searchTerm.ToLower();
+				string lowerCityName = performance.City.Name.ToLower();
+				string lowerVenueName = performance.Venue.Name.ToLower();
+				string lowerPerformanceName = performance.Name.ToLower();
+
+				// Check if the search term matches the city, venue or name of the performance, case-insensitive
+				// City name
+				if (lowerCityName.Contains(lowerSearchTerm))
+				{
+					results.Add(performance);
+					break;
+				}
+				// Venue name
+				if (lowerVenueName.Contains(lowerSearchTerm))
+				{
+					results.Add(performance);
+					break;
+				}
+				// Performance name
+				if (lowerPerformanceName.Contains(lowerSearchTerm))
+				{
+					results.Add(performance);
+					break;
+				}
+			}
+			return results;
+		}
+
 		public void Update(Performance performance)
 		{
 			for (int i = 0; i < performances.Count; i++)
@@ -85,7 +120,7 @@ namespace CircusLunaLibrary.Repositories
 		/// </summary>
 		private void LoadFromFile()
 		{
-			string json = File.ReadAllText(path);
+			string json = File.ReadAllText(_path);
 			performances = JsonSerializer.Deserialize<List<Performance>>(json);
 		}
 
@@ -96,7 +131,7 @@ namespace CircusLunaLibrary.Repositories
 		private void SaveToFile()
 		{
 			string json = JsonSerializer.Serialize(performances, new JsonSerializerOptions { WriteIndented = true });
-			File.WriteAllText(path, json);
+			File.WriteAllText(_path, json);
 		}
 	}
 }

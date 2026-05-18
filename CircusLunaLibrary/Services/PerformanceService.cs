@@ -85,6 +85,16 @@ namespace CircusLunaLibrary.Services
 		}
 
 		/// <summary>
+		/// Searches for performances in the repository that match the given search term in their city, venue or name.
+		/// </summary>
+		/// <param name="searchTerm">The term to search for.</param>
+		/// <returns>A list of performances that match the search term.</returns>
+		public List<Performance> SearchPerformances(string searchTerm)
+		{
+			return _performanceRepository.Search(searchTerm);
+		}
+
+		/// <summary>
 		/// Adds a new performance to the repository.
 		/// </summary>
 		/// <param name="performance">The performance to add.</param>
