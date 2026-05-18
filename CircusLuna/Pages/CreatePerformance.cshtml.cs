@@ -30,14 +30,11 @@ namespace CircusLuna.Pages
         [BindProperty]
         public string City { get; set; }
         [BindProperty]
-        public string PostalCode { get; set; }      
-        
-        [BindProperty]
-        public string Venue { get; set; }
-
-
+        public string PostalCode { get; set; }            
+       
         [BindProperty]
         public List<string> SelectedArtistIds { get; set; }
+        
         public List<Artist> AllArtists { get; set; }
 
         public void OnGet()
@@ -54,7 +51,11 @@ namespace CircusLuna.Pages
             }
             List<Artist> allArtists = _personService.GetAllArtists();
             List<Artist> SelectedArtists = new List<Artist>();
-            if (SelectedArtistIds == null) SelectedArtistIds = new List<string>();
+
+            if (SelectedArtistIds == null)
+            {
+                SelectedArtistIds = new List<string>();
+            }
 
             for (int i = 0; i<allArtists.Count; i++)
             {
@@ -79,8 +80,7 @@ namespace CircusLuna.Pages
 
             Performance newPerformance = new Performance(
                 Date,           // 1. DateTime date
-                Name,           // 2. string name
-                Venue,          // 3. string venueName
+                Name,           // 2. string name             
                 new City(City, PostalCode), // 4. City city
                 SelectedArtists); // 5. List<Artist> artists
 

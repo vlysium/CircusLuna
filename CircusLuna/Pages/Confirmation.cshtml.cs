@@ -10,11 +10,13 @@ namespace CircusLuna.Pages
     {
         private readonly ReservationService _rService;
         private readonly PerformanceService _pService;
+        private readonly VenueService _vService;
 
-        public ConfirmationModel(ReservationService rService, PerformanceService pService)
+        public ConfirmationModel(ReservationService rService, PerformanceService pService, VenueService vService)
         {
             _rService = rService;
             _pService = pService;
+            _vService = vService;
         }
 
 
@@ -29,9 +31,11 @@ namespace CircusLuna.Pages
 
         public double TotalPrice { get; set; }
         public Performance Performance { get; set; }
+        
         public string CustName { get; set; }
         public string CustEmail { get; set; }
-        public string CustNumber { get; set; }        
+        public string CustNumber { get; set; }
+        
 
        
 
@@ -40,7 +44,7 @@ namespace CircusLuna.Pages
             PerformanceId = performanceId;             
             SeatIds = selectedSeatIds;
             TicketTypeString = ticketType;
-
+            
             
             //data for display
             Performance = _pService.GetPerformance(performanceId);
@@ -54,13 +58,14 @@ namespace CircusLuna.Pages
             if (!Enum.TryParse(TicketTypeString, out TicketType chosenType))
             {
                 chosenType = TicketType.Standard; // Default fallback
-            }            
+            }
 
-            
+
+            Venue venue = _vService.GetVenue();
             List<Ticket> tempTickets = new List<Ticket>();
             foreach (string id in SeatIds)
             {
-                foreach (Seat s in Performance.Venue.AllSeats)
+                foreach (Seat s in venue.AllSeats)
                 {
                     if (s.SeatId == id)
                     {
@@ -100,9 +105,10 @@ namespace CircusLuna.Pages
 
             // Create Tickets
             List<Ticket> tickets = new List<Ticket>();
+            Venue venue = _vService.GetVenue();
             foreach(string id in SeatIds)
             {
-                foreach(Seat s in performance.Venue.AllSeats)
+                foreach(Seat s in venue.AllSeats)
                 {                    
                     if (s.SeatId == id)
                     {                         

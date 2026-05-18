@@ -21,7 +21,7 @@
       <tr>
         <th scope="row">@performance.Name</th>
         <td>@performance.Date.ToString("MMMM d, HH:mm")</td>
-        <td>@performance.City.Name - @performance.Venue.Name</td>
+        <td>@performance.ThisCity.Name </td>
         <td>
           <ul class="list-unstyled mb-0">
             @foreach (Artist artist in performance.Artists)
@@ -29,6 +29,16 @@
               <li>@artist.Name</li>
             }
           </ul>
+        </td>
+        <td>
+            <form method="post" asp-page-handler="SelectPerformance">
+                <!-- Bind the specific loop iteration's ID to the input value -->
+                <input type="hidden" name="performanceId" value="@performance.PerformanceId" />
+        
+                <button type="submit" class="btn btn-success">
+                    Køb Billetter
+                </button>
+            </form>
         </td>
 				<td><a asp-page="BuyTicket" class="btn btn-primary">Buy Tickets</a></td>
       </tr>

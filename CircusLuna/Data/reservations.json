@@ -1,0 +1,180 @@
+[
+  {
+    "ReservationID": "b52a0b7f",
+    "Customer": {
+      "ID": "c715d9a6",
+      "Name": "Rana Chmeis",
+      "Number": "r.chmeis@outlook.com",
+      "Address": null,
+      "Email": "\u002B4530276013"
+    },
+    "Performance": {
+      "Name": "M\u00E5nelys og Magi",
+      "PerformanceId": "02cb9787",
+      "Date": "2026-08-01T14:00:00",
+      "ThisCity": {
+        "CityID": "bdb1d9d5",
+        "Name": "Holb\u00E6k",
+        "PostalCode": "4300",
+        "Region": null
+      },
+      "Artists": [
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN468732423",
+          "Role": "Clown",
+          "ID": "244d2e07",
+          "Name": "Klovnen",
+          "Number": "12244567",
+          "Address": null,
+          "Email": "klovn@cirkusluna.dk"
+        },
+        {
+          "IsPermanent": false,
+          "PaymentInfo": "IBAN4684322423",
+          "Role": "Magiker",
+          "ID": "da32b867",
+          "Name": "Magimand",
+          "Number": "12244524",
+          "Address": null,
+          "Email": "magi@cirkusluna.dk"
+        },
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN453",
+          "Role": "LineDancer",
+          "ID": "3a22d595",
+          "Name": "Line Hansen",
+          "Number": "56565656",
+          "Address": null,
+          "Email": "line@luna.dk"
+        }
+      ]
+    },
+    "Tickets": [
+      {
+        "TicketID": "77e2d749",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "B-1",
+          "SeatRow": "B",
+          "SeatColumn": 1,
+          "SeatType": 0
+        },
+        "Price": 200
+      },
+      {
+        "TicketID": "7fbc2d2d",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "B-2",
+          "SeatRow": "B",
+          "SeatColumn": 2,
+          "SeatType": 0
+        },
+        "Price": 200
+      },
+      {
+        "TicketID": "4b322958",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "B-3",
+          "SeatRow": "B",
+          "SeatColumn": 3,
+          "SeatType": 0
+        },
+        "Price": 200
+      }
+    ],
+    "TotalPrice": 600
+  },
+  {
+    "ReservationID": "cbb534d5",
+    "Customer": {
+      "ID": "cbed485b",
+      "Name": "Nivine Chmeis",
+      "Number": "r.chmeis@outlook.com",
+      "Address": null,
+      "Email": "\u002B4530276013"
+    },
+    "Performance": {
+      "Name": "M\u00E5nelys og Magi",
+      "PerformanceId": "02cb9787",
+      "Date": "2026-08-01T14:00:00",
+      "ThisCity": {
+        "CityID": "bdb1d9d5",
+        "Name": "Holb\u00E6k",
+        "PostalCode": "4300",
+        "Region": null
+      },
+      "Artists": [
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN468732423",
+          "Role": "Clown",
+          "ID": "244d2e07",
+          "Name": "Klovnen",
+          "Number": "12244567",
+          "Address": null,
+          "Email": "klovn@cirkusluna.dk"
+        },
+        {
+          "IsPermanent": false,
+          "PaymentInfo": "IBAN4684322423",
+          "Role": "Magiker",
+          "ID": "da32b867",
+          "Name": "Magimand",
+          "Number": "12244524",
+          "Address": null,
+          "Email": "magi@cirkusluna.dk"
+        },
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN453",
+          "Role": "LineDancer",
+          "ID": "3a22d595",
+          "Name": "Line Hansen",
+          "Number": "56565656",
+          "Address": null,
+          "Email": "line@luna.dk"
+        }
+      ]
+    },
+    "Tickets": [
+      {
+        "TicketID": "a9e93cf6",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "V-6",
+          "SeatRow": "V",
+          "SeatColumn": 6,
+          "SeatType": 1
+        },
+        "Price": 250
+      },
+      {
+        "TicketID": "055fec63",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "V-7",
+          "SeatRow": "V",
+          "SeatColumn": 7,
+          "SeatType": 1
+        },
+        "Price": 250
+      },
+      {
+        "TicketID": "018981b7",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "V-8",
+          "SeatRow": "V",
+          "SeatColumn": 8,
+          "SeatType": 1
+        },
+        "Price": 250
+      }
+    ],
+    "TotalPrice": 750
+  }
+]

@@ -15,36 +15,36 @@
                     <form method="post">
                         <!-- Name -->
                         <div class="mb-3">
-                            <label asp-for="Name" class="form-label">Performance Name</label>
+                            <label asp-for="Name" class="form-label">Forestillingens Navn</label>
                             <input asp-for="Name" class="form-control" placeholder="e.g. Moonlight Spectacle" />
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
 
                         <!-- Date -->
                         <div class="mb-3">
-                            <label asp-for="Date" class="form-label">Date and Time</label>
+                            <label asp-for="Date" class="form-label">Dato og tid</label>
                             <input asp-for="Date" class="form-control" type="datetime-local" />
                             <span asp-validation-for="Date" class="text-danger"></span>
                         </div>
 
                         <!-- City -->
                         <div class="mb-3">
-                            <label asp-for="City" class="form-label">City</label>
+                            <label asp-for="City" class="form-label">By</label>
                             <input asp-for="City" class="form-control" placeholder="e.g. Aarhus" />
                             <span asp-validation-for="City" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
-                            <label asp-for="PostalCode" class="form-label">City</label>
-                            <input asp-for="PostalCode" class="form-control" placeholder="e.g. Aarhus" />
+                            <label asp-for="PostalCode" class="form-label">Postnummer</label>
+                            <input asp-for="PostalCode" class="form-control" placeholder="e.g. 8000" />
                             <span asp-validation-for="PostalCode" class="text-danger"></span>
                         </div>
 
-                        <!-- Venue Name -->
+                        <!-- Venue Name 
                         <div class="mb-3">
                             <label asp-for="Venue" class="form-label">Venue/Tent Name</label>
                             <input asp-for="Venue" class="form-control" placeholder="e.g. Grand Big Top" />
                             <span asp-validation-for="Venue" class="text-danger"></span>
-                        </div>
+                        </div>-->
 
                         <!-- Artists (Comma separated input) -->
                         <div class="mb-3">
@@ -66,8 +66,8 @@
                             <small class="text-muted">Sæt kryds ved alle de artister, der deltager i forestillingen.</small>
                         </div>
                         <div class="d-grid gap-2">
-                            <!-- Using asp-page-handler to point to OnPostCreate -->
-                            <button type="submit" asp-page-handler="Create" class="btn btn-success">
+                            <!--  asp-page-handler is only necessary if there are several forms-->
+                            <button type="submit" class="btn btn-success">
                                 Save Performance
                             </button>
                             <a asp-page="/Index" class="btn btn-outline-secondary">Cancel</a>

@@ -8,6 +8,8 @@ namespace CircusLuna.Pages
     public class TourPlanModel : PageModel
     {
         public List<Performance> Performances { get; set; }
+        [BindProperty]
+        public string performanceId { get; set; }
 
         private readonly PerformanceService _performanceService;
 
@@ -19,6 +21,10 @@ namespace CircusLuna.Pages
         public void OnGet()
         {
             Performances = _performanceService.GetAllPerformances();
+        }
+        public IActionResult OnPost()
+        {
+            return RedirectToPage("BookSeats", new { performanceId = performanceId });
         }
     }
 }

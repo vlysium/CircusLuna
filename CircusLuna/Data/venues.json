@@ -1,0 +1,905 @@
+{
+  "Name": "RegnbueTeltet",
+  "AllSeats": [
+    {
+      "SeatId": "V-1",
+      "SeatRow": "V",
+      "SeatColumn": 1,
+      "SeatType": "VIP"
+    },
+    {
+      "SeatId": "V-2",
+      "SeatRow": "V",
+      "SeatColumn": 2,
+      "SeatType": "VIP"
+    },
+    {
+      "SeatId": "V-3",
+      "SeatRow": "V",
+      "SeatColumn": 3,
+      "SeatType": "VIP"
+    },
+    {
+      "SeatId": "V-4",
+      "SeatRow": "V",
+      "SeatColumn": 4,
+      "SeatType": "VIP"
+    },
+    {
+      "SeatId": "V-5",
+      "SeatRow": "V",
+      "SeatColumn": 5,
+      "SeatType": "VIP"
+    },
+    {
+      "SeatId": "V-6",
+      "SeatRow": "V",
+      "SeatColumn": 6,
+      "SeatType": "VIP"
+    },
+    {
+      "SeatId": "V-7",
+      "SeatRow": "V",
+      "SeatColumn": 7,
+      "SeatType": "VIP"
+    },
+    {
+      "SeatId": "V-8",
+      "SeatRow": "V",
+      "SeatColumn": 8,
+      "SeatType": "VIP"
+    },
+    {
+      "SeatId": "V-9",
+      "SeatRow": "V",
+      "SeatColumn": 9,
+      "SeatType": "VIP"
+    },
+    {
+      "SeatId": "V-10",
+      "SeatRow": "V",
+      "SeatColumn": 10,
+      "SeatType": "VIP"
+    },
+    {
+      "SeatId": "A-1",
+      "SeatRow": "A",
+      "SeatColumn": 1,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-2",
+      "SeatRow": "A",
+      "SeatColumn": 2,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-3",
+      "SeatRow": "A",
+      "SeatColumn": 3,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-4",
+      "SeatRow": "A",
+      "SeatColumn": 4,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-5",
+      "SeatRow": "A",
+      "SeatColumn": 5,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-6",
+      "SeatRow": "A",
+      "SeatColumn": 6,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-7",
+      "SeatRow": "A",
+      "SeatColumn": 7,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-8",
+      "SeatRow": "A",
+      "SeatColumn": 8,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-9",
+      "SeatRow": "A",
+      "SeatColumn": 9,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-10",
+      "SeatRow": "A",
+      "SeatColumn": 10,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-11",
+      "SeatRow": "A",
+      "SeatColumn": 11,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-12",
+      "SeatRow": "A",
+      "SeatColumn": 12,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-13",
+      "SeatRow": "A",
+      "SeatColumn": 13,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-14",
+      "SeatRow": "A",
+      "SeatColumn": 14,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-15",
+      "SeatRow": "A",
+      "SeatColumn": 15,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-16",
+      "SeatRow": "A",
+      "SeatColumn": 16,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-17",
+      "SeatRow": "A",
+      "SeatColumn": 17,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-18",
+      "SeatRow": "A",
+      "SeatColumn": 18,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-19",
+      "SeatRow": "A",
+      "SeatColumn": 19,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "A-20",
+      "SeatRow": "A",
+      "SeatColumn": 20,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-1",
+      "SeatRow": "B",
+      "SeatColumn": 1,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-2",
+      "SeatRow": "B",
+      "SeatColumn": 2,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-3",
+      "SeatRow": "B",
+      "SeatColumn": 3,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-4",
+      "SeatRow": "B",
+      "SeatColumn": 4,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-5",
+      "SeatRow": "B",
+      "SeatColumn": 5,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-6",
+      "SeatRow": "B",
+      "SeatColumn": 6,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-7",
+      "SeatRow": "B",
+      "SeatColumn": 7,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-8",
+      "SeatRow": "B",
+      "SeatColumn": 8,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-9",
+      "SeatRow": "B",
+      "SeatColumn": 9,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-10",
+      "SeatRow": "B",
+      "SeatColumn": 10,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-11",
+      "SeatRow": "B",
+      "SeatColumn": 11,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-12",
+      "SeatRow": "B",
+      "SeatColumn": 12,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-13",
+      "SeatRow": "B",
+      "SeatColumn": 13,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-14",
+      "SeatRow": "B",
+      "SeatColumn": 14,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-15",
+      "SeatRow": "B",
+      "SeatColumn": 15,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-16",
+      "SeatRow": "B",
+      "SeatColumn": 16,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-17",
+      "SeatRow": "B",
+      "SeatColumn": 17,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-18",
+      "SeatRow": "B",
+      "SeatColumn": 18,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-19",
+      "SeatRow": "B",
+      "SeatColumn": 19,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "B-20",
+      "SeatRow": "B",
+      "SeatColumn": 20,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-1",
+      "SeatRow": "C",
+      "SeatColumn": 1,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-2",
+      "SeatRow": "C",
+      "SeatColumn": 2,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-3",
+      "SeatRow": "C",
+      "SeatColumn": 3,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-4",
+      "SeatRow": "C",
+      "SeatColumn": 4,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-5",
+      "SeatRow": "C",
+      "SeatColumn": 5,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-6",
+      "SeatRow": "C",
+      "SeatColumn": 6,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-7",
+      "SeatRow": "C",
+      "SeatColumn": 7,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-8",
+      "SeatRow": "C",
+      "SeatColumn": 8,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-9",
+      "SeatRow": "C",
+      "SeatColumn": 9,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-10",
+      "SeatRow": "C",
+      "SeatColumn": 10,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-11",
+      "SeatRow": "C",
+      "SeatColumn": 11,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-12",
+      "SeatRow": "C",
+      "SeatColumn": 12,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-13",
+      "SeatRow": "C",
+      "SeatColumn": 13,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-14",
+      "SeatRow": "C",
+      "SeatColumn": 14,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-15",
+      "SeatRow": "C",
+      "SeatColumn": 15,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-16",
+      "SeatRow": "C",
+      "SeatColumn": 16,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-17",
+      "SeatRow": "C",
+      "SeatColumn": 17,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-18",
+      "SeatRow": "C",
+      "SeatColumn": 18,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-19",
+      "SeatRow": "C",
+      "SeatColumn": 19,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "C-20",
+      "SeatRow": "C",
+      "SeatColumn": 20,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-1",
+      "SeatRow": "D",
+      "SeatColumn": 1,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-2",
+      "SeatRow": "D",
+      "SeatColumn": 2,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-3",
+      "SeatRow": "D",
+      "SeatColumn": 3,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-4",
+      "SeatRow": "D",
+      "SeatColumn": 4,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-5",
+      "SeatRow": "D",
+      "SeatColumn": 5,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-6",
+      "SeatRow": "D",
+      "SeatColumn": 6,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-7",
+      "SeatRow": "D",
+      "SeatColumn": 7,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-8",
+      "SeatRow": "D",
+      "SeatColumn": 8,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-9",
+      "SeatRow": "D",
+      "SeatColumn": 9,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-10",
+      "SeatRow": "D",
+      "SeatColumn": 10,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-11",
+      "SeatRow": "D",
+      "SeatColumn": 11,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-12",
+      "SeatRow": "D",
+      "SeatColumn": 12,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-13",
+      "SeatRow": "D",
+      "SeatColumn": 13,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-14",
+      "SeatRow": "D",
+      "SeatColumn": 14,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-15",
+      "SeatRow": "D",
+      "SeatColumn": 15,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-16",
+      "SeatRow": "D",
+      "SeatColumn": 16,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-17",
+      "SeatRow": "D",
+      "SeatColumn": 17,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-18",
+      "SeatRow": "D",
+      "SeatColumn": 18,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-19",
+      "SeatRow": "D",
+      "SeatColumn": 19,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "D-20",
+      "SeatRow": "D",
+      "SeatColumn": 20,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-1",
+      "SeatRow": "E",
+      "SeatColumn": 1,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-2",
+      "SeatRow": "E",
+      "SeatColumn": 2,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-3",
+      "SeatRow": "E",
+      "SeatColumn": 3,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-4",
+      "SeatRow": "E",
+      "SeatColumn": 4,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-5",
+      "SeatRow": "E",
+      "SeatColumn": 5,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-6",
+      "SeatRow": "E",
+      "SeatColumn": 6,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-7",
+      "SeatRow": "E",
+      "SeatColumn": 7,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-8",
+      "SeatRow": "E",
+      "SeatColumn": 8,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-9",
+      "SeatRow": "E",
+      "SeatColumn": 9,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-10",
+      "SeatRow": "E",
+      "SeatColumn": 10,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-11",
+      "SeatRow": "E",
+      "SeatColumn": 11,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-12",
+      "SeatRow": "E",
+      "SeatColumn": 12,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-13",
+      "SeatRow": "E",
+      "SeatColumn": 13,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-14",
+      "SeatRow": "E",
+      "SeatColumn": 14,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-15",
+      "SeatRow": "E",
+      "SeatColumn": 15,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-16",
+      "SeatRow": "E",
+      "SeatColumn": 16,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-17",
+      "SeatRow": "E",
+      "SeatColumn": 17,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-18",
+      "SeatRow": "E",
+      "SeatColumn": 18,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-19",
+      "SeatRow": "E",
+      "SeatColumn": 19,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "E-20",
+      "SeatRow": "E",
+      "SeatColumn": 20,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-1",
+      "SeatRow": "F",
+      "SeatColumn": 1,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-2",
+      "SeatRow": "F",
+      "SeatColumn": 2,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-3",
+      "SeatRow": "F",
+      "SeatColumn": 3,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-4",
+      "SeatRow": "F",
+      "SeatColumn": 4,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-5",
+      "SeatRow": "F",
+      "SeatColumn": 5,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-6",
+      "SeatRow": "F",
+      "SeatColumn": 6,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-7",
+      "SeatRow": "F",
+      "SeatColumn": 7,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-8",
+      "SeatRow": "F",
+      "SeatColumn": 8,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-9",
+      "SeatRow": "F",
+      "SeatColumn": 9,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-10",
+      "SeatRow": "F",
+      "SeatColumn": 10,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-11",
+      "SeatRow": "F",
+      "SeatColumn": 11,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-12",
+      "SeatRow": "F",
+      "SeatColumn": 12,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-13",
+      "SeatRow": "F",
+      "SeatColumn": 13,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-14",
+      "SeatRow": "F",
+      "SeatColumn": 14,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-15",
+      "SeatRow": "F",
+      "SeatColumn": 15,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-16",
+      "SeatRow": "F",
+      "SeatColumn": 16,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-17",
+      "SeatRow": "F",
+      "SeatColumn": 17,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-18",
+      "SeatRow": "F",
+      "SeatColumn": 18,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-19",
+      "SeatRow": "F",
+      "SeatColumn": 19,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "F-20",
+      "SeatRow": "F",
+      "SeatColumn": 20,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-1",
+      "SeatRow": "G",
+      "SeatColumn": 1,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-2",
+      "SeatRow": "G",
+      "SeatColumn": 2,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-3",
+      "SeatRow": "G",
+      "SeatColumn": 3,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-4",
+      "SeatRow": "G",
+      "SeatColumn": 4,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-5",
+      "SeatRow": "G",
+      "SeatColumn": 5,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-6",
+      "SeatRow": "G",
+      "SeatColumn": 6,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-7",
+      "SeatRow": "G",
+      "SeatColumn": 7,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-8",
+      "SeatRow": "G",
+      "SeatColumn": 8,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-9",
+      "SeatRow": "G",
+      "SeatColumn": 9,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-10",
+      "SeatRow": "G",
+      "SeatColumn": 10,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-11",
+      "SeatRow": "G",
+      "SeatColumn": 11,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-12",
+      "SeatRow": "G",
+      "SeatColumn": 12,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-13",
+      "SeatRow": "G",
+      "SeatColumn": 13,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-14",
+      "SeatRow": "G",
+      "SeatColumn": 14,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-15",
+      "SeatRow": "G",
+      "SeatColumn": 15,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-16",
+      "SeatRow": "G",
+      "SeatColumn": 16,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-17",
+      "SeatRow": "G",
+      "SeatColumn": 17,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-18",
+      "SeatRow": "G",
+      "SeatColumn": 18,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-19",
+      "SeatRow": "G",
+      "SeatColumn": 19,
+      "SeatType": "Standard"
+    },
+    {
+      "SeatId": "G-20",
+      "SeatRow": "G",
+      "SeatColumn": 20,
+      "SeatType": "Standard"
+    }
+  ]
+}

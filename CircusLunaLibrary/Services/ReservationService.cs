@@ -8,7 +8,7 @@ namespace CircusLunaLibrary.Services
 	{	
 		private readonly IReservationRepository _repo;
 		private List<Reservation> _allReservations = new List<Reservation>();
-
+		
 
 		public ReservationService(IReservationRepository repo)
 		{
@@ -16,7 +16,7 @@ namespace CircusLunaLibrary.Services
 			_allReservations = repo.GetAll();
 		}
 
-
+		
 		public List<string> GetBusySeatIds(string performanceID)
 		{
 			List<string> busySeatIds = new List<string>();

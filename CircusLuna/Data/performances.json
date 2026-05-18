@@ -1,0 +1,45 @@
+[
+  {
+    "Name": "M\u00E5nelys og Magi",
+    "PerformanceId": "02cb9787",
+    "Date": "2026-08-01T14:00:00",
+    "ThisCity": {
+      "CityID": "bdb1d9d5",
+      "Name": "Holb\u00E6k",
+      "PostalCode": "4300",
+      "Region": null
+    },
+    "Artists": [
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN468732423",
+        "Role": "Clown",
+        "ID": "244d2e07",
+        "Name": "Klovnen",
+        "Number": "12244567",
+        "Address": null,
+        "Email": "klovn@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": false,
+        "PaymentInfo": "IBAN4684322423",
+        "Role": "Magiker",
+        "ID": "da32b867",
+        "Name": "Magimand",
+        "Number": "12244524",
+        "Address": null,
+        "Email": "magi@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN453",
+        "Role": "LineDancer",
+        "ID": "3a22d595",
+        "Name": "Line Hansen",
+        "Number": "56565656",
+        "Address": null,
+        "Email": "line@luna.dk"
+      }
+    ]
+  }
+]

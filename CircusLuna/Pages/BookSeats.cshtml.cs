@@ -10,13 +10,17 @@ namespace CircusLuna.Pages
     {
         private readonly PerformanceService _performanceService;
         private readonly ReservationService _reservationService;
-        public BookSeatsModel(PerformanceService pService, ReservationService rService)
+        private readonly VenueService _venueService;
+        public BookSeatsModel(PerformanceService pService, ReservationService rService, VenueService venueService)
         {
             _performanceService = pService;
             _reservationService = rService;
+            _venueService = venueService;
         }
 
         public Performance CurrentPerformance { get; set; }
+        public List<Seat> Seats { get; set; }
+        
         public List<string> BusySeatIds { get; set; }
 
 
@@ -30,8 +34,10 @@ namespace CircusLuna.Pages
 
         public void OnGet(string performanceId)
         {
+            PerformanceId = performanceId;
             CurrentPerformance = _performanceService.GetPerformance(performanceId);
             BusySeatIds = _reservationService.GetBusySeatIds(performanceId);
+            Seats = _venueService.GetVenue().AllSeats;            
         }
 
         public IActionResult OnPost()
@@ -39,6 +45,7 @@ namespace CircusLuna.Pages
             if (SelectedSeatIds == null || SelectedSeatIds.Count==0)
             {
                 OnGet(PerformanceId);
+                ModelState.AddModelError(string.Empty, "Du skal vælge mindst én siddeplads.");
                 return Page();
             }
 

@@ -1,16 +1,20 @@
 ﻿@page "{performanceId}"
 @model CircusLuna.Pages.BookSeatsModel
+@using CircusLunaLibrary.Models
 @{
 }
 
 <form method="post">
- 
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Vælg siddepladser til @Model.CurrentPerformance.Name</h2>
+        <!-- Display validation error if no seats are selected -->
+        <div asp-validation-summary="ModelOnly" class="text-danger text-center mb-3"></div>
+
+        <!-- Added a safe null-conditional operator (?) just in case -->
+        <h2 class="text-center mb-4">Vælg siddepladser til @Model.CurrentPerformance?.Name</h2>
 
         <!-- Legend -->
         <div class="d-flex justify-content-center mb-4">
-            <div class="me-3"><span class="badge bg-primary">&nbsp;</span> Ldeig</div>
+            <div class="me-3"><span class="badge bg-primary">&nbsp;</span> Ledig</div>
             <div class="me-3"><span class="badge bg-secondary">&nbsp;</span> Optaget</div>
             <div><span class="badge bg-success">&nbsp;</span> Valgt</div>
         </div>
@@ -29,28 +33,36 @@
                     <label class="btn btn-outline-warning px-4" for="vip">🌟 VIP</label>
                 </div>
             </div>
+
             <div class="seat-grid-container mt-4">
-                @foreach (var seat in Model.CurrentPerformance.Venue.AllSeats)
+                @if (Model.Seats != null)
                 {
-                    bool isBusy = Model.BusySeatIds.Contains(seat.SeatId);
-                    
-                    <div class="seat-container">
-                        <input type="checkbox"
-                               name="SelectedSeatIds"
-                               value="@seat.SeatId"
-                               id="seat-@seat.SeatId"
-                               class="btn-check"                               
-                        @(isBusy ? "disabled" : "")>
+                    foreach (Seat seat in Model.Seats)
+                    {
+                        // Safe check to avoid null references if BusySeatIds is somehow null
+                        bool isBusy = Model.BusySeatIds?.Contains(seat.SeatId) ?? false;
                         
-                        <label class="btn @(isBusy ? "btn-secondary" : "btn-outline-primary") seat-label"
-                               for="seat-@seat.SeatId"
-                               style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">
-                            @seat.SeatRow@seat.SeatColumn
-                        </label>
-                    </div>
+                        <div class="seat-container">
+                            <input type="checkbox"
+                                   name="SelectedSeatIds"
+                                   value="@seat.SeatId"
+                                   id="seat-@seat.SeatId"
+                                   class="btn-check"                               
+                                   @(isBusy ? "disabled" : "")>
+                            
+                            <label class="btn @(isBusy ? "btn-secondary" : "btn-outline-primary") seat-label"
+                                   for="seat-@seat.SeatId"
+                                   style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">
+                                @seat.SeatRow@seat.SeatColumn
+                            </label>
+                        </div>
+                    }
                 }
             </div>
+
+            <!-- This input now works perfectly because PerformanceId is set in OnGet -->
             <input type="hidden" asp-for="PerformanceId"/>
+
             <div class="text-center mt-5">
                 <button type="submit" class="btn btn-success btn-lg px-5">Bekræft Reservation</button>
             </div>
@@ -59,33 +71,27 @@
 </form>
 
 <style>
+    /* Your CSS remains exactly the same */
     .seat-grid-container {
         display: grid;
-        /* This creates exactly 20 columns of equal width */
         grid-template-columns: repeat(20, auto);
         gap: 10px;
-        justify-content: center; /* Centers the whole grid */
+        justify-content: center;
         margin: 0 auto;
     }
-
-    /* Optional: Add a little extra space every 10 seats for better readability */
     .seat-container {
         width: 38px;
         height: 45px;
     }
-    /* Makes the "Available" seat turn green when checked */
     .btn-check:checked + .btn-outline-primary {
-        background-color: #198754 !important; /* Bootstrap Success Green */
+        background-color: #198754 !important;
         border-color: #198754 !important;
         color: white;
     }
-    
     .seat-label {
         transition: all 0.2s;
         cursor: pointer;
     }
-
-    /* Visual style for disabled seats */
     .btn-secondary {
         opacity: 0.5;
         cursor: not-allowed;
