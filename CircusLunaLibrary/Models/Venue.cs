@@ -10,7 +10,7 @@ namespace CircusLunaLibrary.Models
 		/// <summary>
 		/// List of seats available in the venue. The first row (A) is VIP, and the rest are standard.
 		/// </summary>
-		public List<Seat> AllSeats { get; set; }
+		public List<Seat> Seats { get; set; }
 		public Venue()
 		{
             InitializeSeats();
@@ -54,7 +54,7 @@ namespace CircusLunaLibrary.Models
 		/// </summary>
 		private void InitializeSeats()
 		{
-			AllSeats = new List<Seat>();
+			Seats = new List<Seat>();
 
 			for (char i = 'A'; i <= 'O'; i++) // 15 rows (A to O)
 			{
@@ -68,7 +68,7 @@ namespace CircusLunaLibrary.Models
 						newSeat.SeatType = SeatType.VIP;
 					}
 
-					AllSeats.Add(newSeat);
+					Seats.Add(newSeat);
 				}
 			}
 		}
@@ -79,14 +79,14 @@ namespace CircusLunaLibrary.Models
         //
         //    for (int i = 0; i < VipSeats; i++)
         //    {
-        //        AllSeats.Add(new Seat('V', i+1, SeatType.VIP));
+        //        Seats.Add(new Seat('V', i+1, SeatType.VIP));
         //    }
 
         //    for (int i = 0; i < StandardSeats; i++)
         //    {
     //			char charRow = (char)('A' + (i / seatsPerRow)); 
     //			int seatNumber = (i % seatsPerRow) + 1;  
-    //			AllSeats.Add(new Seat(charRow, seatNumber, SeatType.standard));
+    //			Seats.Add(new Seat(charRow, seatNumber, SeatType.standard));
         //     }
         //		
         //}

@@ -60,7 +60,7 @@ namespace CircusLuna.Pages
             List<Ticket> tempTickets = new List<Ticket>();
             foreach (string id in SeatIds)
             {
-                foreach (Seat s in Performance.Venue.AllSeats)
+                foreach (Seat s in Performance.Venue.Seats)
                 {
                     if (s.SeatId == id)
                     {
@@ -102,7 +102,7 @@ namespace CircusLuna.Pages
             List<Ticket> tickets = new List<Ticket>();
             foreach(string id in SeatIds)
             {
-                foreach(Seat s in performance.Venue.AllSeats)
+                foreach(Seat s in performance.Venue.Seats)
                 {                    
                     if (s.SeatId == id)
                     {                         
