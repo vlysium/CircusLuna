@@ -1,6 +1,6 @@
 [
   {
-    "Name": "Stjerner og m\u00E5ner",
+    "Name": "Fantasi bliver til virkelighed",
     "PerformanceId": "db3e4aea",
     "Date": "2026-08-05T14:00:00",
     "City": {
@@ -40,6 +40,50 @@
         "Number": "67346712",
         "Address": null,
         "Email": "Henrik@luna.dk"
+      }
+    ]
+  },
+  {
+    "Name": "M\u00E5nelys og Magi",
+    "PerformanceId": "4f274e01",
+    "Date": "2026-09-15T16:00:00",
+    "City": {
+      "CityID": "82886d97",
+      "Name": "Aarhus",
+      "PostalCode": "8000",
+      "Region": null
+    },
+    "VenueId": "19e01782",
+    "Artists": [
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN468732423",
+        "Role": "LineDancer",
+        "ID": "53fa0faf",
+        "Name": "Line Hansen",
+        "Number": "12121212",
+        "Address": null,
+        "Email": "line@luna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN65876546",
+        "Role": "Klovn",
+        "ID": "25d0dcb0",
+        "Name": "Henrik Madsen",
+        "Number": "67346712",
+        "Address": null,
+        "Email": "Henrik@luna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN5434576",
+        "Role": "StrongMan",
+        "ID": "378ede6f",
+        "Name": "Bent Nielsen",
+        "Number": "87653451",
+        "Address": null,
+        "Email": "bent@luna.dk"
       }
     ]
   }
