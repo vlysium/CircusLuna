@@ -47,7 +47,7 @@ namespace CircusLuna.Pages
                 return Page();
             }
 
-            // Pass data to CreateCustomer via Redirect with Route Values
+            
             return RedirectToPage("CreateCustomer", new
             {
                 performanceId = PerformanceId,

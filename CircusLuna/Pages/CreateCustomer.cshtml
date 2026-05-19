@@ -10,6 +10,8 @@
         <div class="card-body">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+
                 <!-- CRITICAL: Hidden inputs to keep data alive -->
                 <input type="hidden" asp-for="PerformanceId" />
                 <input type="hidden" asp-for="TicketType" />
@@ -18,6 +20,8 @@
                     <input type="hidden" name="SelectedSeats" value="@id" />
                 }
                 <div class="row">
+
+
                     <!-- Basic Information -->
                     <div class="col-md-6 mb-3">
                         <label asp-for="Customer.Name" class="form-label">Full Name</label>

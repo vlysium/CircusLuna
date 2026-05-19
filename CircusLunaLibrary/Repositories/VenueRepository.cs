@@ -13,10 +13,8 @@ namespace CircusLunaLibrary.Repositories
         private List<Venue> _venues;
 
         public VenueRepository()
-        {
-            
-             LoadAndFixVenues();
-           
+        {            
+             LoadAndFixVenues();           
         }
 
         public void LoadAndFixVenues()
@@ -26,8 +24,8 @@ namespace CircusLunaLibrary.Repositories
                 // 1. If the file exists, read it
                 if (File.Exists(_filePath))
                 {
-                    string jsonString = File.ReadAllText(_filePath);
-                    _venues = JsonSerializer.Deserialize<List<Venue>>(jsonString) ?? new List<Venue>();
+                    string json = File.ReadAllText(_filePath);
+                    _venues = JsonSerializer.Deserialize<List<Venue>>(json) ?? new List<Venue>();
                 }
 
                 // 2. If the file was empty or missing, create default venues using the correct constructor
@@ -55,13 +53,13 @@ namespace CircusLunaLibrary.Repositories
                         venue.InitializeSeats();
                     }
                 }
-
                 // 4. IMMEDIATELY OVERWRITE THE BAD JSON FILE WITH THE FIXED DATA
                 SaveFile();
             }
             catch (Exception ex)
             {
                 // Fallback in case the JSON file is corrupted and cannot be parsed
+                Console.WriteLine($"Critical Error: {ex}");
                 _venues = new List<Venue>
             {
                 new Venue("RegnbueTeltet", 10, 140),

@@ -103,11 +103,11 @@ namespace CircusLuna.Pages
             // Create Tickets
             Venue venue = _venueService.GetById(performance.VenueId);
             List<Ticket> tickets = new List<Ticket>();
-            foreach(string id in SeatIds)
+            foreach(string seatId in SeatIds)
             {
                 foreach(Seat s in venue.Seats)
                 {                    
-                    if (s.SeatId == id)
+                    if (s.SeatId == seatId)
                     {                         
                         Ticket t = new Ticket(chosenType,s);
                         tickets.Add(t);
