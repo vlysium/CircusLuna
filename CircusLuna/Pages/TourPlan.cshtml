@@ -29,7 +29,7 @@
       <tr>
         <th scope="row">@performance.Name</th>
         <td>@performance.Date.ToString("MMMM d, HH:mm")</td>
-        <td>@performance.City.Name - @performance.Venue.Name</td>
+        <td>@performance.City.Name @* @performance.Venue.Name *@</td>
         <td>
           <ul class="list-unstyled mb-0">
             @foreach (Artist artist in performance.Artists)
@@ -38,7 +38,7 @@
             }
           </ul>
         </td>
-				<td><a asp-page="BookSeats" asp-route-id="@performance.PerformanceId" class="btn btn-primary">Buy Tickets</a></td>
+                <td><a asp-page="book-seats" asp-route-id="@performance.PerformanceId" class="btn btn-primary">Buy Tickets</a></td>
       </tr>
     }
   </tbody>

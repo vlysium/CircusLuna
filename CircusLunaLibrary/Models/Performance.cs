@@ -27,7 +27,7 @@ namespace CircusLunaLibrary.Models
 		/// <summary>
 		/// The venue includes the list of seats available for the performance.
 		/// </summary>
-		public Venue Venue { get; set; }
+		public string VenueId { get; set; }
 
 		/// <summary>
 		/// List of artists performing in the performance.
@@ -53,13 +53,12 @@ namespace CircusLunaLibrary.Models
 		{
             PerformanceId = Guid.NewGuid().ToString().Substring(0, 8);
         }
-        public Performance(DateTime date, string name, string venueName, City city, List<Artist> artists)
-		{
-			PerformanceId = Guid.NewGuid().ToString().Substring(0, 8); // Generate a 8-character unique ID
+        public Performance(DateTime date, string name, string venueId, City city, List<Artist> artists):this()
+		{			
 			Name = name;
 			Date = date;
 			City = city;
-			Venue = new Venue(venueName);
+			VenueId = venueId;
 			Artists = artists;
 		}
 	}

@@ -1,0 +1,37 @@
+﻿@page
+@model CircusLuna.Pages.CreateVenueModel
+@{
+}
+
+<h1>Create Venue</h1>
+
+<form method="post">
+    <!-- Hidden field for ID since it is auto-generated in the constructor -->
+    <input type="hidden" asp-for="Venue.ID" />
+
+    <div class="form-group mb-3">
+        <label asp-for="Venue.Name" class="form-label">Venue Name</label>
+        <input asp-for="Venue.Name" class="form-control" placeholder="Indtast navn på teltet" />
+        <span asp-validation-for="Venue.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Venue.VipSeats" class="form-label">Antal VIP sæder</label>
+        <input asp-for="Venue.VipSeats" class="form-control" type="number" min="0" />
+        <span asp-validation-for="Venue.VipSeats" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Venue.StandardSeats" class="form-label">Antal standard sæder</label>
+        <input asp-for="Venue.StandardSeats" class="form-control" type="number" min="0" />
+        <span asp-validation-for="Venue.StandardSeats" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Venue</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

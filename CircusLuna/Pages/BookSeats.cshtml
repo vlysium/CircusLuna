@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="seat-grid-container mt-4">
-                @foreach (var seat in Model.CurrentPerformance.Venue.Seats)
+                @foreach (var seat in Model.CurrentVenue.Seats)
                 {
                     bool isBusy = Model.BusySeatIds.Contains(seat.SeatId);
                     

@@ -10,11 +10,13 @@ namespace CircusLuna.Pages
     {
         private readonly ReservationService _rService;
         private readonly PerformanceService _pService;
+        private readonly VenueService _venueService;
 
-        public ConfirmationModel(ReservationService rService, PerformanceService pService)
+        public ConfirmationModel(ReservationService rService, PerformanceService pService, VenueService venueService)
         {
             _rService = rService;
             _pService = pService;
+            _venueService = venueService;
         }
 
 
@@ -54,13 +56,13 @@ namespace CircusLuna.Pages
             if (!Enum.TryParse(TicketTypeString, out TicketType chosenType))
             {
                 chosenType = TicketType.Standard; // Default fallback
-            }            
+            }
 
-            
+            Venue venue = _venueService.GetById(Performance.VenueId);
             List<Ticket> tempTickets = new List<Ticket>();
             foreach (string id in SeatIds)
             {
-                foreach (Seat s in Performance.Venue.Seats)
+                foreach (Seat s in venue.Seats)
                 {
                     if (s.SeatId == id)
                     {
@@ -99,10 +101,11 @@ namespace CircusLuna.Pages
             }
 
             // Create Tickets
+            Venue venue = _venueService.GetById(performance.VenueId);
             List<Ticket> tickets = new List<Ticket>();
             foreach(string id in SeatIds)
             {
-                foreach(Seat s in performance.Venue.Seats)
+                foreach(Seat s in venue.Seats)
                 {                    
                     if (s.SeatId == id)
                     {                         

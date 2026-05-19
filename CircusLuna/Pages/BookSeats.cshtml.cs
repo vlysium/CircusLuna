@@ -10,14 +10,17 @@ namespace CircusLuna.Pages
     {
         private readonly PerformanceService _performanceService;
         private readonly ReservationService _reservationService;
-        public BookSeatsModel(PerformanceService pService, ReservationService rService)
+        private readonly VenueService _venueService;
+        public BookSeatsModel(PerformanceService pService, ReservationService rService, VenueService venueService)
         {
             _performanceService = pService;
             _reservationService = rService;
+            _venueService = venueService;
         }
 
         public Performance CurrentPerformance { get; set; }
         public List<string> BusySeatIds { get; set; }
+        public Venue CurrentVenue { get; set; }
 
 
         [BindProperty]
@@ -30,8 +33,10 @@ namespace CircusLuna.Pages
 
         public void OnGet(string performanceId)
         {
+            PerformanceId = performanceId;
             CurrentPerformance = _performanceService.GetPerformance(performanceId);
             BusySeatIds = _reservationService.GetBusySeatIds(performanceId);
+            CurrentVenue = _venueService.GetById(CurrentPerformance.VenueId);            
         }
 
         public IActionResult OnPost()
