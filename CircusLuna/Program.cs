@@ -17,6 +17,7 @@ namespace CircusLuna.Pages
             builder.Services.AddSingleton<PersonService>();
             builder.Services.AddSingleton<IReservationRepository, ReservationRepository>();
             builder.Services.AddSingleton<ReservationService>();
+            builder.Services.AddSingleton<ISeatRepository, SeatRepository>();
 
             var app = builder.Build();
 

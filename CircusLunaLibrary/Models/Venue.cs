@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace CircusLunaLibrary.Models
 {
 	public class Venue
@@ -10,70 +12,57 @@ namespace CircusLunaLibrary.Models
 		/// <summary>
 		/// List of seats available in the venue. The first row (A) is VIP, and the rest are standard.
 		/// </summary>
+		[JsonIgnore]
 		public List<Seat> AllSeats { get; set; }
-		public Venue()
-		{
-            InitializeSeats();
-        }
 
-		public Venue(string name):this()
-		{
-			Name = name;			
-		}
+		// /// <summary>
+		// /// Dictionary to keep track of reserved seats, where the key is the seat ID and the value is the customer ID who reserved it.
+		// /// </summary>
+		// public Dictionary<string, string> ReservedSeats { get; set; }
 
-		/// <summary>
-		/// Reserves a seat in the venue for a customer.
-		/// </summary>
-		/// <param name="seatId">The ID of the seat to reserve.</param>
-		/// <param name="customerId">The ID of the customer reserving the seat.</param>
-		/// <exception cref="Exception">Thrown when the seat is already reserved or does not exist.</exception>
-		//public void ReserveSeat(string seatId, string customerId)
-		//{
-		//	foreach (Seat seat in Seats)
-		//	{
-		//		// Find the seat by its id
-		//		if (seat.SeatId == seatId)
-		//		{
-		//			// Check if the seat is already reserved
-		//			if (seat.ReservedBy != null)
-		//			{
-		//				throw new Exception($"Seat {seatId} is already reserved.");
-		//			}
-
-		//			// Reserve the seat for the customer
-		//			seat.ReservedBy = customerId;
-		//			return;
-		//		}
-		//	}
-		//	throw new Exception($"Seat with ID {seatId} does not exist.");
-		//}
+		[JsonConstructor]
+		public Venue() { }
 
 		/// <summary>
-		/// Initializes the seats for the venue. The first row (A) is VIP, and the rest are standard.
-		/// There are 15 rows (A to O) and 10 columns (1 to 10) for a total of 150 seats.
+		/// Default constructor to initialize the venue with a name and an empty list of seats. It also initializes the reserved seats dictionary.
 		/// </summary>
-		private void InitializeSeats()
+		/// <param name="name">The name of the venue.</param>
+		/// <param name="seats">The list of seats available in the venue.</param>
+		public Venue(string name, List<Seat> seats): this()
 		{
-			AllSeats = new List<Seat>();
-
-			for (char i = 'A'; i <= 'O'; i++) // 15 rows (A to O)
-			{
-				for (int j = 1; j <= 10; j++) // 10 columns (1 to 10)
-				{
-					Seat newSeat = new Seat(i, j);
-
-					// First row is VIP, the rest are standard
-					if (i == 'A')
-					{
-						newSeat.SeatType = SeatType.VIP;
-					}
-
-					AllSeats.Add(newSeat);
-				}
-			}
+			Name = name;
+			AllSeats = seats;
 		}
+
+		// /// <summary>
+		// /// Reserves a seat in the venue for a customer.
+		// /// </summary>
+		// /// <param name="seatId">The ID of the seat to reserve.</param>
+		// /// <param name="customerId">The ID of the customer reserving the seat.</param>
+		// /// <exception cref="Exception">Thrown when the seat is already reserved or does not exist.</exception>
+		// public void ReserveSeat(string seatId, string customerId)
+		// {
+		// 	foreach (Seat seat in AllSeats)
+		// 	{
+		// 		// Find the seat by its id
+		// 		if (seat.SeatId == seatId)
+		// 		{
+		// 			// Check if the seat is already reserved
+		// 			if (ReservedSeats.ContainsKey(seatId))
+		// 			{
+		// 				throw new Exception($"Seat with ID {seatId} is already reserved.");
+		// 			}
+
+		// 			// Reserve the seat for the customer
+		// 			ReservedSeats.Add(seatId, customerId);
+		// 			return;
+		// 		}
+		// 	}
+		// 	throw new Exception($"Seat with ID {seatId} does not exist.");
+		// }
+
         //public void InitializeSeats()
-		//kræver VipSeats og StandardSeats properties. Mulighed for flere telte.
+		//krÃ¦ver VipSeats og StandardSeats properties. Mulighed for flere telte.
         //{
         //    int seatsPerRow = 10;
         //    for (int i = 0; i < VipSeats; i++)
@@ -84,7 +73,7 @@ namespace CircusLunaLibrary.Models
         //    for (int i = 0; i < StandardSeats; i++)
         //    {
         //        char charRow = (char)('A' + (i / seatsPerRow)); //TYPE CASTING: computeren ser chars som tal. Derfor A+1=B. (char) er typecasting. Vi caster tallet til en char efter udregningen.
-        //        int seatNumber = (i % seatsPerRow) + 1;  //MODULUS: Vi tager det, der er tilbage. 0/10=0+1 -> nr 1. 5/10=5+1 -> nr 6. 27/10=7+1 -> nr 8 osv. Ignorer 10'erne som udgør ROWS.
+        //        int seatNumber = (i % seatsPerRow) + 1;  //MODULUS: Vi tager det, der er tilbage. 0/10=0+1 -> nr 1. 5/10=5+1 -> nr 6. 27/10=7+1 -> nr 8 osv. Ignorer 10'erne som udgï¿½r ROWS.
         //        if (charRow == 'A' && (i >= 0 && i <= 9))
         //            AllSeats.Add(new Seat(charRow, seatNumber, SeatType.standard));
 

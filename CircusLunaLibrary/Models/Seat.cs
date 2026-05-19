@@ -29,15 +29,16 @@ namespace CircusLunaLibrary.Models
 		/// </summary>
 		//public string? ReservedBy { get; set; }
 
+		[JsonConstructor]
+		public Seat()
+		{
+		}
+		
 		/// <summary>
 		/// Initializes a new instance of the Seat class with the specified row and column.
 		/// </summary>
 		/// <param name="seatRow">The row of the seat.</param>
 		/// <param name="seatColumn">The column of the seat.</param>
-		[JsonConstructor]
-		public Seat()
-		{
-		}
 		public Seat(char seatRow, int seatColumn)
 		{
 			SeatId = $"{seatRow}{seatColumn}"; // Unique identifier based on row and column

@@ -80,7 +80,7 @@ namespace CircusLuna.Pages
             Performance newPerformance = new Performance(
                 Date,           // 1. DateTime date
                 Name,           // 2. string name
-                Venue,          // 3. string venueName
+                new Venue(Venue, _pService.GetSeats()),          // 3. string venueName
                 new City(City, PostalCode), // 4. City city
                 SelectedArtists); // 5. List<Artist> artists
 

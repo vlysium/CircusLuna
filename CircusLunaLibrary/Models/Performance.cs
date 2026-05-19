@@ -34,6 +34,14 @@ namespace CircusLunaLibrary.Models
 		/// </summary>
 		public List<Artist> Artists { get; set; }
 
+		/// <summary>
+		/// Default constructor to initialize a new performance with a unique identifier.
+		/// </summary>
+        public Performance()
+		{
+            PerformanceId = Guid.NewGuid().ToString().Substring(0, 8);
+        }
+
         /// <summary>
         /// Constructor to initialize a new performance with the specified date, city, and artists.
         /// </summary>
@@ -49,17 +57,12 @@ namespace CircusLunaLibrary.Models
         /// <param name="artists">
         /// The list of artists performing in the performance.
         /// </param>
-        public Performance()
+        public Performance(DateTime date, string name, Venue venue, City city, List<Artist> artists): this()
 		{
-            PerformanceId = Guid.NewGuid().ToString().Substring(0, 8);
-        }
-        public Performance(DateTime date, string name, string venueName, City city, List<Artist> artists)
-		{
-			PerformanceId = Guid.NewGuid().ToString().Substring(0, 8); // Generate a 8-character unique ID
 			Name = name;
 			Date = date;
 			City = city;
-			Venue = new Venue(venueName);
+			Venue = venue;
 			Artists = artists;
 		}
 	}
