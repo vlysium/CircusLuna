@@ -63,6 +63,7 @@ namespace CircusLunaLibrary.Repositories
                     People[i] = updatedPerson;
                 }
             }
+            SaveFile();
         }
         public Person GetById(string id)
         {

@@ -1,4 +1,54 @@
 ﻿@page
+@using CircusLunaLibrary.Models
 @model CircusLuna.Pages.AdminModel
 @{
 }
+
+<h1>Ansatte</h1>
+
+<form method="get" class="tour-plan-search-form">
+    <div class="form-floating">
+        <input type="text" class="tour-plan-search-form-input form-control" id="search-term" placeholder="Enter search term..." asp-for="SearchTerm" value="@Model.SearchTerm" />
+        <label for="search-term" class="tour-plan-search-form-label">Søg medarbejder</label>
+    </div>
+    <button type="submit" class="tour-plan-search-form-submit btn btn-primary">Search</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Navn</th>
+            <th scope="col">Telefon</th>
+            <th scope="col">Email</th>
+            <th scope="col">Rolle</th>
+            <th scope="col">Permanent Artist?</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Employee e in Model.People)
+        {
+            <tr>
+                <th scope="row">@e.ID</th>
+                <td>@e.Name</td>
+                <td>@e.Number</td>
+                <td>@e.Email</td>
+                <td>@e.Role</td>
+                <td>
+                    @if(e is Artist)
+                    {
+                        Artist a = (Artist)e;
+                        @(a.IsPermanent?"Ja":"Nej");
+                    }
+                    
+                </td>
+                <td><a asp-page="EditEmployee" asp-route-id="@e.ID" class="btn btn-primary">Redigér</a></td>
+                <td>
+                    <form method="post" asp-route-id="@e.ID">
+                        <button type="submit" class="btn btn-primary">Slet</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -46,5 +46,24 @@ namespace CircusLunaLibrary.Services
             }
             return AllArtists;
         }
+        public List<Person> GetAll()
+        {
+            return _personRepository.GetAll();
+        }
+        public void UpdateArtist(string id, Artist artist)
+        {
+            //Artist artistFromData = (Artist)GetById(id);
+            //artistFromData.Name = artist.Name;
+            //artistFromData.PaymentInfo = artist.PaymentInfo;
+            //artistFromData.Number = artist.Number;
+            //artistFromData.Role = artist.Role;
+            //artistFromData.IsPermanent = artist.IsPermanent;
+            _personRepository.UpdatePerson(id, artist);           
+
+        }
+        public void UpdateEmployee(string id, Employee employee)
+        {
+            _personRepository.UpdatePerson(id, employee);
+        }
     }
 }
