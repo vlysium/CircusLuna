@@ -2,6 +2,9 @@ using CircusLunaLibrary.Models;
 using CircusLunaLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data;
+using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CircusLuna.Pages
 {
@@ -15,6 +18,8 @@ namespace CircusLuna.Pages
 
         [BindProperty]
         public Artist Artist { get; set; }
+        [BindProperty]
+        public bool Employee { get; set; }
         public void OnGet()
         {
         }
@@ -24,8 +29,25 @@ namespace CircusLuna.Pages
             {
                 return Page();
             }
-            _pService.CreatePerson(Artist);
-            return RedirectToPage("Index");
+            if (Employee)
+            {
+                Employee newEmployee = new Employee
+                {
+                    ID = Artist.ID,
+                    Name = Artist.Name,
+                    Email = Artist.Email,
+                    Number = Artist.Number,
+                    Role = Artist.Role,
+                    PaymentInfo = Artist.PaymentInfo
+                };          
+                _pService.CreatePerson(newEmployee);
+            }
+            else
+            {
+                _pService.CreatePerson(Artist);
+            }
+            
+            return RedirectToPage("Admin");
         }
     }
 }
