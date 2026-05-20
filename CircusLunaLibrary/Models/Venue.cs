@@ -92,5 +92,5 @@ namespace CircusLunaLibrary.Models
 
 
     }//TYPE CASTING: computeren ser chars som tal. Derfor A+1=B. (char) er typecasting. Vi caster tallet til en char efter udregningen.
-     //MODULUS: Vi tager det, der er tilbage. 0%10=0+1 -> nr 1. 5%10=5+1 -> nr 6. 27%10=7+1 -> nr 8 osv. 10 er en hel "pakke". hver gang en hel "pakke" udfyldes, ignorerer vi det, og kigger på hvad der er tilbage.
+     //MODULUS: TAL % TAL2. Hvor mange gange går TAL2 op i TAL1? Hvis det er 0 gange, vil det overskydende tal ALTID svare til TAL1. 20/20 så er overskuddet 0. 40/20 giver også 0. osv. 1, 21, 41 giver alt sammen 1 i overskud.
 }
