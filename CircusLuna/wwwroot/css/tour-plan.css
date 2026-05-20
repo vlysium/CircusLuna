@@ -1,12 +1,11 @@
-.tour-plan-search-form {
+.tour-plan-form {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 1rem;
 }
 
-.tour-plan-search-form-input {
-	border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
-}
-
-.tour-plan-search-form-submit {
-	border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+.tour-plan-sort, .tour-plan-search {
+	display: flex;
+	flex-direction: row;
 }

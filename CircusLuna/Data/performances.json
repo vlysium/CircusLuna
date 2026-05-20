@@ -80,5 +80,41 @@
         "Email": "magi@cirkusluna.dk"
       }
     ]
+  },
+  {
+    "Name": "Jokeren",
+    "PerformanceId": "6b20fbe7",
+    "Date": "2026-06-01T16:00:00",
+    "City": {
+      "CityID": "70f48804",
+      "Name": "Aarhus",
+      "PostalCode": "8000",
+      "Region": null
+    },
+    "Venue": {
+      "Name": "Aarhus Teater"
+    },
+    "Artists": [
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN468732423",
+        "Role": "Clown",
+        "ID": "39cb9b58",
+        "Name": "Klovnen",
+        "Number": "12244567",
+        "Address": null,
+        "Email": "klovn@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": false,
+        "PaymentInfo": "IBAN4684322423",
+        "Role": "Magiker",
+        "ID": "da32b867",
+        "Name": "Magimand",
+        "Number": "12244524",
+        "Address": null,
+        "Email": "magi@cirkusluna.dk"
+      }
+    ]
   }
 ]

@@ -1,45 +1,71 @@
-﻿@page "/tour-plan"
+﻿@page "/tour-plan/{SearchTerm?}/{SortBy?}"
 @using CircusLunaLibrary.Models
 @model CircusLuna.Pages.TourPlanModel
 @{
 }
 <h1>Tour Plan</h1>
 
-<form method="get" class="tour-plan-search-form">
-  <div class="form-floating">
-    <input type="text" class="tour-plan-search-form-input form-control" id="search-term" placeholder="Enter search term..." asp-for="SearchTerm" value="@Model.SearchTerm" />
-    <label for="search-term" class="tour-plan-search-form-label">Search Performances</label>
+<form class="tour-plan-form" method="get">
+  <div class="tour-plan-sort">
+    <div class="form-floating">
+      <select class="form-select" id="performance-sort" name="SortBy" asp-for="SortBy" data-submit-on="change">
+        <option value="" selected="@(string.IsNullOrEmpty(Model.SortBy))" disabled hidden>Sort performances</option>
+        <option value="city_asc" selected="@(Model.SortBy == "city_asc" ? true : false)">City name (A-Z)</option>
+        <option value="city_dsc" selected="@(Model.SortBy == "city_dsc" ? true : false)">City name (Z-A)</option>
+        <option value="name_asc" selected="@(Model.SortBy == "name_asc" ? true : false)" disabled>Performance name (A-Z)</option> <!-- Not yet implemented -->
+        <option value="name_dsc" selected="@(Model.SortBy == "name_dsc" ? true : false)" disabled>Performance name (Z-A)</option> <!-- Not yet implemented -->
+        <option value="date_asc" selected="@(Model.SortBy == "date_asc" ? true : false)" disabled>Performance date (Oldest First)</option> <!-- Not yet implemented -->
+        <option value="date_dsc" selected="@(Model.SortBy == "date_dsc" ? true : false)" disabled>Performance date (Newest First)</option> <!-- Not yet implemented -->
+      </select>
+      <label for="performance-sort">Sort by</label>
+    </div>
   </div>
-  <button type="submit" class="tour-plan-search-form-submit btn btn-primary">Search</button>
+
+  <div class="tour-plan-search">
+    <div class="form-floating">
+      <input
+        type="text"
+        class="tour-plan-search-input form-control"
+        id="search-term"
+        placeholder="Enter search term..."
+        asp-for="SearchTerm"
+        value="@Model.SearchTerm"
+        data-submit-on="blur"
+      />
+      <label for="search-term" class="tour-plan-search-label">Search Performances</label>
+    </div>
+  </div>
 </form>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Performance</th>
-      <th scope="col">Date</th>
-      <th scope="col">Location</th>
-      <th scope="col">Artists</th>
-      <th scope="col">Tickets</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach (Performance performance in Model.Performances)
-    {
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <th scope="row">@performance.Name</th>
-        <td>@performance.Date.ToString("MMMM d, HH:mm")</td>
-        <td>@performance.City.Name - @performance.Venue.Name</td>
-        <td>
-          <ul class="list-unstyled mb-0">
-            @foreach (Artist artist in performance.Artists)
-            {
-              <li>@artist.Name</li>
-            }
-          </ul>
-        </td>
-				<td><a asp-page="/BookSeats" asp-route-performanceId="@performance.PerformanceId" class="btn btn-primary">Buy Tickets</a></td>
+        <th scope="col">Performance</th>
+        <th scope="col">Date</th>
+        <th scope="col">Location</th>
+        <th scope="col">Artists</th>
+        <th scope="col">Tickets</th>
       </tr>
-    }
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      @foreach (Performance performance in Model.Performances)
+      {
+        <tr>
+          <th scope="row">@performance.Name</th>
+          <td>@performance.Date.ToString("MMMM d, HH:mm")</td>
+          <td>@performance.City.Name - @performance.Venue.Name</td>
+          <td>
+            <ul class="list-unstyled mb-0">
+              @foreach (Artist artist in performance.Artists)
+              {
+                <li>@artist.Name</li>
+              }
+            </ul>
+          </td>
+          <td><a asp-page="/BookSeats" asp-route-performanceId="@performance.PerformanceId" class="btn btn-primary">Buy Tickets</a></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

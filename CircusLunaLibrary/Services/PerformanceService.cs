@@ -29,14 +29,14 @@ namespace CircusLunaLibrary.Services
 			return _seatRepository.GetAll();
 		}
 
-		/// <summary>
-		/// Reserves a seat for a specific performance.
-		/// It retrieves the performance, reserves the seat in the venue, and updates the performance in the repository.
-		/// </summary>
-		/// <param name="performanceId">The ID of the performance for which to reserve a seat.</param>
-		/// <param name="seatId">The ID of the seat to reserve.</param>
-		/// <param name="customerId">The ID of the customer reserving the seat.</param>
-		/// <exception cref="Exception">Thrown when the performance is not foundor when there is an error reserving the seat.</exception>
+		// /// <summary>
+		// /// Reserves a seat for a specific performance.
+		// /// It retrieves the performance, reserves the seat in the venue, and updates the performance in the repository.
+		// /// </summary>
+		// /// <param name="performanceId">The ID of the performance for which to reserve a seat.</param>
+		// /// <param name="seatId">The ID of the seat to reserve.</param>
+		// /// <param name="customerId">The ID of the customer reserving the seat.</param>
+		// /// <exception cref="Exception">Thrown when the performance is not foundor when there is an error reserving the seat.</exception>
 		//public void ReserveSeat(string performanceId, string seatId, string customerId)
 		//{
 
@@ -104,6 +104,53 @@ namespace CircusLunaLibrary.Services
 		public List<Performance> SearchPerformances(string searchTerm)
 		{
 			return _performanceRepository.Search(searchTerm);
+		}
+
+		/// <summary>
+		/// Sorts the performances in the repository based on the specified sort option, using the bubble sort algorithm.
+		/// </summary>
+		/// <param name="ascending">If true and default behavior, sorts in ascending order (A to Z); if false, sorts in descending order (Z to A).</param>
+		/// <returns>The sorted list of performances in the desired order.</returns>
+		public List<Performance> SortPerformancesByCity(List<Performance> performances, bool ascending = true)
+		{			
+			// Get length of the list of performances
+			int n = performances.Count;
+
+			// Boolean variable to track if the list is sorted
+			bool swapped;
+
+			do
+			{
+				swapped = false;
+
+				// Iterate through the list of performances
+				for (int i = 0; i < n - 1; i++)
+				{
+					// Compare the current performance's city name with the next immediate performance's city name
+					if (string.Compare(performances[i].City.Name, performances[i + 1].City.Name) > 0)
+					{
+						// Swap the performances if they are in the wrong order,
+						// using tuple deconstruction to swap in place without a temporary variable
+						(performances[i], performances[i + 1]) = (performances[i + 1], performances[i]);
+
+						// Set swapped to true to indicate that a swap has occurred
+						swapped = true;
+					}
+				}
+
+				// Reduce n by 1 since the last element has "bubbled" up to its correct position and does not need to be checked again
+				n--;
+
+			} while (swapped); // Continue looping until no swaps are made, indicating that the list is sorted
+
+			// Extra feature: reverse the list if descending order (Z to A) is desired
+			if (!ascending)
+			{
+				performances.Reverse();
+			}
+
+			// Finally return the sorted list of performances
+			return performances;
 		}
 
 		/// <summary>
