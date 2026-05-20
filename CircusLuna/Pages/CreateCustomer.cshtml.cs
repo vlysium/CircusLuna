@@ -38,12 +38,12 @@ namespace CircusLuna.Pages
                 return Page();
             }
 
-            TempData["CustomerName"] = Customer.Name;
-            TempData["CustomerEmail"] = Customer.Email;
-            TempData["CustomerNumber"] = Customer.Number;
+            TempData["CustomerName"] = Customer.Name;       //This data is saved for ONE redirect. 
+            TempData["CustomerEmail"] = Customer.Email;     //securely on the server side or encrypted in a cookie
+            TempData["CustomerNumber"] = Customer.Number;   //the url stays clean.
 
-            return RedirectToPage("Confirmation", new
-            {
+            return RedirectToPage("Confirmation", new       //the routing properties passed here show in the URL
+            {                                               
                 performanceId = PerformanceId,
                 selectedSeatIds = SelectedSeatIds,
                 ticketType = TicketType

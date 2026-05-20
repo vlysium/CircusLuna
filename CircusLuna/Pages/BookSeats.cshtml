@@ -4,13 +4,12 @@
 }
 
 <form method="post">
- 
     <div class="container mt-5">
         <h2 class="text-center mb-4">Vælg siddepladser til @Model.CurrentPerformance.Name</h2>
 
         <!-- Legend -->
         <div class="d-flex justify-content-center mb-4">
-            <div class="me-3"><span class="badge bg-primary">&nbsp;</span> Ldeig</div>
+            <div class="me-3"><span class="badge bg-primary">&nbsp;</span> Ledig</div>
             <div class="me-3"><span class="badge bg-secondary">&nbsp;</span> Optaget</div>
             <div><span class="badge bg-success">&nbsp;</span> Valgt</div>
         </div>
@@ -19,6 +18,7 @@
             <div class="text-center border-bottom mb-4 pb-2">
                 <strong>MANAGE / STAGE</strong>
             </div>
+            
             <div class="text-center">
                 <h5 class="mb-3">Vælg Billettype:</h5>
                 <div class="btn-group" role="group" aria-label="Ticket Type">
@@ -29,28 +29,65 @@
                     <label class="btn btn-outline-warning px-4" for="vip">🌟 VIP</label>
                 </div>
             </div>
-            <div class="seat-grid-container mt-4">
-                @foreach (var seat in Model.CurrentVenue.Seats)
-                {
-                    bool isBusy = Model.BusySeatIds.Contains(seat.SeatId);
-                    
-                    <div class="seat-container">
-                        <input type="checkbox"
-                               name="SelectedSeatIds"
-                               value="@seat.SeatId"
-                               id="seat-@seat.SeatId"
-                               class="btn-check"                               
-                        @(isBusy ? "disabled" : "")>
-                        
-                        <label class="btn @(isBusy ? "btn-secondary" : "btn-outline-primary") seat-label"
-                               for="seat-@seat.SeatId"
-                               style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">
-                            @seat.SeatRow@seat.SeatColumn
-                        </label>
-                    </div>
-                }
+
+            <!-- Main Layout Container -->
+            <div class="seating-area mt-4">
+                
+                <!-- SECTION 1: EXCLUSIVE VIP FRONT ROW -->
+                <div class="seat-row-layout vip-row mb-4">
+                    @foreach (var seat in Model.CurrentVenue.Seats)
+                    {
+                        if (seat.SeatType.ToString() == "VIP")
+                        {
+                            bool isBusy = Model.BusySeatIds.Contains(seat.SeatId);
+                            
+                            <div class="seat-container">
+                                <input type="checkbox"
+                                       name="SelectedSeatIds"
+                                       value="@seat.SeatId"
+                                       id="seat-@seat.SeatId"
+                                       class="btn-check"
+                                @(isBusy ? "disabled" : "")>
+                                
+                                <label class="btn @(isBusy ? "btn-secondary" : "btn-outline-warning") seat-label"
+                                       for="seat-@seat.SeatId"
+                                       style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">
+                                    @seat.SeatRow@seat.SeatColumn
+                                </label>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <!-- SECTION 2: STANDARD ROWS BEHIND -->
+                <div class="seat-row-layout standard-rows">
+                    @foreach (var seat in Model.CurrentVenue.Seats)
+                    {
+                        if (seat.SeatType.ToString() != "VIP")
+                        {
+                            bool isBusy = Model.BusySeatIds.Contains(seat.SeatId);
+                            
+                            <div class="seat-container">
+                                <input type="checkbox"
+                                       name="SelectedSeatIds"
+                                       value="@seat.SeatId"
+                                       id="seat-@seat.SeatId"
+                                       class="btn-check"
+                                @(isBusy ? "disabled" : "")>
+                                
+                                <label class="btn @(isBusy ? "btn-secondary" : "btn-outline-primary") seat-label"
+                                       for="seat-@seat.SeatId"
+                                       style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">
+                                    @seat.SeatRow@seat.SeatColumn
+                                </label>
+                            </div>
+                        }
+                    }
+                </div>
+
             </div>
-            <input type="hidden" asp-for="PerformanceId"/>
+
+            <input type="hidden" asp-for="PerformanceId" />
             <div class="text-center mt-5">
                 <button type="submit" class="btn btn-success btn-lg px-5">Bekræft Reservation</button>
             </div>
@@ -59,25 +96,24 @@
 </form>
 
 <style>
-    .seat-grid-container {
-        display: grid;
-        /* This creates exactly 20 columns of equal width */
-        grid-template-columns: repeat(20, auto);
-        gap: 10px;
-        justify-content: center; /* Centers the whole grid */
+    /* Centers the overall seating section */
+    .seating-area {
+        max-width: 1000px;
         margin: 0 auto;
     }
 
-    /* Optional: Add a little extra space every 10 seats for better readability */
-    .seat-container {
-        width: 38px;
-        height: 45px;
+    /* Shared layout for both sections: Centers all child elements horizontally */
+    .seat-row-layout {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
     }
-    /* Makes the "Available" seat turn green when checked */
-    .btn-check:checked + .btn-outline-primary {
-        background-color: #198754 !important; /* Bootstrap Success Green */
-        border-color: #198754 !important;
-        color: white;
+
+    /* Fixed dimensions for individual seat slots */
+    .seat-container {
+        width: 45px;
+        height: 45px;
     }
     
     .seat-label {
@@ -89,5 +125,13 @@
     .btn-secondary {
         opacity: 0.5;
         cursor: not-allowed;
+    }
+
+    /* Colors selected seats green */
+    .btn-check:checked + .btn-outline-primary,
+    .btn-check:checked + .btn-outline-warning {
+        background-color: #198754 !important;
+        border-color: #198754 !important;
+        color: white;
     }
 </style>

@@ -8,14 +8,14 @@ namespace CircusLuna.Pages
 {
     public class ConfirmationModel : PageModel
     {
-        private readonly ReservationService _rService;
-        private readonly PerformanceService _pService;
+        private readonly ReservationService _reservationService;
+        private readonly PerformanceService _performanceService;
         private readonly VenueService _venueService;
 
-        public ConfirmationModel(ReservationService rService, PerformanceService pService, VenueService venueService)
+        public ConfirmationModel(ReservationService reservationService, PerformanceService performanceService, VenueService venueService)
         {
-            _rService = rService;
-            _pService = pService;
+            _reservationService = reservationService;
+            _performanceService = performanceService;
             _venueService = venueService;
         }
 
@@ -44,11 +44,12 @@ namespace CircusLuna.Pages
             TicketTypeString = ticketType;
 
             
-            //data for display
-            Performance = _pService.GetPerformance(performanceId);
-            CustName = TempData["CustomerName"]?.ToString();
+            //DATA FOR DISPLAY ***************************************************************************
+            Performance = _performanceService.GetPerformance(performanceId);
+            CustName = TempData["CustomerName"]?.ToString();            
             CustEmail = TempData["CustomerEmail"]?.ToString();
-            CustNumber = TempData["CustomerNumber"]?.ToString();
+            CustNumber = TempData["CustomerNumber"]?.ToString(); 
+            //we have to create the properties, that are saved in tempdata, tempdata is destroyed on first refresh.
 
 
 
@@ -86,9 +87,9 @@ namespace CircusLuna.Pages
 
         public IActionResult OnPost()
         {
-            Performance performance = _pService.GetPerformance(PerformanceId);
+            Performance performance = _performanceService.GetPerformance(PerformanceId);
 
-            //create customer from TempData
+            //create customer from TempData (KEPT ALIVE FROM GET TO POST)
             string name = TempData["CustomerName"]?.ToString() ?? "Guest";
             string email = TempData["CustomerEmail"]?.ToString() ?? "";
             string phone = TempData["CustomerNumber"]?.ToString() ?? "";
@@ -118,7 +119,7 @@ namespace CircusLuna.Pages
 
             // Create and Save Reservation
             Reservation finalRes = new Reservation(customer, performance, tickets);
-            _rService.AddReservation(finalRes);
+            _reservationService.AddReservation(finalRes);
 
             return RedirectToPage("Index");
         }
