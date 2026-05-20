@@ -18,6 +18,7 @@ namespace CircusLuna.Pages
 
         public Performance CurrentPerformance { get; set; }
         public List<string> BusySeatIds { get; set; }
+        public List<Seat> AllSeats { get; set; }
 
 
         [BindProperty]
@@ -32,6 +33,7 @@ namespace CircusLuna.Pages
         {
             CurrentPerformance = _performanceService.GetPerformance(performanceId);
             BusySeatIds = _reservationService.GetBusySeatIds(performanceId);
+            AllSeats = _performanceService.GetSeats();
         }
 
         public IActionResult OnPost(string performanceId, List<string> SelectedSeatIds, string ticketType)
