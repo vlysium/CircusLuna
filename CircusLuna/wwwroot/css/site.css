@@ -2,25 +2,41 @@ html {
     box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
     box-sizing: inherit;
 }
-html,body{
-    height:100%;
-}
-body{
-    margin:0!important;
-    padding:0;
+
+html, body {
+    /* Changed height to min-height so the background keeps repeating 
+       even if your content scrolls past the screen height */
+    min-height: 100%;
 }
 
+body {
+    margin: 0 !important;
+    padding: 0;
+}
+
+html, body {
+    background-image: url(../images/background.jpg);
+    /* repeat-y repeats vertically; use 'repeat' if you want it grid-like (X and Y) */
+    background-repeat: repeat-y;
+    /* This ensures the background stays its natural size and doesn't stretch */
+    background-size: auto;
+}
+
+/* 1) Centering the image container */
 .frontpage-photo {
-    max-width: 100%;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px; /* Optional: adds a little space below your welcome text */
 }
 
+/* 2) Adding the thick yellow border directly to the image */
 .viewport-img {
-    max-width: 100%; 
-    height: auto; 
-    repeat
+    max-width: 100%;
+    height: auto;
+    border: 8px solid #FFD700; /* Thick, solid yellow border */
 }
