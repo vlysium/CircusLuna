@@ -6,18 +6,18 @@ namespace CircusLunaLibrary.Models
 		public int VipSeats { get; set; }
 		public int StandardSeats { get; set; }		
 		public string Name { get; set; }
-		public List<Seat> Seats { get; set; }
+        public List<Seat> Seats { get; set; } = new List<Seat>();
         public Venue()
-		{
-		}
+		{            
+        }
         public Venue(string name, int vipSeats, int standardSeats) : this()
         {
             ID = Guid.NewGuid().ToString().Substring(0, 8);
             Name = name;
             VipSeats = vipSeats;
             StandardSeats = standardSeats;
-            
             InitializeSeats();
+
         }
         public void InitializeSeats()
         {

@@ -34,7 +34,8 @@ namespace CircusLunaLibrary.Repositories
                     _venues = new List<Venue>
                 {
                     new Venue("RegnbueTeltet", 10, 140),
-                    new Venue("Solstrålen", 10, 70)
+                    new Venue("Solstrålen", 10, 70),
+                    new Venue("RC", 10, 12)
                 };
                 }
 
@@ -63,7 +64,8 @@ namespace CircusLunaLibrary.Repositories
                 _venues = new List<Venue>
             {
                 new Venue("RegnbueTeltet", 10, 140),
-                new Venue("Solstrålen", 10, 70)
+                new Venue("Solstrålen", 10, 70),
+                new Venue("RC", 10, 12)
             };
                 SaveFile();
             }

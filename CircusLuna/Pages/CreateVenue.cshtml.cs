@@ -22,7 +22,8 @@ namespace CircusLuna.Pages
 
         public IActionResult OnPost()
         {
-            _venueService.AddVenue(Venue);
+            Venue v = new Venue(Venue.Name, Venue.VipSeats, Venue.StandardSeats);
+            _venueService.AddVenue(v);
             return RedirectToPage("TourPlan");
         }
     }
