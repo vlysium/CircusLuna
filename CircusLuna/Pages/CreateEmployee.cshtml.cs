@@ -8,10 +8,10 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CircusLuna.Pages
 {
-    public class CreateArtistModel : PageModel
+    public class CreateEmployeeModel : PageModel
     {
         private readonly PersonService _pService;
-        public CreateArtistModel(PersonService pService)
+        public CreateEmployeeModel(PersonService pService)
         {
             _pService = pService;
         }
