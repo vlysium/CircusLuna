@@ -6,26 +6,32 @@ html {
     box-sizing: inherit;
 }
 
-html, body {
-    /* Changed height to min-height so the background keeps repeating 
-       even if your content scrolls past the screen height */
-    Height: 100%;
+body {
+    position: relative;
+}
+
+main {
+    min-height: 100svh;
 }
 
 header, footer {
-    color: #FFD700 !important;
+    background-color: #FFD700 !important;
     /* 1. Gives the header a 50% see-through black background veil */
-    background-color: rgba(0, 0, 0, 0.5);
+    /* color: rgba(0, 0, 0, 0.5); */
     /* 2. Optional but recommended: ensures the header sticks to the top 
           and spans the full width of the screen over your background */
     width: 100%;
+}
+
+header {
+    position: sticky;
+    top: 0;
 }
 
 .navbar {
     height: 70px;
     /* 3. If Bootstrap is giving your navbar a default white or grey background, 
           this rule forces it to become completely see-through so the header's veil works */
-    position: fixed;
 }
 
 
@@ -72,7 +78,7 @@ html, body {
 }
 
 .text-dark {
-    color: #FFD700 !important;
+    /* color: #FFD700 !important; */
 }
 
 .navbar-brand {
@@ -80,7 +86,7 @@ html, body {
     padding-bottom: var(--bs-navbar-brand-padding-y);
     margin-right: var(--bs-navbar-brand-margin-end);
     font-size: var(--bs-navbar-brand-font-size);
-    color: #FFD700 !important;
+    /* color: #FFD700 !important; */
     text-decoration: none;
     white-space: nowrap;
 }
@@ -95,10 +101,11 @@ html, body {
 
 /*FOOTER***********************************************************************************/
 footer {
-    color: #FFD700 !important;
+    color: rgba(0, 0, 0) !important;
     /* 1. Gives the header a 50% see-through black background veil */
     background-color: rgba(0, 0, 0, 0.5);
     /* 2. Optional but recommended: ensures the header sticks to the top 
           and spans the full width of the screen over your background */
     width: 100%;
+    padding-block: 1rem;
 }
