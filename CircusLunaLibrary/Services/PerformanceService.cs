@@ -7,26 +7,14 @@ namespace CircusLunaLibrary.Services
 	public class PerformanceService
 	{
 		private readonly IPerformanceRepository _performanceRepository;
-		private readonly ISeatRepository _seatRepository;
 
 		/// <summary>
 		/// Dependency injection with the repository.
 		/// </summary>
 		/// <param name="performanceRepository">The performance repository to use.</param>
-		/// <param name="seatRepository">The seat repository to use.</param>
-		public PerformanceService(IPerformanceRepository performanceRepository, ISeatRepository seatRepository)
+		public PerformanceService(IPerformanceRepository performanceRepository)
 		{
 			_performanceRepository = performanceRepository;
-			_seatRepository = seatRepository;
-		}
-
-		/// <summary>
-		/// Gets all seats from the seat repository.
-		/// </summary>
-		/// <returns>A list of all seats.</returns>
-		public List<Seat> GetSeats()
-		{
-			return _seatRepository.GetAll();
 		}
 
 		// /// <summary>
