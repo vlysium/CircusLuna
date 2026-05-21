@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="CircusLuna/CircusLuna.csproj" />
   <Project Path="CircusLunaLibrary/CircusLunaLibrary.csproj" />
+  <Project Path="LunaConsole/LunaConsole.csproj" Id="910b39fb-ca2b-4a3c-b617-72bff35ee5a1" />
 </Solution>

@@ -10,15 +10,17 @@ namespace CircusLuna.Pages
     {
         private readonly PerformanceService _performanceService;
         private readonly ReservationService _reservationService;
-        public BookSeatsModel(PerformanceService pService, ReservationService rService)
+        private readonly VenueService _venueService;
+        public BookSeatsModel(PerformanceService pService, ReservationService rService, VenueService venueService)
         {
             _performanceService = pService;
             _reservationService = rService;
+            _venueService = venueService;
         }
 
         public Performance CurrentPerformance { get; set; }
         public List<string> BusySeatIds { get; set; }
-        public List<Seat> AllSeats { get; set; }
+        public Venue CurrentVenue { get; set; }
 
 
         [BindProperty]
@@ -31,25 +33,26 @@ namespace CircusLuna.Pages
 
         public void OnGet(string performanceId)
         {
+            PerformanceId = performanceId;
             CurrentPerformance = _performanceService.GetPerformance(performanceId);
             BusySeatIds = _reservationService.GetBusySeatIds(performanceId);
-            AllSeats = _performanceService.GetSeats();
+            CurrentVenue = _venueService.GetById(CurrentPerformance.VenueId);            
         }
 
-        public IActionResult OnPost(string performanceId, List<string> SelectedSeatIds, string ticketType)
+        public IActionResult OnPost()
         {
             if (SelectedSeatIds == null || SelectedSeatIds.Count==0)
             {
-                OnGet(performanceId);
+                OnGet(PerformanceId);
                 return Page();
             }
 
-            // Pass data to CreateCustomer via Redirect with Route Values
+            
             return RedirectToPage("CreateCustomer", new
             {
-                performanceId = performanceId,
+                performanceId = PerformanceId,
                 selectedSeatIds = SelectedSeatIds,
-                ticketType = ticketType
+                ticketType = TicketType
             });
         }
     }

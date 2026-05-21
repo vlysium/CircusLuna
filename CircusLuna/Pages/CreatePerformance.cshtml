@@ -34,16 +34,22 @@
                             <span asp-validation-for="City" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
-                            <label asp-for="PostalCode" class="form-label">City</label>
+                            <label asp-for="PostalCode" class="form-label">Postnummer</label>
                             <input asp-for="PostalCode" class="form-control" placeholder="e.g. Aarhus" />
                             <span asp-validation-for="PostalCode" class="text-danger"></span>
                         </div>
 
                         <!-- Venue Name -->
                         <div class="mb-3">
-                            <label asp-for="Venue" class="form-label">Venue/Tent Name</label>
-                            <input asp-for="Venue" class="form-control" placeholder="e.g. Grand Big Top" />
-                            <span asp-validation-for="Venue" class="text-danger"></span>
+                            <label asp-for="SelectedVenueId" class="form-label">Telt / Venue</label>
+                            <select asp-for="SelectedVenueId" class="form-select">
+                                <option value="">-- Select a Venue --</option>
+                                @foreach (var venue in Model.AllVenues)
+                                {
+                                    <option value="@venue.ID">@venue.Name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="SelectedVenueId" class="text-danger"></span>
                         </div>
 
                         <!-- Artists (Comma separated input) -->
@@ -67,7 +73,7 @@
                         </div>
                         <div class="d-grid gap-2">
                             <!-- Using asp-page-handler to point to OnPostCreate -->
-                            <button type="submit" asp-page-handler="Create" class="btn btn-success">
+                            <button type="submit" class="btn btn-success">
                                 Save Performance
                             </button>
                             <a asp-page="/Index" class="btn btn-outline-secondary">Cancel</a>

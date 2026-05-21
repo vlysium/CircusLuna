@@ -4,81 +4,95 @@ namespace CircusLunaLibrary.Models
 {
 	public class Venue
 	{
-		/// <summary>
-		/// The name of the venue.
-		/// </summary>
+		public string ID { get; set; }
+		public int VipSeats { get; set; }
+		public int StandardSeats { get; set; }		
 		public string Name { get; set; }
+        public List<Seat> Seats { get; set; } = new List<Seat>();
+        public Venue()
+		{            
+        }
+        public Venue(string name, int vipSeats, int standardSeats) : this()
+        {
+            ID = Guid.NewGuid().ToString().Substring(0, 8);
+            Name = name;
+            VipSeats = vipSeats;
+            StandardSeats = standardSeats;
+            InitializeSeats();
 
-		/// <summary>
-		/// List of seats available in the venue. The first row (A) is VIP, and the rest are standard.
-		/// </summary>
-		[JsonIgnore]
-		public List<Seat> AllSeats { get; set; }
+        }
+        public void InitializeSeats()
+        {
+            int seatsPerRow = 20;                           //Vi bestemmer hvor mange s�der per r�kke
+            Seats = new List<Seat>();
 
-		// /// <summary>
-		// /// Dictionary to keep track of reserved seats, where the key is the seat ID and the value is the customer ID who reserved it.
-		// /// </summary>
-		// public Dictionary<string, string> ReservedSeats { get; set; }
+            for (int i = 0; i < VipSeats; i++)              //VIP s�der oprettes
+            {
+                Seats.Add(new Seat('V', i + 1, SeatType.VIP));
+            }
 
-		[JsonConstructor]
-		public Venue() { }
+            for (int i = 0; i < StandardSeats; i++)         //Standard s�der oprettes
+            {
+                char charRow = (char)('A' + (i / seatsPerRow));
+                int seatNumber = (i % seatsPerRow) + 1;
+                Seats.Add(new Seat(charRow, seatNumber, SeatType.Standard));
+            }
 
-		/// <summary>
-		/// Default constructor to initialize the venue with a name and an empty list of seats. It also initializes the reserved seats dictionary.
-		/// </summary>
-		/// <param name="name">The name of the venue.</param>
-		/// <param name="seats">The list of seats available in the venue.</param>
-		public Venue(string name, List<Seat> seats): this()
-		{
-			Name = name;
-			AllSeats = seats;
-		}
+        }
 
-		// /// <summary>
-		// /// Reserves a seat in the venue for a customer.
-		// /// </summary>
-		// /// <param name="seatId">The ID of the seat to reserve.</param>
-		// /// <param name="customerId">The ID of the customer reserving the seat.</param>
-		// /// <exception cref="Exception">Thrown when the seat is already reserved or does not exist.</exception>
-		// public void ReserveSeat(string seatId, string customerId)
-		// {
-		// 	foreach (Seat seat in AllSeats)
-		// 	{
-		// 		// Find the seat by its id
-		// 		if (seat.SeatId == seatId)
-		// 		{
-		// 			// Check if the seat is already reserved
-		// 			if (ReservedSeats.ContainsKey(seatId))
-		// 			{
-		// 				throw new Exception($"Seat with ID {seatId} is already reserved.");
-		// 			}
-
-		// 			// Reserve the seat for the customer
-		// 			ReservedSeats.Add(seatId, customerId);
-		// 			return;
-		// 		}
-		// 	}
-		// 	throw new Exception($"Seat with ID {seatId} does not exist.");
-		// }
-
-        //public void InitializeSeats()
-		//kræver VipSeats og StandardSeats properties. Mulighed for flere telte.
+        /// <summary>
+        /// Reserves a seat in the venue for a customer.
+        /// </summary>
+        /// <param name="seatId">The ID of the seat to reserve.</param>
+        /// <param name="customerId">The ID of the customer reserving the seat.</param>
+        /// <exception cref="Exception">Thrown when the seat is already reserved or does not exist.</exception>
+        //public void ReserveSeat(string seatId, string customerId)
         //{
-        //    int seatsPerRow = 10;
-        //    for (int i = 0; i < VipSeats; i++)
-        //    {
-        //        AllSeats.Add(new Seat('0', i, SeatType.VIP));
-        //    }
+        //	foreach (Seat seat in Seats)
+        //	{
+        //		// Find the seat by its id
+        //		if (seat.SeatId == seatId)
+        //		{
+        //			// Check if the seat is already reserved
+        //			if (seat.ReservedBy != null)
+        //			{
+        //				throw new Exception($"Seat {seatId} is already reserved.");
+        //			}
 
-        //    for (int i = 0; i < StandardSeats; i++)
-        //    {
-        //        char charRow = (char)('A' + (i / seatsPerRow)); //TYPE CASTING: computeren ser chars som tal. Derfor A+1=B. (char) er typecasting. Vi caster tallet til en char efter udregningen.
-        //        int seatNumber = (i % seatsPerRow) + 1;  //MODULUS: Vi tager det, der er tilbage. 0/10=0+1 -> nr 1. 5/10=5+1 -> nr 6. 27/10=7+1 -> nr 8 osv. Ignorer 10'erne som udg�r ROWS.
-        //        if (charRow == 'A' && (i >= 0 && i <= 9))
-        //            AllSeats.Add(new Seat(charRow, seatNumber, SeatType.standard));
-
-        //    }
+        //			// Reserve the seat for the customer
+        //			seat.ReservedBy = customerId;
+        //			return;
+        //		}
+        //	}
+        //	throw new Exception($"Seat with ID {seatId} does not exist.");
         //}
 
-    }
+        /// <summary>
+        /// Initializes the seats for the venue. The first row (A) is VIP, and the rest are standard.
+        /// There are 15 rows (A to O) and 10 columns (1 to 10) for a total of 150 seats.
+        /// </summary>
+        //private void InitializeSeats()
+        //{
+        //	Seats = new List<Seat>();
+
+        //	for (char i = 'A'; i <= 'O'; i++) // 15 rows (A to O)
+        //	{
+        //		for (int j = 1; j <= 10; j++) // 10 columns (1 to 10)
+        //		{
+        //			Seat newSeat = new Seat(i, j);
+
+        //			// First row is VIP, the rest are standard
+        //			if (i == 'A')
+        //			{
+        //				newSeat.SeatType = SeatType.VIP;
+        //			}
+
+        //			Seats.Add(newSeat);
+        //		}
+        //	}
+        //}
+
+
+    }//TYPE CASTING: computeren ser chars som tal. Derfor A+1=B. (char) er typecasting. Vi caster tallet til en char efter udregningen.
+     //MODULUS: TAL % TAL2. Hvor mange gange g�r TAL2 op i TAL1? Hvis det er 0 gange, vil det overskydende tal ALTID svare til TAL1. 20/20 s� er overskuddet 0. 40/20 giver ogs� 0. osv. 1, 21, 41 giver alt sammen 1 i overskud.
 }

@@ -1,28 +1,16 @@
 [
   {
-    "Name": "Klovneshow",
-    "PerformanceId": "52f8b901",
-    "Date": "2026-05-14T12:00:00",
+    "Name": "Fantasi bliver til virkelighed",
+    "PerformanceId": "db3e4aea",
+    "Date": "2026-08-05T14:00:00",
     "City": {
-      "CityID": "60602234",
-      "Name": "Ringsted",
-      "PostalCode": "4100",
+      "CityID": "257e0e96",
+      "Name": "Holb\u00E6k",
+      "PostalCode": "4300",
       "Region": null
     },
-    "Venue": {
-      "Name": "Regnbueteltet"
-    },
+    "VenueId": "19e01782",
     "Artists": [
-      {
-        "IsPermanent": true,
-        "PaymentInfo": "IBAN468732423",
-        "Role": "Clown",
-        "ID": "244d2e07",
-        "Name": "Klovnen",
-        "Number": "12244567",
-        "Address": null,
-        "Email": "klovn@cirkusluna.dk"
-      },
       {
         "IsPermanent": false,
         "PaymentInfo": "IBAN4684322423",
@@ -32,40 +20,92 @@
         "Number": "12244524",
         "Address": null,
         "Email": "magi@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN468732423",
+        "Role": "LineDancer",
+        "ID": "53fa0faf",
+        "Name": "Line Hansen",
+        "Number": "12121212",
+        "Address": null,
+        "Email": "line@luna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN65876546",
+        "Role": "Klovn",
+        "ID": "25d0dcb0",
+        "Name": "Henrik Madsen",
+        "Number": "67346712",
+        "Address": null,
+        "Email": "Henrik@luna.dk"
       }
     ]
   },
   {
-    "Name": "Ild og Vand",
-    "PerformanceId": "c32b4285",
-    "Date": "2026-07-18T12:00:00",
+    "Name": "M\u00E5nelys og Magi",
+    "PerformanceId": "4f274e01",
+    "Date": "2026-09-15T16:00:00",
     "City": {
-      "CityID": "ed30c511",
-      "Name": "Roskilde",
-      "PostalCode": "4000",
+      "CityID": "82886d97",
+      "Name": "Aarhus",
+      "PostalCode": "8000",
       "Region": null
     },
-    "Venue": {
-      "Name": "Roskilde Festivalpladsen"
-    },
+    "VenueId": "19e01782",
     "Artists": [
       {
         "IsPermanent": true,
         "PaymentInfo": "IBAN468732423",
-        "Role": "Clown",
-        "ID": "39cb9b58",
-        "Name": "Klovnen",
-        "Number": "12244567",
+        "Role": "LineDancer",
+        "ID": "53fa0faf",
+        "Name": "Line Hansen",
+        "Number": "12121212",
         "Address": null,
-        "Email": "klovn@cirkusluna.dk"
+        "Email": "line@luna.dk"
       },
       {
         "IsPermanent": true,
+        "PaymentInfo": "IBAN65876546",
+        "Role": "Klovn",
+        "ID": "25d0dcb0",
+        "Name": "Henrik Madsen",
+        "Number": "67346712",
+        "Address": null,
+        "Email": "Henrik@luna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN5434576",
+        "Role": "StrongMan",
+        "ID": "378ede6f",
+        "Name": "Bent Nielsen",
+        "Number": "87653451",
+        "Address": null,
+        "Email": "bent@luna.dk"
+      }
+    ]
+  },
+  {
+    "Name": "Ranas one-man show",
+    "PerformanceId": "dafabee8",
+    "Date": "2026-05-21T11:15:00",
+    "City": {
+      "CityID": "520a7785",
+      "Name": "Roskilde",
+      "PostalCode": "4000",
+      "Region": null
+    },
+    "VenueId": "a5a4babf",
+    "Artists": [
+      {
+        "IsPermanent": false,
         "PaymentInfo": "IBAN468732423",
-        "Role": "Clown",
+        "Role": "Klovn",
         "ID": "244d2e07",
-        "Name": "Klovnen",
-        "Number": "12244567",
+        "Name": "Mads Larsen",
+        "Number": "99775533",
         "Address": null,
         "Email": "klovn@cirkusluna.dk"
       },
@@ -78,6 +118,36 @@
         "Number": "12244524",
         "Address": null,
         "Email": "magi@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN468732423",
+        "Role": "LineDancer",
+        "ID": "53fa0faf",
+        "Name": "Line Hansen",
+        "Number": "12121212",
+        "Address": null,
+        "Email": "line@luna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN65876546",
+        "Role": "Klovn",
+        "ID": "25d0dcb0",
+        "Name": "Henrik Madsen",
+        "Number": "67346712",
+        "Address": null,
+        "Email": "Henrik@luna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN5434576",
+        "Role": "StrongMan",
+        "ID": "378ede6f",
+        "Name": "Bent Nielsen",
+        "Number": "87653451",
+        "Address": null,
+        "Email": "bent@luna.dk"
       }
     ]
   },

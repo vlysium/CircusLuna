@@ -72,7 +72,7 @@ namespace CircusLunaLibrary.Repositories
 				// Variables for readability
 				string lowerSearchTerm = searchTerm.ToLower();
 				string lowerCityName = performance.City.Name.ToLower();
-				string lowerVenueName = performance.Venue.Name.ToLower();
+				//string lowerVenueName = performance.Venue.Name.ToLower();
 				string lowerPerformanceName = performance.Name.ToLower();
 
 				// Check if the search term matches the city, venue or name of the performance, case-insensitive
@@ -83,11 +83,11 @@ namespace CircusLunaLibrary.Repositories
 					break;
 				}
 				// Venue name
-				if (lowerVenueName.Contains(lowerSearchTerm))
-				{
-					results.Add(performance);
-					break;
-				}
+				//if (lowerVenueName.Contains(lowerSearchTerm))
+				//{
+				//	results.Add(performance);
+				//	break;
+				//}
 				// Performance name
 				if (lowerPerformanceName.Contains(lowerSearchTerm))
 				{
