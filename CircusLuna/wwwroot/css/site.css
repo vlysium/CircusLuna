@@ -45,7 +45,7 @@ html, body {
     /* repeat-y repeats vertically; use 'repeat' if you want it grid-like (X and Y) */
     background-repeat: repeat-y;
     /* This ensures the background stays its natural size and doesn't stretch */
-    background-size: auto;
+    background-size: cover;
     /*background-color: #0B132B;*/
 }
 
