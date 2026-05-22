@@ -97,7 +97,7 @@
       "PostalCode": "4000",
       "Region": null
     },
-    "VenueId": "a5a4babf",
+    "VenueId": "19e01782",
     "Artists": [
       {
         "IsPermanent": false,
@@ -161,9 +161,7 @@
       "PostalCode": "8000",
       "Region": null
     },
-    "Venue": {
-      "Name": "Aarhus Teater"
-    },
+    "VenueId": "72154e0e",   
     "Artists": [
       {
         "IsPermanent": true,

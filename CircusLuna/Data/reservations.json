@@ -554,5 +554,162 @@
       }
     ],
     "TotalPrice": 1350
+  },
+  {
+    "ReservationID": "60c22b50",
+    "Customer": {
+      "ID": "159f397d",
+      "Name": "Rana Chmeis",
+      "Number": "r.chmeis@outlook.com",
+      "Address": null,
+      "Email": "30276013"
+    },
+    "Performance": {
+      "Name": "Jokeren",
+      "PerformanceId": "6b20fbe7",
+      "Date": "2026-06-01T16:00:00",
+      "City": {
+        "CityID": "70f48804",
+        "Name": "Aarhus",
+        "PostalCode": "8000",
+        "Region": null
+      },
+      "VenueId": "72154e0e",
+      "Artists": [
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN468732423",
+          "Role": "Clown",
+          "ID": "39cb9b58",
+          "Name": "Klovnen",
+          "Number": "12244567",
+          "Address": null,
+          "Email": "klovn@cirkusluna.dk"
+        },
+        {
+          "IsPermanent": false,
+          "PaymentInfo": "IBAN4684322423",
+          "Role": "Magiker",
+          "ID": "da32b867",
+          "Name": "Magimand",
+          "Number": "12244524",
+          "Address": null,
+          "Email": "magi@cirkusluna.dk"
+        }
+      ]
+    },
+    "Tickets": [
+      {
+        "TicketID": "6d6463c8",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "V1",
+          "SeatRow": "V",
+          "SeatColumn": 1,
+          "SeatType": 1
+        },
+        "Price": 250
+      },
+      {
+        "TicketID": "68a41fab",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "V2",
+          "SeatRow": "V",
+          "SeatColumn": 2,
+          "SeatType": 1
+        },
+        "Price": 250
+      },
+      {
+        "TicketID": "de3013e8",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "V3",
+          "SeatRow": "V",
+          "SeatColumn": 3,
+          "SeatType": 1
+        },
+        "Price": 250
+      },
+      {
+        "TicketID": "e2dd5fe4",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "V4",
+          "SeatRow": "V",
+          "SeatColumn": 4,
+          "SeatType": 1
+        },
+        "Price": 250
+      },
+      {
+        "TicketID": "6b81e920",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "V5",
+          "SeatRow": "V",
+          "SeatColumn": 5,
+          "SeatType": 1
+        },
+        "Price": 250
+      },
+      {
+        "TicketID": "91cf047c",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "V6",
+          "SeatRow": "V",
+          "SeatColumn": 6,
+          "SeatType": 1
+        },
+        "Price": 250
+      },
+      {
+        "TicketID": "979de08a",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "V7",
+          "SeatRow": "V",
+          "SeatColumn": 7,
+          "SeatType": 1
+        },
+        "Price": 250
+      },
+      {
+        "TicketID": "1f51cd28",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "V8",
+          "SeatRow": "V",
+          "SeatColumn": 8,
+          "SeatType": 1
+        },
+        "Price": 250
+      },
+      {
+        "TicketID": "2d6a5f2c",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "V9",
+          "SeatRow": "V",
+          "SeatColumn": 9,
+          "SeatType": 1
+        },
+        "Price": 250
+      },
+      {
+        "TicketID": "520c0c70",
+        "Type": 1,
+        "Seat": {
+          "SeatId": "V10",
+          "SeatRow": "V",
+          "SeatColumn": 10,
+          "SeatType": 1
+        },
+        "Price": 250
+      }
+    ],
+    "TotalPrice": 2500
   }
 ]

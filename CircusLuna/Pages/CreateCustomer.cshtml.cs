@@ -37,6 +37,7 @@ namespace CircusLuna.Pages
             {
                 return Page();
             }
+            
 
             TempData["CustomerName"] = Customer.Name;       //This data is saved for ONE redirect. 
             TempData["CustomerEmail"] = Customer.Email;     //securely on the server side or encrypted in a cookie

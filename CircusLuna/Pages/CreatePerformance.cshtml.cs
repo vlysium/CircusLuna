@@ -64,34 +64,22 @@ namespace CircusLuna.Pages
                 SelectedArtistIds = new List<string>();
             }
 
-            for (int i = 0; i<allArtists.Count; i++)
+            foreach (Artist a in allArtists)
             {
-                for(int j=0; j < SelectedArtistIds.Count; j++)
+                if (SelectedArtistIds.Contains(a.ID))
                 {
-                    if (allArtists[i].ID == SelectedArtistIds[j])
-                    {
-                        SelectedArtists.Add(allArtists[i]);
-                        break; //found a match - move on to the next.
-                    }
+                    SelectedArtists.Add(a);
                 }
-            }
+            }       
 
-            //Simpler and more readable loop
-            //foreach(Artist a in allArtists)
-            //{
-            //    if (SelectedArtistIds.Contains(a.ID))
-            //    {
-            //        SelectedArtists.Add(a);
-            //    }
-            //}
 
             
             Performance newPerformance = new Performance(
-                Date,           // 1. DateTime date
-                Name,           // 2. string name
-                SelectedVenueId,          // 3. string venueId
-                new City(City, PostalCode), // 4. City city
-                SelectedArtists); // 5. List<Artist> artists
+                Date,           
+                Name,           
+                SelectedVenueId,          
+                new City(City, PostalCode), 
+                SelectedArtists); 
 
             _pService.AddPerformance(newPerformance);
             return RedirectToPage("TourPlan");
