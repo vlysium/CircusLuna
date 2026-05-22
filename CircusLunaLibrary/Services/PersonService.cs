@@ -55,48 +55,56 @@ namespace CircusLunaLibrary.Services
         {
             _personRepository.UpdatePerson(id, employee);
         }
-        public List<Person> SortByNameAZ()
+        public List<Person> SortByNameAZ(List<Person> allPeople, bool AZ)
         {
-            List<Person> allPeople = new List<Person>();
+            List<Person> people = allPeople;
             int counter = 0;
-            while (counter < allPeople.Count)
+            while (counter < people.Count)
             {
-                int iterations = allPeople.Count - counter;
+                int iterations = people.Count - counter;
                 for (int i = 0; i < iterations - 1; i++)
-                {
-                    char[] person0 = allPeople[i].Name.ToLower().ToCharArray();
-                    char[] person1 = allPeople[i + 1].Name.ToLower().ToCharArray();
-
-                    int shortestArray = 0;
-                    if (person0.Length < person1.Length)
+                {    
+                    string person0 = people[i].Name.ToLower();
+                    string person1 = people[i + 1].Name.ToLower();
+                                        
+                    if (person0.Length > person1.Length && person0.StartsWith(person1))
                     {
-                        shortestArray = person0.Length;
+                        Person person = people[i];
+                        people[i] = people[i + 1];
+                        people[i + 1] = person;
                     }
                     else
-                    {
-                        shortestArray = person1.Length;
-                    }
-                    //int shortestArray = Math.Min(person0.Length, person1.Length);
+                    {                        
+                        int shortestString = Math.Min(person0.Length, person1.Length);
 
-                    for (int j = 0; j < shortestArray; j++)
-                    {
-                        if ((person0[j] < person1[j]))
+                        for (int j = 0; j < shortestString; j++)
                         {
-                            break; // Already in the right order, break the loop
+                            if ((person0[j] < person1[j]))
+                            {
+                                break; // Already in the right order, break the loop
+                            }
+                            else if (person1[j] < person0[j])
+                            {
+                                Person person = people[i];
+                                people[i] = people[i + 1];
+                                people[i + 1] = person;
+                                break;
+                            }
                         }
-                        else if (person1[j] < person0[j])
-                        {
-                            Person person = allPeople[i];
-                            allPeople[i] = allPeople[i + 1];
-                            allPeople[i + 1] = person;
-                            break;
-                        }
-
-                    }
+                    }                   
                 }
                 counter++;
             }
-            return allPeople;
+            if (!AZ)
+            {
+                people.Reverse();
+                return people;
+            }
+            return people;
+            //Udregne shortestString uden Math.Min: 
+            //int shortestString = 0;
+            //if person0.Length < person1.Length){shortestString = person0.Length;}
+            //else{shortestString = person1.Length;}
         }
     }
 }
