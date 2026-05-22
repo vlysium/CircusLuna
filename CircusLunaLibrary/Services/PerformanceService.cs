@@ -38,13 +38,94 @@ namespace CircusLunaLibrary.Services
 		}
 
 		/// <summary>
+		/// Filters the given list of performances based on the specified region and artist criterias,
+		/// using the repository's Filter method to perform the actual filtering logic.
+		/// </summary>
+		/// <param name="performances">The list of performances to filter.</param>
+		/// <param name="region">The region to filter by.</param>
+		/// <param name="artist">The artist to filter by.</param>
+		/// <returns>A list of performances that match the specified criterias.</returns>
+		public List<Performance> FilterPerformances(List<Performance> performances, Region? region, Artist? artist)
+		{
+			List<Performance> results = new List<Performance>();
+
+			foreach (Performance performance in performances)
+			{
+				// Skip if region doesn't match
+				if (region.HasValue && performance.City.Region != region.Value)
+				{
+					continue;
+				}
+
+				// If an artist filter is specified, check if the performance includes that artist
+				if (artist != null)
+				{
+					bool artistFound = false;
+
+					// Iterate through the list of artists in the performance and check if any of them match the specified artist
+					foreach (Artist performanceArtist in performance.Artists)
+					{
+						if (performanceArtist.ID == artist.ID)
+						{
+							// If a match is found, set artistFound to true and break out of the loop
+							artistFound = true;
+							break;
+						}
+					}
+
+					// If no matching artist was found in the performance, skip it
+					if (!artistFound)
+					{
+						continue;
+					}
+				}
+
+				// If we reach this point, the performance matches the criterias and can be added to the results
+				results.Add(performance);
+			}
+
+			return results;
+		}
+
+		/// <summary>
 		/// Searches for performances in the repository that match the given search term in their city, venue or name.
 		/// </summary>
+		/// <param name="performances">The list of performances to search within.</param>
 		/// <param name="searchTerm">The term to search for.</param>
 		/// <returns>A list of performances that match the search term.</returns>
-		public List<Performance> SearchPerformances(string searchTerm)
+		public List<Performance> SearchPerformances(List<Performance> performances, string searchTerm)
 		{
-			return _performanceRepository.Search(searchTerm);
+			List<Performance> results = new List<Performance>();
+
+			foreach (Performance performance in performances)
+			{
+				// Variables for readability
+				string lowerSearchTerm = searchTerm.ToLower();
+				string lowerCityName = performance.City.Name.ToLower();
+				//string lowerVenueName = performance.Venue.Name.ToLower();
+				string lowerPerformanceName = performance.Name.ToLower();
+
+				// Check if the search term matches the city, venue or name of the performance, case-insensitive
+				// City name
+				if (lowerCityName.Contains(lowerSearchTerm))
+				{
+					results.Add(performance);
+					break;
+				}
+				// Venue name
+				//if (lowerVenueName.Contains(lowerSearchTerm))
+				//{
+				//	results.Add(performance);
+				//	break;
+				//}
+				// Performance name
+				if (lowerPerformanceName.Contains(lowerSearchTerm))
+				{
+					results.Add(performance);
+					break;
+				}
+			}
+			return results;
 		}
 
 		/// <summary>

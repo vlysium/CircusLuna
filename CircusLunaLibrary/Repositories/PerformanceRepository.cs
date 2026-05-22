@@ -63,41 +63,6 @@ namespace CircusLunaLibrary.Repositories
 			return null;
 		}
 
-		public List<Performance> Search(string searchTerm)
-		{
-			List<Performance> results = new List<Performance>();
-
-			foreach (Performance performance in performances)
-			{
-				// Variables for readability
-				string lowerSearchTerm = searchTerm.ToLower();
-				string lowerCityName = performance.City.Name.ToLower();
-				//string lowerVenueName = performance.Venue.Name.ToLower();
-				string lowerPerformanceName = performance.Name.ToLower();
-
-				// Check if the search term matches the city, venue or name of the performance, case-insensitive
-				// City name
-				if (lowerCityName.Contains(lowerSearchTerm))
-				{
-					results.Add(performance);
-					break;
-				}
-				// Venue name
-				//if (lowerVenueName.Contains(lowerSearchTerm))
-				//{
-				//	results.Add(performance);
-				//	break;
-				//}
-				// Performance name
-				if (lowerPerformanceName.Contains(lowerSearchTerm))
-				{
-					results.Add(performance);
-					break;
-				}
-			}
-			return results;
-		}
-
 		public void Update(Performance performance)
 		{
 			for (int i = 0; i < performances.Count; i++)

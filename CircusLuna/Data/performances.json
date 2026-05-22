@@ -7,7 +7,7 @@
       "CityID": "257e0e96",
       "Name": "Holb\u00E6k",
       "PostalCode": "4300",
-      "Region": null
+      "Region": 1
     },
     "VenueId": "19e01782",
     "Artists": [
@@ -51,7 +51,7 @@
       "CityID": "82886d97",
       "Name": "Aarhus",
       "PostalCode": "8000",
-      "Region": null
+      "Region": 2
     },
     "VenueId": "19e01782",
     "Artists": [
@@ -95,7 +95,7 @@
       "CityID": "520a7785",
       "Name": "Roskilde",
       "PostalCode": "4000",
-      "Region": null
+      "Region": 1
     },
     "VenueId": "a5a4babf",
     "Artists": [
@@ -159,9 +159,9 @@
       "CityID": "70f48804",
       "Name": "Aarhus",
       "PostalCode": "8000",
-      "Region": null
+      "Region": 2
     },
-    "VenueId": null,
+    "VenueId": "19e01782",
     "Artists": [
       {
         "IsPermanent": true,
@@ -193,7 +193,7 @@
       "CityID": "c979f0fb",
       "Name": "Ølgod",
       "PostalCode": "6870",
-      "Region": null
+      "Region": 4
     },
     "VenueId": "72154e0e",
     "Artists": [

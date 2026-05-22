@@ -18,13 +18,6 @@ namespace CircusLunaLibrary.Repositories
 		public Performance GetById(string performanceId);
 
 		/// <summary>
-		/// Searches for performances by a search term that matches the city, venue or name of the performance.
-		/// </summary>
-		/// <param name="searchTerm">The term to search for.</param>
-		/// <returns>A list of performances that match the search term.</returns>
-		public List<Performance> Search(string searchTerm);
-
-		/// <summary>
 		/// Adds a new performance.
 		/// </summary>
 		/// <param name="performance">The performance to add.</param>
