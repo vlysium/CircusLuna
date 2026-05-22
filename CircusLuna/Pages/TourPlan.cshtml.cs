@@ -15,25 +15,53 @@ namespace CircusLuna.Pages
         [BindProperty(SupportsGet = true)]
         public string SortBy { get; set; }
 
-        private readonly PerformanceService _performanceService;
+        [BindProperty(SupportsGet = true)]
+        public string SelectedRegion { get; set; }
 
-        public TourPlanModel(PerformanceService performanceService)
+        public List<Artist> Artists { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string SelectedArtist { get; set; }
+
+        // A dictionary that maps sort option keys to their display names for use in the UI
+        public Dictionary<string, string> SortOptions { get; } = new Dictionary<string, string>
+        {
+            { "city_asc", "City (A-Z)" },
+            { "city_dsc", "City (Z-A)" },
+            { "name_asc", "Name (A-Z)" },
+            { "name_dsc", "Name (Z-A)" },
+            { "date_asc", "Date (Oldest first)" },
+            { "date_dsc", "Date (Newest first)" }
+        };
+
+        private readonly PerformanceService _performanceService;
+        private readonly PersonService _personService;
+
+        public TourPlanModel(PerformanceService performanceService, PersonService personService)
         {
             _performanceService = performanceService;
+            _personService = personService;
         }
 
         public void OnGet()
         {
-            // If no search term is provided, get all performances
-            if (string.IsNullOrEmpty(SearchTerm))
-            {
-                Performances = _performanceService.GetAllPerformances();
-            }
+            Artists = _personService.GetAllArtists();
+
+            Performances = _performanceService.GetAllPerformances();
+
+            // If a region or artist filter is selected, filter the performances accordingly
+            Performances = _performanceService.FilterPerformances(
+                Performances,
+                Enum.TryParse(SelectedRegion, out Region region) ? region : null,
+                (Artist)_personService.GetById(SelectedArtist)
+            );
+
             // If a search term is provided, search for performances that match the term
-            else
+            if (!string.IsNullOrEmpty(SearchTerm))
             {
-                Performances = _performanceService.SearchPerformances(SearchTerm);
+                Performances = _performanceService.SearchPerformances(Performances, SearchTerm);
             }
+
 
             // If a sortby parameter is provided, sort the performances accordingly
             if (!string.IsNullOrEmpty(SortBy))

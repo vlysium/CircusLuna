@@ -6,18 +6,43 @@
 <h1>Tour Plan</h1>
 
 <form class="tour-plan-form" method="get">
+
   <div class="tour-plan-sort">
     <div class="form-floating">
       <select class="form-select" id="performance-sort" name="SortBy" asp-for="SortBy" data-submit-on="change">
         <option value="" selected="@(string.IsNullOrEmpty(Model.SortBy))" disabled hidden>Sort performances</option>
-        <option value="city_asc" selected="@(Model.SortBy == "city_asc" ? true : false)">City name (A-Z)</option>
-        <option value="city_dsc" selected="@(Model.SortBy == "city_dsc" ? true : false)">City name (Z-A)</option>
-        <option value="name_asc" selected="@(Model.SortBy == "name_asc" ? true : false)">Performance name (A-Z)</option>
-        <option value="name_dsc" selected="@(Model.SortBy == "name_dsc" ? true : false)">Performance name (Z-A)</option>
-        <option value="date_asc" selected="@(Model.SortBy == "date_asc" ? true : false)">Performance date (Newest First)</option>
-        <option value="date_dsc" selected="@(Model.SortBy == "date_dsc" ? true : false)">Performance date (Oldest First)</option>
+        @foreach (KeyValuePair<string, string> sortOption in Model.SortOptions)
+        {
+          <option value="@sortOption.Key" selected="@(Model.SortBy == sortOption.Key)">@sortOption.Value</option>
+        }
       </select>
       <label for="performance-sort">Sort by</label>
+    </div>
+  </div>
+
+  <div class="tour-plan-filter-region">
+    <div class="form-floating">
+      <select class="form-select" id="performance-filter-region" name="SelectedRegion" asp-for="SelectedRegion" data-submit-on="change">
+        <option value="" selected="@(Model.SelectedRegion == null)">All Regions</option>
+        @foreach (Region region in Enum.GetValues(typeof(Region)).Cast<Region>())
+        {
+          <option value="@region" selected="@(Model.SelectedRegion == region.ToString())"> @region</option>
+        }
+      </select>
+      <label for="performance-filter-region">Filter by region</label>
+    </div>
+  </div>
+
+  <div class="tour-plan-filter-artist">
+    <div class="form-floating">
+      <select class="form-select" id="performance-filter-artist" name="SelectedArtist" asp-for="SelectedArtist" data-submit-on="change">
+        <option value="" selected="@(Model.SelectedArtist == null)">All Artists</option>
+        @foreach (Artist artist in Model.Artists)
+        {
+          <option value="@artist.ID" selected="@(Model.SelectedArtist == artist.ID)"> @artist.Name</option>
+        }
+      </select>
+      <label for="performance-filter-artist">Filter by artist</label>
     </div>
   </div>
 
@@ -35,6 +60,7 @@
       <label for="search-term" class="tour-plan-search-label">Search Performances</label>
     </div>
   </div>
+
 </form>
 
 <div class="table-responsive">
@@ -54,7 +80,7 @@
         <tr>
           <th scope="row">@performance.Name</th>
           <td>@performance.Date.ToString("MMMM d, HH:mm")</td>
-          <td>@performance.City.Name</td>
+          <td>@performance.City.Name - @performance.City.Region</td>
           <td>
             <ul class="list-unstyled mb-0">
               @foreach (Artist artist in performance.Artists)
