@@ -7,75 +7,15 @@ namespace CircusLunaLibrary.Services
 	public class PerformanceService
 	{
 		private readonly IPerformanceRepository _performanceRepository;
-		private readonly ISeatRepository _seatRepository;
 
 		/// <summary>
-		/// Dependency injection with the repository.
+		/// Initializes a new instance of the PerformanceService class with the specified performance repository.
 		/// </summary>
 		/// <param name="performanceRepository">The performance repository to use.</param>
-		/// <param name="seatRepository">The seat repository to use.</param>
-		public PerformanceService(IPerformanceRepository performanceRepository, ISeatRepository seatRepository)
+		public PerformanceService(IPerformanceRepository performanceRepository)
 		{
 			_performanceRepository = performanceRepository;
-			_seatRepository = seatRepository;
 		}
-
-		/// <summary>
-		/// Gets all seats from the seat repository.
-		/// </summary>
-		/// <returns>A list of all seats.</returns>
-		public List<Seat> GetSeats()
-		{
-			return _seatRepository.GetAll();
-		}
-
-		// /// <summary>
-		// /// Reserves a seat for a specific performance.
-		// /// It retrieves the performance, reserves the seat in the venue, and updates the performance in the repository.
-		// /// </summary>
-		// /// <param name="performanceId">The ID of the performance for which to reserve a seat.</param>
-		// /// <param name="seatId">The ID of the seat to reserve.</param>
-		// /// <param name="customerId">The ID of the customer reserving the seat.</param>
-		// /// <exception cref="Exception">Thrown when the performance is not foundor when there is an error reserving the seat.</exception>
-		//public void ReserveSeat(string performanceId, string seatId, string customerId)
-		//{
-
-		//	// Check if the performance exists
-		//	Performance performance = _performanceRepository.GetById(performanceId);
-		//	if (performance == null)
-		//	{
-		//		throw new Exception($"Performance with ID {performanceId} was not found.");
-		//	}
-
-		//	// Find the seat in the venue
-		//	Seat? seatToReserve = null;
-		//	foreach (Seat seat in performance.Venue.Seats)
-		//	{
-		//		if (seat.SeatId == seatId)
-		//		{
-		//			seatToReserve = seat;
-		//			break;
-		//		}
-		//	}
-
-		//	// If the seat was not found, throw an exception
-		//	if (seatToReserve == null)
-		//	{
-		//		throw new Exception($"Seat with ID {seatId} was not found.");
-		//	}
-
-		//	// Check if the seat is already reserved by another customer
-		//	if (seatToReserve.ReservedBy != null)
-		//	{
-		//		throw new Exception($"Seat {seatId} is already reserved.");
-		//	}
-
-		//	// Reserve the seat for the customer
-		//	seatToReserve.ReservedBy = customerId;
-
-		//	// Update the performance in the repository to reflect the reserved seat
-		//	_performanceRepository.Update(performance);
-		//}
 
 		/// <summary>
 		/// Gets all performances from the repository.
@@ -109,9 +49,9 @@ namespace CircusLunaLibrary.Services
 		/// <summary>
 		/// Sorts the performances in the repository based on the specified sort option, using the bubble sort algorithm.
 		/// </summary>
-		/// <param name="ascending">If true and default behavior, sorts in ascending order (A to Z); if false, sorts in descending order (Z to A).</param>
+		/// <param name="ascending">If true and default behavior, sorts in ascending order; if false, sorts in descending order.</param>
 		/// <returns>The sorted list of performances in the desired order.</returns>
-		public List<Performance> SortPerformancesByCity(List<Performance> performances, bool ascending = true)
+		public List<Performance> SortPerformances(List<Performance> performances, PerformanceSortOption sortOption, bool ascending = true)
 		{			
 			// Get length of the list of performances
 			int n = performances.Count;
@@ -126,8 +66,12 @@ namespace CircusLunaLibrary.Services
 				// Iterate through the list of performances
 				for (int i = 0; i < n - 1; i++)
 				{
-					// Compare the current performance's city name with the next immediate performance's city name
-					if (string.Compare(performances[i].City.Name, performances[i + 1].City.Name) > 0)
+					// Compare the current performance with the next one based on the specified sort option,
+					// using the ComparePerformances helper method to determine their relative order
+					int comparisonResult = ComparePerformances(performances[i], performances[i + 1], sortOption);
+
+					// If the comparison result is greater than 0, it means that the current performance should come after the next one
+					if (comparisonResult > 0)
 					{
 						// Swap the performances if they are in the wrong order,
 						// using tuple deconstruction to swap in place without a temporary variable
@@ -178,6 +122,37 @@ namespace CircusLunaLibrary.Services
 		public void DeletePerformance(string performanceId)
 		{
 			_performanceRepository.Delete(performanceId);
+		}
+
+		/// <summary>
+		/// Compares two performances based on the specified sort option and returns an integer indicating their relative order.
+		/// </summary>
+		/// <param name="p1">First performance</param>
+		/// <param name="p2">Second performance</param>
+		/// <param name="sortOption">The sort option to use for comparison.</param>
+		/// <returns>
+		/// A signed integer indicating the relative order of the performances,
+		/// where -1 indicates that p1 should come before p2, 0 indicates they are equal,
+		/// and 1 indicates that p1 should come after p2.
+		/// </returns>
+		private int ComparePerformances(Performance p1, Performance p2, PerformanceSortOption sortOption)
+		{
+			switch (sortOption)
+			{
+				case PerformanceSortOption.CityName:
+					return string.Compare(p1.City.Name, p2.City.Name);
+
+				case PerformanceSortOption.PerformanceName:
+					return string.Compare(p1.Name, p2.Name);
+
+				case PerformanceSortOption.PerformanceDate:
+					return DateTime.Compare(p1.Date, p2.Date);
+
+				// This default case should never be hit if all enum values are handled,
+				// but it's good practice to include it to avoid compiler warnings and to handle unexpected cases.
+				default:
+					return 0;
+			}
 		}
 	}
 }
