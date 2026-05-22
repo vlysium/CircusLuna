@@ -54,18 +54,13 @@ namespace CircusLuna.Pages
                 artist.Role = Employee.Role;
                 artist.IsPermanent = Artist.IsPermanent;
 
-                _personService.UpdateArtist(EmployeeID, artist);
+                _personService.UpdateEmployee(EmployeeID, artist);
             }
-            else if(person is Employee employeee)
-            {                
-                employeee.Name = Employee.Name;
-                employeee.PaymentInfo = Employee.PaymentInfo;
-                employeee.Number = Employee.Number;
-                employeee.Email = Employee.Email;
-                employeee.Role = Employee.Role;
+            else
+            {
+                _personService.UpdateEmployee(EmployeeID, Employee);
+            }
 
-                _personService.UpdateEmployee(EmployeeID, employeee);
-            }
             return RedirectToPage("Admin");
         }
       

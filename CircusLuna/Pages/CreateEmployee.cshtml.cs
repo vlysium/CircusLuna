@@ -8,12 +8,12 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CircusLuna.Pages
 {
-    public class CreateArtistModel : PageModel
+    public class CreateEmployeeModel : PageModel
     {
-        private readonly PersonService _pService;
-        public CreateArtistModel(PersonService pService)
+        private readonly PersonService _personService;
+        public CreateEmployeeModel(PersonService personService)
         {
-            _pService = pService;
+            _personService = personService;
         }
 
         [BindProperty]
@@ -40,11 +40,11 @@ namespace CircusLuna.Pages
                     Role = Artist.Role,
                     PaymentInfo = Artist.PaymentInfo
                 };          
-                _pService.CreatePerson(newEmployee);
+                _personService.CreatePerson(newEmployee);
             }
             else
             {
-                _pService.CreatePerson(Artist);
+                _personService.CreatePerson(Artist);
             }
             
             return RedirectToPage("Admin");
