@@ -9,9 +9,25 @@
 <form method="get" class="tour-plan-search-form">
     <div class="form-floating">
         <input type="text" class="tour-plan-search-form-input form-control" id="search-term" placeholder="Enter search term..." asp-for="SearchTerm" value="@Model.SearchTerm" />
-        <label for="search-term" class="tour-plan-search-form-label">Søg medarbejder</label>
+        <label for="search-term" class="tour-plan-search-form-label">Søg medarbejder (navn, telefon, rolle)</label>
     </div>
-    <button type="submit" class="tour-plan-search-form-submit btn btn-primary">Search</button>
+    
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <form method="get" asp-page="./Index">
+                <div class="form-group">
+                    <label for="SortBy" class="form-label font-weight-bold">Sort By:</label>
+                    <select asp-for="SortBy"
+                            class="form-select form-control"
+                            onchange="this.form.submit();">
+                        <option value="sortByNameAZ">Name (A-Z)</option>
+                        <option value="sortByNameZA">Name (Z-A)</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    
 </form>
 
 <table class="table">
