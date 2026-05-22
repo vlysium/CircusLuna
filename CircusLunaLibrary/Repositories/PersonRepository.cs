@@ -31,7 +31,7 @@ namespace CircusLunaLibrary.Repositories
         }
         public void SaveFile()
         {
-            string json = JsonSerializer.Serialize<List<Person>>(People);
+            string json = JsonSerializer.Serialize<List<Person>>(People, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(_filePath, json);
         }
         public List<Person> GetAll()

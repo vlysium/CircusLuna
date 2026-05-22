@@ -86,7 +86,7 @@ namespace CircusLunaLibrary.Repositories
         public void SaveFile()
         {
             Console.WriteLine("JSON is saving to: " + Path.GetFullPath(_filePath));
-            string json = JsonSerializer.Serialize<List<Venue>>(_venues);
+            string json = JsonSerializer.Serialize<List<Venue>>(_venues, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(_filePath, json);
         }
         public void AddVenue(Venue venue)

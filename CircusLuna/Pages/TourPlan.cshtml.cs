@@ -41,11 +41,27 @@ namespace CircusLuna.Pages
                 switch (SortBy)
                 {
                     case "city_asc":
-                        Performances = _performanceService.SortPerformancesByCity(Performances, ascending: true);
+                        Performances = _performanceService.SortPerformances(Performances, PerformanceSortOption.CityName, ascending: true);
                         break;
 
                     case "city_dsc":
-                        Performances = _performanceService.SortPerformancesByCity(Performances, ascending: false);
+                        Performances = _performanceService.SortPerformances(Performances, PerformanceSortOption.CityName, ascending: false);
+                        break;
+
+                    case "name_asc":
+                        Performances = _performanceService.SortPerformances(Performances, PerformanceSortOption.PerformanceName, ascending: true);
+                        break;
+
+                    case "name_dsc":
+                        Performances = _performanceService.SortPerformances(Performances, PerformanceSortOption.PerformanceName, ascending: false);
+                        break;
+
+                    case "date_asc":
+                        Performances = _performanceService.SortPerformances(Performances, PerformanceSortOption.PerformanceDate, ascending: true);
+                        break;
+
+                    case "date_dsc":
+                        Performances = _performanceService.SortPerformances(Performances, PerformanceSortOption.PerformanceDate, ascending: false);
                         break;
 
                     default:

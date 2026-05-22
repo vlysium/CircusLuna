@@ -12,10 +12,10 @@
         <option value="" selected="@(string.IsNullOrEmpty(Model.SortBy))" disabled hidden>Sort performances</option>
         <option value="city_asc" selected="@(Model.SortBy == "city_asc" ? true : false)">City name (A-Z)</option>
         <option value="city_dsc" selected="@(Model.SortBy == "city_dsc" ? true : false)">City name (Z-A)</option>
-        <option value="name_asc" selected="@(Model.SortBy == "name_asc" ? true : false)" disabled>Performance name (A-Z)</option> <!-- Not yet implemented -->
-        <option value="name_dsc" selected="@(Model.SortBy == "name_dsc" ? true : false)" disabled>Performance name (Z-A)</option> <!-- Not yet implemented -->
-        <option value="date_asc" selected="@(Model.SortBy == "date_asc" ? true : false)" disabled>Performance date (Oldest First)</option> <!-- Not yet implemented -->
-        <option value="date_dsc" selected="@(Model.SortBy == "date_dsc" ? true : false)" disabled>Performance date (Newest First)</option> <!-- Not yet implemented -->
+        <option value="name_asc" selected="@(Model.SortBy == "name_asc" ? true : false)">Performance name (A-Z)</option>
+        <option value="name_dsc" selected="@(Model.SortBy == "name_dsc" ? true : false)">Performance name (Z-A)</option>
+        <option value="date_asc" selected="@(Model.SortBy == "date_asc" ? true : false)">Performance date (Newest First)</option>
+        <option value="date_dsc" selected="@(Model.SortBy == "date_dsc" ? true : false)">Performance date (Oldest First)</option>
       </select>
       <label for="performance-sort">Sort by</label>
     </div>
@@ -43,7 +43,7 @@
       <tr>
         <th scope="col">Performance</th>
         <th scope="col">Date</th>
-        <th scope="col">Location</th>
+        <th scope="col">City</th>
         <th scope="col">Artists</th>
         <th scope="col">Tickets</th>
       </tr>
