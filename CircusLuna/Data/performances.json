@@ -161,9 +161,7 @@
       "PostalCode": "8000",
       "Region": null
     },
-    "Venue": {
-      "Name": "Aarhus Teater"
-    },
+    "VenueId": null,
     "Artists": [
       {
         "IsPermanent": true,
@@ -184,6 +182,40 @@
         "Number": "12244524",
         "Address": null,
         "Email": "magi@cirkusluna.dk"
+      }
+    ]
+  },
+  {
+    "Name": "Elefanten i Rummet",
+    "PerformanceId": "4f44810e",
+    "Date": "2026-05-29T10:00:00",
+    "City": {
+      "CityID": "c979f0fb",
+      "Name": "Ølgod",
+      "PostalCode": "6870",
+      "Region": null
+    },
+    "VenueId": "72154e0e",
+    "Artists": [
+      {
+        "IsPermanent": false,
+        "PaymentInfo": "IBAN468732423",
+        "Role": "Klovn",
+        "ID": "244d2e07",
+        "Name": "Mads Larsen",
+        "Number": "99775533",
+        "Address": null,
+        "Email": "klovn@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN5434576",
+        "Role": "StrongMan",
+        "ID": "378ede6f",
+        "Name": "Bent Nielsen",
+        "Number": "87653451",
+        "Address": null,
+        "Email": "bent@luna.dk"
       }
     ]
   }

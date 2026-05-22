@@ -1,3 +1,4 @@
+using System.Globalization;
 using CircusLunaLibrary.Models;
 using CircusLunaLibrary.Repositories;
 
@@ -140,10 +141,10 @@ namespace CircusLunaLibrary.Services
 			switch (sortOption)
 			{
 				case PerformanceSortOption.CityName:
-					return string.Compare(p1.City.Name, p2.City.Name);
+					return string.Compare(p1.City.Name, p2.City.Name, new CultureInfo("da-DK"), CompareOptions.IgnoreCase);
 
 				case PerformanceSortOption.PerformanceName:
-					return string.Compare(p1.Name, p2.Name);
+					return string.Compare(p1.Name, p2.Name, new CultureInfo("da-DK"), CompareOptions.IgnoreCase);
 
 				case PerformanceSortOption.PerformanceDate:
 					return DateTime.Compare(p1.Date, p2.Date);
