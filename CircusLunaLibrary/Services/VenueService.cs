@@ -10,7 +10,7 @@ namespace CircusLunaLibrary.Services
     
     public class VenueService
     {
-        private IVenueRepository _venueRepository;
+        private readonly IVenueRepository _venueRepository;
         private List<Venue> _venues;
 
         public VenueService(IVenueRepository venueRepository)
