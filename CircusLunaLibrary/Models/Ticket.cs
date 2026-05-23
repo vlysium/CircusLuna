@@ -2,8 +2,8 @@ namespace CircusLunaLibrary.Models
 {
     public class Ticket
     {
-        public static double standardPrice = 150;
-        public static double VIPprice = 200;
+        public const double standardPrice = 150;
+        public const double VIPprice = 200;
         public string TicketID { get; set; }
         public TicketType Type { get; set; }
         public Seat Seat { get; set; }
