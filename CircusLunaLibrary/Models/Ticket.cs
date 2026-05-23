@@ -2,7 +2,7 @@ namespace CircusLunaLibrary.Models
 {
     public class Ticket
     {
-        public static readonly double standardPrice = 150;
+        public static readonly double StandardPrice = 150;
         public static readonly double VIPprice = 200;
         public string TicketID { get; set; }
         public TicketType Type { get; set; }
@@ -22,7 +22,7 @@ namespace CircusLunaLibrary.Models
             double price = 0;
             if (Seat.SeatType == SeatType.Standard)
             {
-                price += standardPrice;
+                price += StandardPrice;
             }
             if(Seat.SeatType == SeatType.VIP)
             {
