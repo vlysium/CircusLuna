@@ -27,18 +27,18 @@ namespace CircusLuna.Pages
         [BindProperty]
         public List<string> SeatIds { get; set; }
 
-
-
-        public double TotalPrice { get; set; }
-        public Performance Performance { get; set; }
         [BindProperty]
         public string CustomerName { get; set; }
         [BindProperty]
         public string CustomerEmail { get; set; }
         [BindProperty]
-        public string CustomerNumber { get; set; }        
+        public string CustomerNumber { get; set; }
 
-       
+
+        public double TotalPrice { get; set; }
+        public Performance Performance { get; set; }
+           
+
 
         public void OnGet(string performanceId, List<string> selectedSeatIds, string ticketTypeString)
         {
@@ -55,19 +55,10 @@ namespace CircusLuna.Pages
             //we have to create the properties, that are saved in tempdata, tempdata is destroyed on first refresh.
 
 
-
-            // --- Calculate Price for Display ------------------------------------------------------------
-            TicketType TicketTypeEnum = _reservationService.StringToTicketType(TicketTypeString);
-
-            Venue venue = _venueService.GetById(Performance.VenueId);
-            List<Ticket> tempTickets = _reservationService.CreateTickets(venue, SeatIds, TicketTypeEnum);
-
-            // Create a dummy customer for the preview
-            Customer tempCust = new Customer(CustomerName ?? "", "", "");
-
-            // This triggers your automatic calculation logic
+            List<Ticket> tempTickets = _reservationService.CreateTickets(Performance.VenueId, SeatIds, TicketTypeString);
+            Customer tempCust = new Customer(CustomerName ?? "", "", ""); 
             Reservation previewRes = new Reservation(tempCust, Performance, tempTickets);
-            TotalPrice = previewRes.TotalPrice;
+            TotalPrice = previewRes.TotalPrice; //display prices before confirmation
             
 
 
@@ -76,16 +67,10 @@ namespace CircusLuna.Pages
 
         public IActionResult OnPost()
         {
-            Performance performance = _performanceService.GetPerformance(PerformanceId);
-            
+            Performance performance = _performanceService.GetPerformance(PerformanceId);            
             Customer customer = new Customer(CustomerName, CustomerNumber, CustomerEmail);
-
-            // Create Tickets
-            TicketType TicketTypeEnum = _reservationService.StringToTicketType(TicketTypeString);
-            Venue venue = _venueService.GetById(performance.VenueId);
-            List<Ticket> tickets = _reservationService.CreateTickets(venue, SeatIds, TicketTypeEnum);      
-
-            // Create and Save Reservation
+            List<Ticket> tickets = _reservationService.CreateTickets(performance.VenueId, SeatIds, TicketTypeString);    
+           
             Reservation finalRes = new Reservation(customer, performance, tickets);
             _reservationService.AddReservation(finalRes);
 

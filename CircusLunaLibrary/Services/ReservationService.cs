@@ -8,13 +8,15 @@ namespace CircusLunaLibrary.Services
 	public class ReservationService
 	{	
 		private readonly IReservationRepository _reservationRepository;
+		private readonly VenueService _venueService;
 		private List<Reservation> _reservations = new List<Reservation>();
 
 
-		public ReservationService(IReservationRepository repository)
+		public ReservationService(IReservationRepository repository, VenueService venueService)
 		{
 			_reservationRepository = repository;		
 			_reservations = repository.GetAll();
+			_venueService = venueService;
 		}
 
 
@@ -49,8 +51,10 @@ namespace CircusLunaLibrary.Services
 		{
 			_reservationRepository.UpdateReservation(id, reservation);
 		}
-		public List<Ticket> CreateTickets(Venue venue, List<string> SeatIds, TicketType ticketType)
+		public List<Ticket> CreateTickets(string VenueId, List<string> SeatIds, string TicketTypeString)
 		{
+            TicketType TicketTypeEnum = StringToTicketType(TicketTypeString);
+            Venue venue = _venueService.GetById(VenueId);
             List<Ticket> tickets = new List<Ticket>();
             foreach (string seatId in SeatIds)
             {
@@ -58,7 +62,7 @@ namespace CircusLunaLibrary.Services
                 {
                     if (s.SeatId == seatId)
                     {
-                        Ticket t = new Ticket(ticketType, s);
+                        Ticket t = new Ticket(TicketTypeEnum, s);
                         tickets.Add(t);
                         break;
                     }
