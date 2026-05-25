@@ -14,14 +14,10 @@ namespace CircusLunaLibrary.Models
         {
             CityID = Guid.NewGuid().ToString().Substring(0, 8);
         }
-        public City(string name, string postalCode) : this()
+        public City(string name, string postalCode, Region region) : this()
         {            
             Name = name;
             PostalCode = postalCode;
-            
-        }
-        public City(string name, string postalCode, Region region):this(name, postalCode)
-        {            
             Region = region;
         }
         public override string ToString()
