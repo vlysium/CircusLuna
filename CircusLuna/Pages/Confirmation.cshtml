@@ -3,12 +3,12 @@
 @{
 }
 
-<p>Debug - Seats Count: @Model.SeatIds?.Count</p>
-<p>Debug - Ticket Type: @Model.TicketTypeString</p>
+@* <p>Debug - Seats Count: @Model.SeatIds?.Count</p>
+<p>Debug - Ticket Type: @Model.TicketTypeString</p> *@
 
-<h3>Gennemse din ordre, @Model.CustName</h3>
-<p>Nummer: @Model.CustNumber</p>
-<p>Email: @Model.CustEmail</p>
+<h3>Gennemse din ordre, @Model.CustomerName</h3>
+<p>Nummer: @Model.CustomerNumber</p>
+<p>Email: @Model.CustomerEmail</p>
 <p>Forestilling: @Model.Performance.Name</p>
 <p>Siddepladser: @string.Join(", ", Model.SeatIds)</p>
 <p>Samlet pris: @Model.TotalPrice</p>
@@ -21,6 +21,9 @@
     {
         <input type="hidden" asp-for="SeatIds[i]" />
     }
+    <input type="hidden" asp-for="CustomerName" />
+    <input type="hidden" asp-for="CustomerEmail" />
+    <input type="hidden" asp-for="CustomerNumber" />
     <button type="submit" class="btn btn-success">Bekræft og betal</button>
     <a asp-page="Index" class="btn btn-outline-secondary px-4 ms-2">Afbryd</a>
 </form>

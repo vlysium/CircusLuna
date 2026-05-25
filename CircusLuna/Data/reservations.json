@@ -711,5 +711,104 @@
       }
     ],
     "TotalPrice": 2500
+  },
+  {
+    "ReservationID": "f9d9ed4f",
+    "Customer": {
+      "ID": "b5aa584d",
+      "Name": "Henrik",
+      "Number": "12345678",
+      "Address": null,
+      "Email": "henrik@henrik.dk"
+    },
+    "Performance": {
+      "Name": "Ranas one-man show",
+      "PerformanceId": "dafabee8",
+      "Date": "2026-05-21T11:15:00",
+      "City": {
+        "CityID": "520a7785",
+        "Name": "Roskilde",
+        "PostalCode": "4000",
+        "Region": 1
+      },
+      "VenueId": "19e01782",
+      "Artists": [
+        {
+          "IsPermanent": false,
+          "PaymentInfo": "IBAN468732423",
+          "Role": "Klovn",
+          "ID": "244d2e07",
+          "Name": "Mads Larsen",
+          "Number": "99775533",
+          "Address": null,
+          "Email": "klovn@cirkusluna.dk"
+        },
+        {
+          "IsPermanent": false,
+          "PaymentInfo": "IBAN4684322423",
+          "Role": "Magiker",
+          "ID": "da32b867",
+          "Name": "Magimand",
+          "Number": "12244524",
+          "Address": null,
+          "Email": "magi@cirkusluna.dk"
+        },
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN468732423",
+          "Role": "LineDancer",
+          "ID": "53fa0faf",
+          "Name": "Line Hansen",
+          "Number": "12121212",
+          "Address": null,
+          "Email": "line@luna.dk"
+        },
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN65876546",
+          "Role": "Klovn",
+          "ID": "25d0dcb0",
+          "Name": "Henrik Madsen",
+          "Number": "67346712",
+          "Address": null,
+          "Email": "Henrik@luna.dk"
+        },
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN5434576",
+          "Role": "StrongMan",
+          "ID": "378ede6f",
+          "Name": "Bent Nielsen",
+          "Number": "87653451",
+          "Address": null,
+          "Email": "bent@luna.dk"
+        }
+      ]
+    },
+    "Tickets": [
+      {
+        "TicketID": "b5b1da42",
+        "Type": 0,
+        "Seat": {
+          "SeatId": "V5",
+          "SeatRow": "V",
+          "SeatColumn": 5,
+          "SeatType": 1
+        },
+        "Price": 200
+      },
+      {
+        "TicketID": "5533dd26",
+        "Type": 0,
+        "Seat": {
+          "SeatId": "V6",
+          "SeatRow": "V",
+          "SeatColumn": 6,
+          "SeatType": 1
+        },
+        "Price": 200
+      }
+    ],
+    "TotalPrice": 400
   }
 ]

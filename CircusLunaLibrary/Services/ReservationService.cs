@@ -1,6 +1,7 @@
 using CircusLunaLibrary.Models;
 using CircusLunaLibrary.Repositories;
 using System.Data;
+using System.Reflection.Metadata.Ecma335;
 
 namespace CircusLunaLibrary.Services
 {
@@ -48,6 +49,32 @@ namespace CircusLunaLibrary.Services
 		{
 			_reservationRepository.UpdateReservation(id, reservation);
 		}
+		public List<Ticket> CreateTickets(Venue venue, List<string> SeatIds, TicketType ticketType)
+		{
+            List<Ticket> tickets = new List<Ticket>();
+            foreach (string seatId in SeatIds)
+            {
+                foreach (Seat s in venue.Seats)
+                {
+                    if (s.SeatId == seatId)
+                    {
+                        Ticket t = new Ticket(ticketType, s);
+                        tickets.Add(t);
+                        break;
+                    }
+                }
+            }
+			return tickets;
+        }
+		public TicketType StringToTicketType(string TicketTypeString)
+		{
+            if (!Enum.TryParse(TicketTypeString, out TicketType TicketTypeEnum))
+            {
+                TicketTypeEnum = TicketType.Standard; // Default fallback
+            }
+			return TicketTypeEnum;
+        }
+		  
 
 	}
 }

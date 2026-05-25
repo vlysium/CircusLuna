@@ -31,55 +31,44 @@ namespace CircusLuna.Pages
 
         public double TotalPrice { get; set; }
         public Performance Performance { get; set; }
-        public string CustName { get; set; }
-        public string CustEmail { get; set; }
-        public string CustNumber { get; set; }        
+        [BindProperty]
+        public string CustomerName { get; set; }
+        [BindProperty]
+        public string CustomerEmail { get; set; }
+        [BindProperty]
+        public string CustomerNumber { get; set; }        
 
        
 
-        public void OnGet(string performanceId, List<string> selectedSeatIds, string ticketType)
+        public void OnGet(string performanceId, List<string> selectedSeatIds, string ticketTypeString)
         {
             PerformanceId = performanceId;             
             SeatIds = selectedSeatIds;
-            TicketTypeString = ticketType;
+            TicketTypeString = ticketTypeString;
 
             
             //DATA FOR DISPLAY ***************************************************************************
             Performance = _performanceService.GetPerformance(performanceId);
-            CustName = TempData["CustomerName"]?.ToString();            
-            CustEmail = TempData["CustomerEmail"]?.ToString();
-            CustNumber = TempData["CustomerNumber"]?.ToString(); 
+            CustomerName = TempData["CustomerName"]?.ToString();            
+            CustomerEmail = TempData["CustomerEmail"]?.ToString();
+            CustomerNumber = TempData["CustomerNumber"]?.ToString();
             //we have to create the properties, that are saved in tempdata, tempdata is destroyed on first refresh.
 
 
 
-            // --- Calculate Price for Display ---
-            if (!Enum.TryParse(TicketTypeString, out TicketType chosenType))
-            {
-                chosenType = TicketType.Standard; // Default fallback
-            }
+            // --- Calculate Price for Display ------------------------------------------------------------
+            TicketType TicketTypeEnum = _reservationService.StringToTicketType(TicketTypeString);
 
             Venue venue = _venueService.GetById(Performance.VenueId);
-            List<Ticket> tempTickets = new List<Ticket>();
-            foreach (string id in SeatIds)
-            {
-                foreach (Seat s in venue.Seats)
-                {
-                    if (s.SeatId == id)
-                    {
-                        tempTickets.Add(new Ticket(chosenType, s));
-                    }
-                }
-            }
+            List<Ticket> tempTickets = _reservationService.CreateTickets(venue, SeatIds, TicketTypeEnum);
 
             // Create a dummy customer for the preview
-            Customer tempCust = new Customer(CustName ?? "", "", "");
+            Customer tempCust = new Customer(CustomerName ?? "", "", "");
 
             // This triggers your automatic calculation logic
             Reservation previewRes = new Reservation(tempCust, Performance, tempTickets);
             TotalPrice = previewRes.TotalPrice;
             
-
 
 
             TempData.Keep(); //Keeps TempData alive for the Post
@@ -88,34 +77,13 @@ namespace CircusLuna.Pages
         public IActionResult OnPost()
         {
             Performance performance = _performanceService.GetPerformance(PerformanceId);
-
-            //create customer from TempData (KEPT ALIVE FROM GET TO POST)
-            string name = TempData["CustomerName"]?.ToString() ?? "Guest";
-            string email = TempData["CustomerEmail"]?.ToString() ?? "";
-            string phone = TempData["CustomerNumber"]?.ToString() ?? "";
-            Customer customer = new Customer(name, email, phone);           
-
-            //Convert our ticketTypeString into enum TicketType.
-            if (!Enum.TryParse(TicketTypeString, out TicketType chosenType))
-            {
-                chosenType = TicketType.Standard; // Default fallback
-            }
+            
+            Customer customer = new Customer(CustomerName, CustomerNumber, CustomerEmail);
 
             // Create Tickets
+            TicketType TicketTypeEnum = _reservationService.StringToTicketType(TicketTypeString);
             Venue venue = _venueService.GetById(performance.VenueId);
-            List<Ticket> tickets = new List<Ticket>();
-            foreach(string seatId in SeatIds)
-            {
-                foreach(Seat s in venue.Seats)
-                {                    
-                    if (s.SeatId == seatId)
-                    {                         
-                        Ticket t = new Ticket(chosenType,s);
-                        tickets.Add(t);
-                        break;
-                    }
-                }
-            }            
+            List<Ticket> tickets = _reservationService.CreateTickets(venue, SeatIds, TicketTypeEnum);      
 
             // Create and Save Reservation
             Reservation finalRes = new Reservation(customer, performance, tickets);
