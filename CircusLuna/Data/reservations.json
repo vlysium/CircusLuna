@@ -1141,5 +1141,76 @@
       }
     ],
     "TotalPrice": 800
+  },
+  {
+    "ReservationID": "90401c95",
+    "Customer": {
+      "ID": "97500569",
+      "Name": "Nikolaj",
+      "Number": "78678956",
+      "Address": null,
+      "Email": "nikolaj@nikolaj.dk"
+    },
+    "Performance": {
+      "PerformanceId": "e94e5ddc",
+      "Name": "Strong Man spiller med musklerne!",
+      "Description": "Sjovt og sp\u00E6ndende sjov med Strong Man, der vil overg\u00E5 din vildeste fantasi. Tag b\u00F8rnene med og oplev hvordan klipper bliver til pandekager og jernr\u00F8r b\u00F8jes som ballondyr!",
+      "Date": "2026-07-27T15:16:00",
+      "City": {
+        "CityID": "5fee7aea",
+        "Name": "Thisted",
+        "PostalCode": "7700",
+        "Region": 2
+      },
+      "VenueId": "72154e0e",
+      "Artists": [
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN5434576",
+          "Role": "StrongMan",
+          "ID": "378ede6f",
+          "Name": "Bent Nielsen",
+          "Number": "87653451",
+          "Address": null,
+          "Email": "bent@luna.dk"
+        }
+      ]
+    },
+    "Tickets": [
+      {
+        "TicketID": "d47d91f9",
+        "Type": 0,
+        "Seat": {
+          "SeatId": "V4",
+          "SeatRow": "V",
+          "SeatColumn": 4,
+          "SeatType": 1
+        },
+        "Price": 200
+      },
+      {
+        "TicketID": "f0942f9e",
+        "Type": 0,
+        "Seat": {
+          "SeatId": "V5",
+          "SeatRow": "V",
+          "SeatColumn": 5,
+          "SeatType": 1
+        },
+        "Price": 200
+      },
+      {
+        "TicketID": "db61f1a9",
+        "Type": 0,
+        "Seat": {
+          "SeatId": "V6",
+          "SeatRow": "V",
+          "SeatColumn": 6,
+          "SeatType": 1
+        },
+        "Price": 200
+      }
+    ],
+    "TotalPrice": 600
   }
 ]

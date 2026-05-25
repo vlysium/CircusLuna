@@ -157,7 +157,7 @@
   {
     "PerformanceId": "6b20fbe7",
     "Name": "Jokeren",
-    "Description": "Kaotisk, uforudsigelig og dragende — Jokeren er en m\u00F8rk og intens forestilling om grinets og galskabens tynde gr\u00E6nse. Med teatralske effekter, sk\u00E6ve karakterer og dramatiske cirkusnumre tr\u00E6kkes publikum ind i en verden, hvor humor og uro g\u00E5r h\u00E5nd i h\u00E5nd.",
+    "Description": "Kaotisk, uforudsigelig og dragende \u2014 Jokeren er en m\u00F8rk og intens forestilling om grinets og galskabens tynde gr\u00E6nse. Med teatralske effekter, sk\u00E6ve karakterer og dramatiske cirkusnumre tr\u00E6kkes publikum ind i en verden, hvor humor og uro g\u00E5r h\u00E5nd i h\u00E5nd.",
     "Date": "2026-06-01T13:37:00",
     "City": {
       "CityID": "70f48804",
@@ -508,5 +508,31 @@
         "Email": "Henrik@luna.dk"
       }
     ]
+  },
+  {
+    "PerformanceId": "e94e5ddc",
+    "Name": "Strong Man spiller med musklerne!",
+    "Description": "Sjovt og sp\u00E6ndende sjov med Strong Man, der vil overg\u00E5 din vildeste fantasi. Tag b\u00F8rnene med og oplev hvordan klipper bliver til pandekager og jernr\u00F8r b\u00F8jes som ballondyr!",
+    "Date": "2026-07-27T15:16:00",
+    "City": {
+      "CityID": "5fee7aea",
+      "Name": "Thisted",
+      "PostalCode": "7700",
+      "Region": 2
+    },
+    "VenueId": "72154e0e",
+    "Artists": [
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN5434576",
+        "Role": "StrongMan",
+        "ID": "378ede6f",
+        "Name": "Bent Nielsen",
+        "Number": "87653451",
+        "Address": null,
+        "Email": "bent@luna.dk"
+      }
+    ]
   }
+  
 ]
