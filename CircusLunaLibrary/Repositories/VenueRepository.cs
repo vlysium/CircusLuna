@@ -21,7 +21,7 @@ namespace CircusLunaLibrary.Repositories
         {
             try
             {
-                // 1. If the file exists, read it
+                // 1. If the file exists, load normally:
                 if (File.Exists(_filePath))
                 {
                     string json = File.ReadAllText(_filePath);
@@ -42,19 +42,16 @@ namespace CircusLunaLibrary.Repositories
                 // 3. FORCE FIX ANY NULLS OR EMPTY LISTS IN MEMORY
                 foreach (var venue in _venues)
                 {
-                    // If ID is missing, force-generate it right now
                     if (string.IsNullOrWhiteSpace(venue.ID))
                     {
                         venue.ID = Guid.NewGuid().ToString().Substring(0, 8);
                     }
 
-                    // If Seats list is empty or null, force-populate it right now
                     if (venue.Seats == null || venue.Seats.Count == 0)
                     {
                         venue.InitializeSeats();
                     }
                 }
-                // 4. IMMEDIATELY OVERWRITE THE BAD JSON FILE WITH THE FIXED DATA
                 SaveFile();
             }
             catch (Exception ex)
@@ -85,7 +82,6 @@ namespace CircusLunaLibrary.Repositories
 
         public void SaveFile()
         {
-            Console.WriteLine("JSON is saving to: " + Path.GetFullPath(_filePath));
             string json = JsonSerializer.Serialize<List<Venue>>(_venues, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(_filePath, json);
         }
@@ -141,6 +137,19 @@ namespace CircusLunaLibrary.Repositories
                 }
             }
             return null;
+        }
+        public void UpdateVenue(Venue venue)
+        {
+            foreach(Venue v in _venues)
+            {
+                if (v.ID == venue.ID)
+                {
+                    v.Name = venue.Name;
+                    v.VipSeats = venue.VipSeats;
+                    v.StandardSeats = venue.StandardSeats;
+                    v.InitializeSeats();
+                }
+            }
         }
     }
 }

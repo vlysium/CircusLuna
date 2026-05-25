@@ -6,25 +6,25 @@ namespace CircusLunaLibrary.Services
 {
 	public class ReservationService
 	{	
-		private readonly IReservationRepository _repo;
-		private List<Reservation> _allReservations = new List<Reservation>();
+		private readonly IReservationRepository _reservationRepository;
+		private List<Reservation> _reservations = new List<Reservation>();
 
 
-		public ReservationService(IReservationRepository repo)
+		public ReservationService(IReservationRepository repository)
 		{
-			_repo = repo;		
-			_allReservations = repo.GetAll();
+			_reservationRepository = repository;		
+			_reservations = repository.GetAll();
 		}
 
 
 		public List<string> GetBusySeatIds(string performanceID)
 		{
 			List<string> busySeatIds = new List<string>();
-			for (int i = 0; i < _allReservations.Count; i++)
+			for (int i = 0; i < _reservations.Count; i++)
 			{
-				if (_allReservations[i].Performance.PerformanceId == performanceID)
+				if (_reservations[i].Performance.PerformanceId == performanceID)
 				{
-					foreach (Ticket t in _allReservations[i].Tickets)
+					foreach (Ticket t in _reservations[i].Tickets)
 					{
 						busySeatIds.Add(t.Seat.SeatId);
 					}
@@ -36,17 +36,17 @@ namespace CircusLunaLibrary.Services
 
 		public void AddReservation(Reservation reservation)
 		{			
-			_repo.AddReservation(reservation);
+			_reservationRepository.AddReservation(reservation);
 		}
 
 		public void DeleteReservation(string id) 
 		{
-			_repo.DeleteReservation(id);
+			_reservationRepository.DeleteReservation(id);
 		}
 
 		public void UpdateReservation(string id, Reservation reservation)
 		{
-			_repo.UpdateReservation(id, reservation);
+			_reservationRepository.UpdateReservation(id, reservation);
 		}
 
 	}

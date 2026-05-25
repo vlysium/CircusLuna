@@ -14,5 +14,6 @@ namespace CircusLunaLibrary.Repositories
         public Seat GetSeatById(string venueId, string seatId);
         public void AddVenue(Venue venue);
         public void DeleteVenue(Venue venue);
+        public void UpdateVenue(Venue venue);
     }
 }
