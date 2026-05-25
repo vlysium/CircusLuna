@@ -1,4 +1,5 @@
 ﻿@page
+@using CircusLunaLibrary.Models
 @model CircusLuna.Pages.CreatePerformanceModel
 @{
     ViewData["Title"] = "Create New Performance";
@@ -20,11 +21,29 @@
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
 
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Description</label>
+                            <textarea asp-for="Description" class="form-control" placeholder="Enter performance description"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
                         <!-- Date -->
                         <div class="mb-3">
                             <label asp-for="Date" class="form-label">Date and Time</label>
                             <input asp-for="Date" class="form-control" type="datetime-local" />
                             <span asp-validation-for="Date" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Region">Filter by region</label>
+                            <select class="form-select" asp-for="Region" required>
+                                <option value="" selected disabled hidden>Select a region</option>
+                                @foreach (Region region in Enum.GetValues(typeof(Region)).Cast<Region>())
+                                {
+                                <option value="@region"> @region</option>
+                                }
+                            </select>
                         </div>
 
                         <!-- City -->

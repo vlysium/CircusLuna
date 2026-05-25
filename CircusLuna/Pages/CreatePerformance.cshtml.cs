@@ -24,12 +24,16 @@ namespace CircusLuna.Pages
         [BindProperty]
         public string Name { get; set; }
         [BindProperty]
+        public string Description { get; set; }
+        [BindProperty]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
-        public DateTime Date { get; set; } = DateTime.Now;        
+        public DateTime Date { get; set; } = DateTime.Now;
+        [BindProperty]
+        public Region? Region { get; set; }
         [BindProperty]
         public string City { get; set; }
         [BindProperty]
-        public string PostalCode { get; set; }            
+        public string PostalCode { get; set; }
  
 
         [BindProperty]
@@ -75,11 +79,12 @@ namespace CircusLuna.Pages
 
             
             Performance newPerformance = new Performance(
-                Date,           
-                Name,           
-                SelectedVenueId,          
-                new City(City, PostalCode), 
-                SelectedArtists); 
+                Name,
+                Description,
+                Date,
+                SelectedVenueId!,
+                new City(City, PostalCode, Region!.Value),
+                SelectedArtists);
 
             _pService.AddPerformance(newPerformance);
             return RedirectToPage("TourPlan");
