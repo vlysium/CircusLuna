@@ -1,0 +1,20 @@
+﻿@page "/performance/{id}"
+@using CircusLunaLibrary.Models
+@model CircusLuna.Pages.PerformanceDetailsModel
+@{
+}
+
+<div class="container bg-light">
+	<h1>@Model.Performance.Name</h1>
+	<p>@Model.Performance.Description</p>
+	<p>@Model.Performance.Date.ToString("MMMM d, HH:mm")</p>
+	<p>@Model.Performance.City.PostalCode @Model.Performance.City.Name</p>
+	<p>Medvirkende artister:</p>
+	<ul>
+		@foreach (Artist artist in Model.Performance.Artists)
+		{
+			<li>@artist.Name (@artist.Role)</li>
+		}
+	</ul>
+	<a asp-page="/BookSeats" asp-route-performanceId="@Model.Performance.PerformanceId" class="btn btn-primary">Buy Tickets</a>
+</div>

@@ -1,7 +1,8 @@
 [
   {
-    "Name": "Fantasi bliver til virkelighed",
     "PerformanceId": "db3e4aea",
+    "Name": "Fantasi bliver til virkelighed",
+    "Description": "I Fantasi bliver til virkelighed forvandles dr\u00F8mme til levende scenekunst gennem imponerende illusioner, sv\u00E6vende akrobater og magiske fort\u00E6llinger. Publikum inviteres ind i et univers, hvor gr\u00E6nserne mellem fantasi og virkelighed langsomt opl\u00F8ses, og hvor hver scene bringer nye overraskelser og eventyr til live.",
     "Date": "2026-08-05T14:00:00",
     "City": {
       "CityID": "257e0e96",
@@ -44,14 +45,15 @@
     ]
   },
   {
-    "Name": "M\u00E5nelys og Magi",
     "PerformanceId": "4f274e01",
+    "Name": "M\u00E5nelys og Magi",
+    "Description": "Under det s\u00F8lvglimtende m\u00E5nelys udfolder M\u00E5nelys og Magi sig som en poetisk forestilling fyldt med elegance, mystik og eventyrlige \u00F8jeblikke. Luftakrobater, dansere og illusionister skaber sammen en stemningsfuld rejse gennem nattens hemmeligheder, hvor alt synes muligt.",
     "Date": "2026-09-15T16:00:00",
     "City": {
       "CityID": "82886d97",
-      "Name": "Aarhus",
-      "PostalCode": "8000",
-      "Region": 2
+      "Name": "K\u00F8ge",
+      "PostalCode": "4600",
+      "Region": 1
     },
     "VenueId": "19e01782",
     "Artists": [
@@ -88,8 +90,9 @@
     ]
   },
   {
-    "Name": "Ranas one-man show",
     "PerformanceId": "dafabee8",
+    "Name": "Ranas one-man show",
+    "Description": "Med humor, charme og spektakul\u00E6re tricks tager Rana publikum med p\u00E5 en personlig og underholdende rejse gennem latter, kaos og overraskelser. Ranas One-Man Show kombinerer stand-up, jonglering, fysisk komik og publikumsinteraktion i en energisk forestilling, hvor ingen aften er helt den samme.",
     "Date": "2026-05-21T11:15:00",
     "City": {
       "CityID": "520a7785",
@@ -152,14 +155,15 @@
     ]
   },
   {
-    "Name": "Jokeren",
     "PerformanceId": "6b20fbe7",
-    "Date": "2026-06-01T16:00:00",
+    "Name": "Jokeren",
+    "Description": "Kaotisk, uforudsigelig og dragende — Jokeren er en m\u00F8rk og intens forestilling om grinets og galskabens tynde gr\u00E6nse. Med teatralske effekter, sk\u00E6ve karakterer og dramatiske cirkusnumre tr\u00E6kkes publikum ind i en verden, hvor humor og uro g\u00E5r h\u00E5nd i h\u00E5nd.",
+    "Date": "2026-06-01T13:37:00",
     "City": {
       "CityID": "70f48804",
-      "Name": "Aarhus",
-      "PostalCode": "8000",
-      "Region": 2
+      "Name": "Randers",
+      "PostalCode": "8900",
+      "Region": 3
     },
     "VenueId": "19e01782",
     "Artists": [
@@ -186,12 +190,13 @@
     ]
   },
   {
-    "Name": "Elefanten i Rummet",
     "PerformanceId": "4f44810e",
+    "Name": "Elefanten i Rummet",
+    "Description": "I Elefanten i Rummet bliver det usagte pludselig umuligt at ignorere. Gennem humor, akrobatik og visuel historiefort\u00E6lling udforsker forestillingen de store og sm\u00E5 ting, vi alle pr\u00F8ver at undg\u00E5. En kreativ og tankev\u00E6kkende cirkusoplevelse med b\u00E5de grin, eftertanke og spektakul\u00E6re \u00F8jeblikke.",
     "Date": "2026-05-29T10:00:00",
     "City": {
       "CityID": "c979f0fb",
-      "Name": "Ølgod",
+      "Name": "\u00D8lgod",
       "PostalCode": "6870",
       "Region": 4
     },
@@ -216,6 +221,291 @@
         "Number": "87653451",
         "Address": null,
         "Email": "bent@luna.dk"
+      }
+    ]
+  },
+  {
+    "PerformanceId": "c58eea29",
+    "Name": "M\u00E5necirkus",
+    "Description": "N\u00E5r m\u00E5nen st\u00E5r h\u00F8jest p\u00E5 nattehimlen, \u00E5bner teltdugene sig til en verden af sv\u00E6vende artister, glitrende illusioner og musik fra stjernerne. M\u00E5necirkus er en poetisk og dr\u00F8mmende forestilling, hvor akrobater flyver gennem s\u00F8lvlys, og mystiske karakterer guider publikum gennem nattens magi. En eventyrlig oplevelse for b\u00E5de b\u00F8rn og voksne.",
+    "Date": "2026-06-16T18:15:00",
+    "City": {
+      "CityID": "e11da024",
+      "Name": "Helsing\u00F8r",
+      "PostalCode": "3000",
+      "Region": 0
+    },
+    "VenueId": "19e01782",
+    "Artists": [
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN4684322423",
+        "Role": "Magiker",
+        "ID": "da32b867",
+        "Name": "Magimand",
+        "Number": "12244524",
+        "Address": null,
+        "Email": "magi@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN65876546",
+        "Role": "Klovn",
+        "ID": "25d0dcb0",
+        "Name": "Henrik Madsen",
+        "Number": "67346712",
+        "Address": null,
+        "Email": "Henrik@luna.dk"
+      }
+    ]
+  },
+  {
+    "PerformanceId": "44c21722",
+    "Name": "Vindens Akrobater",
+    "Description": "I Vindens Akrobater udfordrer artisterne b\u00E5de tyngdekraften og naturens kr\u00E6fter i en spektakul\u00E6r forestilling h\u00F8jt over manegen. Med luftakrobatik, elegante koreografier og intense stunts skabes en oplevelse inspireret af storme, skyer og frihedens kraft. Publikum tages med p\u00E5 en h\u00E6sbl\u00E6sende rejse gennem himmel og vind.",
+    "Date": "2026-06-02T12:05:00",
+    "City": {
+      "CityID": "0069dcda",
+      "Name": "Aarhus",
+      "PostalCode": "8000",
+      "Region": 3
+    },
+    "VenueId": "19e01782",
+    "Artists": [
+      {
+        "IsPermanent": false,
+        "PaymentInfo": "IBAN468732423",
+        "Role": "Klovn",
+        "ID": "244d2e07",
+        "Name": "Mads Larsen",
+        "Number": "99775533",
+        "Address": null,
+        "Email": "klovn@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN65876546",
+        "Role": "Klovn",
+        "ID": "25d0dcb0",
+        "Name": "Henrik Madsen",
+        "Number": "67346712",
+        "Address": null,
+        "Email": "Henrik@luna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN5434576",
+        "Role": "StrongMan",
+        "ID": "378ede6f",
+        "Name": "Bent Nielsen",
+        "Number": "87653451",
+        "Address": null,
+        "Email": "bent@luna.dk"
+      }
+    ]
+  },
+  {
+    "PerformanceId": "745df6db",
+    "Name": "Klovnenes Kongerige",
+    "Description": "Velkommen til et kongerige styret af grin og kaos! Klovnenes Kongerige er en farverig familieforestilling fyldt med sk\u00F8re karakterer, fjollede opfindelser og komiske katastrofer. Med jonglering, musik og masser af publikumsinddragelse er der garanti for latter hos b\u00E5de b\u00F8rn og voksne.",
+    "Date": "2026-07-05T16:15:00",
+    "City": {
+      "CityID": "b725ddfd",
+      "Name": "Odense",
+      "PostalCode": "5000",
+      "Region": 4
+    },
+    "VenueId": "19e01782",
+    "Artists": [
+      {
+        "IsPermanent": false,
+        "PaymentInfo": "IBAN468732423",
+        "Role": "Klovn",
+        "ID": "244d2e07",
+        "Name": "Mads Larsen",
+        "Number": "99775533",
+        "Address": null,
+        "Email": "klovn@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN468732423",
+        "Role": "LineDancer",
+        "ID": "53fa0faf",
+        "Name": "Line Hansen",
+        "Number": "12121212",
+        "Address": null,
+        "Email": "line@luna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN65876546",
+        "Role": "Klovn",
+        "ID": "25d0dcb0",
+        "Name": "Henrik Madsen",
+        "Number": "67346712",
+        "Address": null,
+        "Email": "Henrik@luna.dk"
+      }
+    ]
+  },
+  {
+    "PerformanceId": "4481f451",
+    "Name": "Midnight Carnival",
+    "Description": "N\u00E5r m\u00F8rket falder p\u00E5, v\u00E6kkes Midnight Carnival til live med ilddansere, skyggeartister og dunkende rytmer. Forestillingen blander moderne cirkus, m\u00F8rk \u00E6stetik og mystiske fort\u00E6llinger i et intenst univers, hvor publikum aldrig helt ved, hvad der gemmer sig i n\u00E6ste scene.",
+    "Date": "2026-08-03T20:05:00",
+    "City": {
+      "CityID": "b7cf5d1b",
+      "Name": "Solr\u00F8d Strand",
+      "PostalCode": "2680",
+      "Region": 1
+    },
+    "VenueId": "19e01782",
+    "Artists": [
+      {
+        "IsPermanent": false,
+        "PaymentInfo": "IBAN468732423",
+        "Role": "Klovn",
+        "ID": "244d2e07",
+        "Name": "Mads Larsen",
+        "Number": "99775533",
+        "Address": null,
+        "Email": "klovn@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN5434576",
+        "Role": "StrongMan",
+        "ID": "378ede6f",
+        "Name": "Bent Nielsen",
+        "Number": "87653451",
+        "Address": null,
+        "Email": "bent@luna.dk"
+      }
+    ]
+  },
+  {
+    "PerformanceId": "e4608614",
+    "Name": "Nattens Karavane",
+    "Description": "Fra fjerne lande ankommer en omrejsende karavane fyldt med musik, historier og magi. Nattens Karavane inviterer publikum ind i et stemningsfuldt univers inspireret af nomadeliv, nattemarkeder og eventyr under stjernerne. En poetisk forestilling med akrobatik, levende musik og fort\u00E6llinger fra hele verden.",
+    "Date": "2026-07-13T14:00:00",
+    "City": {
+      "CityID": "815c17f5",
+      "Name": "Frederikshavn",
+      "PostalCode": "9900",
+      "Region": 2
+    },
+    "VenueId": "19e01782",
+    "Artists": [
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN4684322423",
+        "Role": "Magiker",
+        "ID": "da32b867",
+        "Name": "Magimand",
+        "Number": "12244524",
+        "Address": null,
+        "Email": "magi@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN468732423",
+        "Role": "LineDancer",
+        "ID": "53fa0faf",
+        "Name": "Line Hansen",
+        "Number": "12121212",
+        "Address": null,
+        "Email": "line@luna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN65876546",
+        "Role": "Klovn",
+        "ID": "25d0dcb0",
+        "Name": "Henrik Madsen",
+        "Number": "67346712",
+        "Address": null,
+        "Email": "Henrik@luna.dk"
+      }
+    ]
+  },
+  {
+    "PerformanceId": "74909516",
+    "Name": "Ballonbrigaden",
+    "Description": "I Ballonbrigaden g\u00E5r intet helt som planlagt, n\u00E5r en flok energiske artister fors\u00F8ger at kontrollere hundredvis af flyvende balloner. Forestillingen er fyldt med slapstick, farverige scenarier og masser af interaktiv humor for de yngste publikummer. En legende og livsglad oplevelse for hele familien.",
+    "Date": "2026-06-16T13:00:00",
+    "City": {
+      "CityID": "ca68e5fc",
+      "Name": "N\u00E6stved",
+      "PostalCode": "4700",
+      "Region": 1
+    },
+    "VenueId": "19e01782",
+    "Artists": [
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN4684322423",
+        "Role": "Magiker",
+        "ID": "da32b867",
+        "Name": "Magimand",
+        "Number": "12244524",
+        "Address": null,
+        "Email": "magi@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN65876546",
+        "Role": "Klovn",
+        "ID": "25d0dcb0",
+        "Name": "Henrik Madsen",
+        "Number": "67346712",
+        "Address": null,
+        "Email": "Henrik@luna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN5434576",
+        "Role": "StrongMan",
+        "ID": "378ede6f",
+        "Name": "Bent Nielsen",
+        "Number": "87653451",
+        "Address": null,
+        "Email": "bent@luna.dk"
+      }
+    ]
+  },
+  {
+    "PerformanceId": "b43e8089",
+    "Name": "Bananer og Pyjamas",
+    "Description": "To fjollede venner i stribede pyjamas inviterer publikum med ind i en verden af musik, dans og sk\u00F8re eventyr. Bananer og Pyjamas er en varm og humoristisk familieforestilling, hvor fantasi, venskab og fjollet kaos g\u00E5r h\u00E5nd i h\u00E5nd. Perfekt til b\u00F8rn og barnlige sj\u00E6le.",
+    "Date": "2026-05-30T14:55:00",
+    "City": {
+      "CityID": "3d7a5f29",
+      "Name": "K\u00F8benhavn",
+      "PostalCode": "2100",
+      "Region": 0
+    },
+    "VenueId": "19e01782",
+    "Artists": [
+      {
+        "IsPermanent": false,
+        "PaymentInfo": "IBAN468732423",
+        "Role": "Klovn",
+        "ID": "244d2e07",
+        "Name": "Mads Larsen",
+        "Number": "99775533",
+        "Address": null,
+        "Email": "klovn@cirkusluna.dk"
+      },
+      {
+        "IsPermanent": true,
+        "PaymentInfo": "IBAN65876546",
+        "Role": "Klovn",
+        "ID": "25d0dcb0",
+        "Name": "Henrik Madsen",
+        "Number": "67346712",
+        "Address": null,
+        "Email": "Henrik@luna.dk"
       }
     ]
   }

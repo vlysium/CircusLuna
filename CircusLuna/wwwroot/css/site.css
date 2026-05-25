@@ -51,10 +51,12 @@ h1, h2, h3, h4, h5, h6 {
 
 html, body {
     background-image: url(../images/background.jpg);
+    /* Makes the background image fixed in place */
+    background-attachment: fixed;
     /* repeat-y repeats vertically; use 'repeat' if you want it grid-like (X and Y) */
-    background-repeat: repeat-y;
+    /* background-repeat: repeat-y; */
     /* This ensures the background stays its natural size and doesn't stretch */
-    background-size: cover;
+    /* background-size: cover; */
     /*background-color: #0B132B;*/
 }
 

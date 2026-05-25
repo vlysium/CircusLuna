@@ -4,15 +4,20 @@ namespace CircusLunaLibrary.Models
 {
     public class Performance
 	{
+		/// <summary>
+		/// GUID unique identifier for the performance.
+		/// </summary>
+		public string PerformanceId { get; set; }
+
         /// <summary>
         /// Name of the performance
         /// </summary>
         public string Name { get; set; }
 
 		/// <summary>
-		/// GUID unique identifier for the performance.
+		/// Description of the performance, including details about the acts, theme, or any special features.
 		/// </summary>
-		public string PerformanceId { get; set; }
+		public string Description { get; set; }
 
 		/// <summary>
 		/// Date and time of the performance.
@@ -25,7 +30,7 @@ namespace CircusLunaLibrary.Models
 		public City City { get; set; }
 
 		/// <summary>
-		/// The venue includes the list of seats available for the performance.
+		/// The ID of the venue where the performance takes place.
 		/// </summary>
 		public string VenueId { get; set; }
 
@@ -45,25 +50,28 @@ namespace CircusLunaLibrary.Models
         /// <summary>
         /// Constructor to initialize a new performance with the specified date, city, and artists.
         /// </summary>
+        /// <param name="name">
+        /// The name of the performance.
+        /// </param>
+        /// <param name="description">
+        /// A description of the performance, including details about the acts, theme, or any special features.
+        /// </param>
         /// <param name="date">
         /// The date and time of the performance.
+        /// </param>
+        /// <param name="venueId">
+        /// The ID of the venue where the performance takes place.
         /// </param>
         /// <param name="city">
         /// The city where the performance takes place.
         /// </param>
-        /// <param name="venue">
-        /// The venue includes the list of seats available for the performance.
-        /// </param>
         /// <param name="artists">
         /// The list of artists performing in the performance.
         /// </param>
-        public Performance(DateTime date, string name, Venue venue, City city, List<Artist> artists): this()
-		{
-            PerformanceId = Guid.NewGuid().ToString().Substring(0, 8);
-        }
-        public Performance(DateTime date, string name, string venueId, City city, List<Artist> artists):this()
+        public Performance(string name, string description, DateTime date, string venueId, City city, List<Artist> artists) : this()
 		{			
 			Name = name;
+			Description = description;
 			Date = date;
 			City = city;
 			VenueId = venueId;
