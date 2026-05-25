@@ -10,14 +10,7 @@ namespace CircusLunaLibrary.Repositories
         private List<Person> People = new List<Person>();
         public PersonRepository()
         {
-            if (File.Exists(_filePath))
-            {
-                LoadFile();
-            }
-            else
-            {
-                People = new List<Person>();
-            }
+            LoadFile();
         }
         public void LoadFile()
         {
@@ -61,6 +54,7 @@ namespace CircusLunaLibrary.Repositories
                 if (People[i].ID == id)
                 {
                     People[i] = updatedPerson;
+                    break;
                 }
             }
             SaveFile();

@@ -1,97 +1,97 @@
 [
-	{
-		"$type": "artist",
-		"IsPermanent": false,
-		"PaymentInfo": "IBAN468732423",
-		"Role": "Klovn",
-		"ID": "244d2e07",
-		"Name": "Mads Larsen",
-		"Number": "99775533",
-		"Address": null,
-		"Email": "klovn@cirkusluna.dk"
-	},
-	{
-		"$type": "artist",
-		"IsPermanent": true,
-		"PaymentInfo": "IBAN4684322423",
-		"Role": "Magiker",
-		"ID": "da32b867",
-		"Name": "Magimand",
-		"Number": "12244524",
-		"Address": null,
-		"Email": "magi@cirkusluna.dk"
-	},
-	{
-		"$type": "artist",
-		"IsPermanent": true,
-		"PaymentInfo": "IBAN468732423",
-		"Role": "LineDancer",
-		"ID": "53fa0faf",
-		"Name": "Line Hansen",
-		"Number": "12121212",
-		"Address": null,
-		"Email": "line@luna.dk"
-	},
-	{
-		"$type": "employee",
-		"PaymentInfo": "IBAN3256424",
-		"Role": "Admin",
-		"ID": "871b6822",
-		"Name": "Hans Henriksen",
-		"Number": "56781212",
-		"Address": null,
-		"Email": "hans@luna.dk"
-	},
-	{
-		"$type": "employee",
-		"PaymentInfo": "IBAN3543234525",
-		"Role": "Reng\u00F8ringsassistent",
-		"ID": "1a1cb724",
-		"Name": "Milla Jensen",
-		"Number": "45454512",
-		"Address": null,
-		"Email": "milla@luna.dk"
-	},
-	{
-		"$type": "employee",
-		"PaymentInfo": "IBAN54456465",
-		"Role": "Admin",
-		"ID": "f68b5fe8",
-		"Name": "Erik H\u00F8j",
-		"Number": "67547834",
-		"Address": null,
-		"Email": "erik@luna.dk"
-	},
-	{
-		"$type": "artist",
-		"IsPermanent": true,
-		"PaymentInfo": "IBAN65876546",
-		"Role": "Klovn",
-		"ID": "25d0dcb0",
-		"Name": "Henrik Madsen",
-		"Number": "67346712",
-		"Address": null,
-		"Email": "Henrik@luna.dk"
-	},
-	{
-		"$type": "employee",
-		"PaymentInfo": "IBAN523643",
-		"Role": "Statist",
-		"ID": "af752233",
-		"Name": "J\u00F8rgen Larsen",
-		"Number": "61614234",
-		"Address": null,
-		"Email": "joergen@luna.dk"
-	},
-	{
-		"$type": "artist",
-		"IsPermanent": true,
-		"PaymentInfo": "IBAN5434576",
-		"Role": "StrongMan",
-		"ID": "378ede6f",
-		"Name": "Bent Nielsen",
-		"Number": "87653451",
-		"Address": null,
-		"Email": "bent@luna.dk"
-	}
+  {
+    "$type": "artist",
+    "IsPermanent": false,
+    "PaymentInfo": "IBAN468732423",
+    "Role": "Klovn",
+    "ID": "244d2e07",
+    "Name": "Mads Larsen",
+    "Number": "99775533",
+    "Address": null,
+    "Email": "klovn@cirkusluna.dk"
+  },
+  {
+    "$type": "artist",
+    "IsPermanent": true,
+    "PaymentInfo": "IBAN4684322423",
+    "Role": "Magiker",
+    "ID": "da32b867",
+    "Name": "Magimand",
+    "Number": "12244524",
+    "Address": null,
+    "Email": "magi@cirkusluna.dk"
+  },
+  {
+    "$type": "artist",
+    "IsPermanent": true,
+    "PaymentInfo": "IBAN468732423",
+    "Role": "LineDancer",
+    "ID": "53fa0faf",
+    "Name": "Line Hansen",
+    "Number": "12121212",
+    "Address": null,
+    "Email": "line@luna.dk"
+  },
+  {
+    "$type": "employee",
+    "PaymentInfo": "IBAN3256424",
+    "Role": "Admin",
+    "ID": "871b6822",
+    "Name": "Hans Pedersen",
+    "Number": "56781212",
+    "Address": null,
+    "Email": "hans@luna.dk"
+  },
+  {
+    "$type": "employee",
+    "PaymentInfo": "IBAN3543234525",
+    "Role": "Reng\u00F8ringsassistent",
+    "ID": "1a1cb724",
+    "Name": "Milla Jensen",
+    "Number": "45454512",
+    "Address": null,
+    "Email": "milla@luna.dk"
+  },
+  {
+    "$type": "employee",
+    "PaymentInfo": "IBAN54456465",
+    "Role": "Admin",
+    "ID": "f68b5fe8",
+    "Name": "Erik H\u00F8j",
+    "Number": "67547834",
+    "Address": null,
+    "Email": "erik@luna.dk"
+  },
+  {
+    "$type": "artist",
+    "IsPermanent": true,
+    "PaymentInfo": "IBAN65876546",
+    "Role": "Klovn",
+    "ID": "25d0dcb0",
+    "Name": "Henrik Madsen",
+    "Number": "67346712",
+    "Address": null,
+    "Email": "Henrik@luna.dk"
+  },
+  {
+    "$type": "employee",
+    "PaymentInfo": "IBAN523643",
+    "Role": "Statist",
+    "ID": "af752233",
+    "Name": "J\u00F8rgen Larsen",
+    "Number": "61614234",
+    "Address": null,
+    "Email": "joergen@luna.dk"
+  },
+  {
+    "$type": "artist",
+    "IsPermanent": true,
+    "PaymentInfo": "IBAN5434576",
+    "Role": "StrongMan",
+    "ID": "378ede6f",
+    "Name": "Bent Nielsen",
+    "Number": "87653451",
+    "Address": null,
+    "Email": "bent@luna.dk"
+  }
 ]

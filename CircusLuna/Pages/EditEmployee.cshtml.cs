@@ -14,17 +14,18 @@ namespace CircusLuna.Pages
             _personService = personService;
         }
 
-        [BindProperty(SupportsGet =true)]
-        public string EmployeeID { get; set; }
+        
         [BindProperty]
         public Employee Employee { get; set; }
         [BindProperty]
         public Artist Artist { get; set; }
+
+
+
         public void OnGet(string id)
         {
-            EmployeeID = id;
+            
             Person person = _personService.GetById(id);
-
             if(person is Artist artisPerson)
             {
                 Artist = artisPerson;
@@ -36,9 +37,10 @@ namespace CircusLuna.Pages
             }
         }
 
+
         public IActionResult OnPost()
         {
-            Person person = _personService.GetById(EmployeeID);
+            Person person = _personService.GetById(Employee.ID);
 
             if (person == null)
             {
@@ -54,11 +56,11 @@ namespace CircusLuna.Pages
                 artist.Role = Employee.Role;
                 artist.IsPermanent = Artist.IsPermanent;
 
-                _personService.UpdateEmployee(EmployeeID, artist);
+                _personService.UpdateEmployee(Employee.ID, artist);
             }
             else
             {
-                _personService.UpdateEmployee(EmployeeID, Employee);
+                _personService.UpdateEmployee(Employee.ID, Employee);
             }
 
             return RedirectToPage("Admin");
