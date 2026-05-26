@@ -1,0 +1,112 @@
+﻿@page "/performance/edit/{id}"
+@using CircusLunaLibrary.Models
+@model CircusLuna.Pages.EditPerformanceModel
+@{
+	ViewData["Title"] = "Edit Performance";
+}
+
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<div class="card shadow">
+				<div class="card-header bg-primary text-white">
+					<h3 class="mb-0">Edit Performance</h3>
+				</div>
+				<div class="card-body">
+					<form method="post">
+						<!-- PerformanceId -->
+						<input type="hidden" asp-for="Performance.PerformanceId" />
+						<!-- Name -->
+						<div class="mb-3">
+							<label asp-for="Performance.Name" class="form-label">Performance Name</label>
+							<input asp-for="Performance.Name" class="form-control" placeholder="e.g. Moonlight Spectacle"
+								value="@Model.Performance.Name" />
+							<span asp-validation-for="Performance.Name" class="text-danger"></span>
+						</div>
+
+						<!-- Description -->
+						<div class="mb-3">
+							<label asp-for="Performance.Description" class="form-label">Description</label>
+							<textarea asp-for="Performance.Description" class="form-control" placeholder="Enter performance description">@Model.Performance.Description</textarea>
+							<span asp-validation-for="Performance.Description" class="text-danger"></span>
+						</div>
+
+						<!-- Date -->
+						<div class="mb-3">
+							<label asp-for="Performance.Date" class="form-label">Date and Time</label>
+							<input asp-for="Performance.Date" class="form-control" type="datetime-local" />
+							<span asp-validation-for="Performance.Date" class="text-danger"></span>
+						</div>
+
+						<div class="mb-3">
+							<label asp-for="Performance.City.Region">Filter by region</label>
+							<select class="form-select" asp-for="Performance.City.Region" required>
+								@foreach (Region region in Enum.GetValues(typeof(Region)).Cast<Region>())
+								{
+									<option value="@region" selected="@(Model.Performance.City.Region == region)">@region</option>
+								}
+							</select>
+						</div>
+
+						<!-- City -->
+						<div class="mb-3">
+							<label asp-for="Performance.City.Name" class="form-label">City</label>
+							<input asp-for="Performance.City.Name" class="form-control" placeholder="e.g. Aarhus"
+								value="@Model.Performance.City.Name" />
+							<span asp-validation-for="Performance.City.Name" class="text-danger"></span>
+						</div>
+						<div class="mb-3">
+							<label asp-for="Performance.City.PostalCode" class="form-label">Postnummer</label>
+							<input asp-for="Performance.City.PostalCode" class="form-control" placeholder="e.g. Aarhus"
+								value="@Model.Performance.City.PostalCode" />
+							<span asp-validation-for="Performance.City.PostalCode" class="text-danger"></span>
+						</div>
+
+						<!-- Venue Name -->
+						<div class="mb-3">
+							<label asp-for="Performance.VenueId" class="form-label">Telt / Venue</label>
+							<select asp-for="Performance.VenueId" class="form-select">
+								@foreach (var venue in Model.AllVenues)
+								{
+									<option value="@venue.ID" selected="@(Model.Performance.VenueId == venue.ID)">@venue.Name</option>
+								}
+							</select>
+							<span asp-validation-for="Performance.VenueId" class="text-danger"></span>
+						</div>
+
+						<!-- Artists (Comma separated input) -->
+						<div class="mb-3">
+							<label class="form-label d-block">Vælg Artister</label>
+							<div class="card p-3" style="max-height: 200px; overflow-y: auto;">
+								@foreach (Artist artist in Model.AllArtists)
+								{
+									<div class="form-check">
+										<input
+											class="form-check-input"
+											type="checkbox"
+											name="SelectedArtistIds"
+											value="@artist.ID"
+											id="artist-@artist.ID"
+											checked="@(@Model.SelectedArtistIds.Contains(artist.ID))"
+										>
+										<label class="form-check-label" for="artist-@artist.ID">
+											@artist.Name (@artist.Role)
+										</label>
+									</div>
+								}
+							</div>
+							<small class="text-muted">Sæt kryds ved alle de artister, der deltager i forestillingen.</small>
+						</div>
+						<div class="d-grid gap-2">
+							<!-- Using asp-page-handler to point to OnPostUpdate -->
+							<button type="submit" class="btn btn-success">
+								Save Performance
+							</button>
+							<a asp-page="/Index" class="btn btn-outline-secondary">Cancel</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

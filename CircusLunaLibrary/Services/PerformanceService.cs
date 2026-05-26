@@ -194,6 +194,7 @@ namespace CircusLunaLibrary.Services
 		/// <param name="performance">The performance to update.</param>
 		public void UpdatePerformance(Performance performance)
 		{
+			Console.WriteLine($"Updating performance: {performance.PerformanceId}");
 			_performanceRepository.Update(performance);
 		}
 
