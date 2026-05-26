@@ -60,6 +60,26 @@ namespace CircusLunaLibrary.Services
             }
             return AllArtists;
         }
+        public List<Artist> SelectedArtistsStringToArtist(List<string>SelectedArtistIds)
+        {
+            List<Artist> allArtists = GetAllArtists();
+            List<Artist> SelectedArtists = new List<Artist>();
+
+            if (SelectedArtistIds == null)
+            {
+                SelectedArtistIds = new List<string>();
+            }
+
+            // Cross-reference the posted IDs against the master artist list to rebuild the list object
+            foreach (Artist a in allArtists)
+            {
+                if (SelectedArtistIds.Contains(a.ID))
+                {
+                    SelectedArtists.Add(a);
+                }
+            }
+            return SelectedArtists;
+        }
      
 
         public List<Person> FilterAndSearch(string SearchTerm)
