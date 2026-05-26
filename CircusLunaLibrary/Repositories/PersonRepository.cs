@@ -32,7 +32,7 @@ namespace CircusLunaLibrary.Repositories
             LoadFile();
             return People;
         }
-        public void CreatePerson(Person person)
+        public void AddPerson(Person person)
         {
             People.Add(person);
             SaveFile();

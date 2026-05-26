@@ -2,16 +2,47 @@ using System.Text.Json.Serialization;
 
 namespace CircusLunaLibrary.Models
 {
+    /// <summary>
+    /// Represents a physical performance venue or arena layout.
+    /// Manages the allocation, structural row/column distribution, and programmatic matrix generation 
+    /// of both standard and premium structural seating zones.
+    /// </summary>
 	public class Venue
 	{
+        /// <summary>
+        /// Gets or sets the unique alphanumeric identifier for the venue.
+        /// </summary>
 		public string ID { get; set; }
+        /// <summary>
+        /// Gets or sets the total capacity count allocated specifically for VIP luxury seats.
+        /// </summary>
 		public int VipSeats { get; set; }
-		public int StandardSeats { get; set; }		
-		public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the total capacity count allocated specifically for standard seats.
+        /// </summary>
+		public int StandardSeats { get; set; }
+        /// <summary>
+        /// Gets or sets the descriptive title or name of the physical venue.
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the global registry collection tracking all individual concrete physical seat models mapped inside the venue.
+        /// Defaults to an empty initialized collection.
+        /// </summary>
         public List<Seat> Seats { get; set; } = new List<Seat>();
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Venue"/> class with default empty values.
+        /// </summary>
         public Venue()
 		{            
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Venue"/> class with explicit identification and seat block parameters.
+        /// Triggers an immediate programmatic matrix assembly routine to generate the physical seats list.
+        /// </summary>
+        /// <param name="name">The descriptive title or name of the venue.</param>
+        /// <param name="vipSeats">The quantity of premium VIP seats to distribute into row structures.</param>
+        /// <param name="standardSeats">The quantity of typical standard seats to distribute into row structures.</param>
         public Venue(string name, int vipSeats, int standardSeats) : this()
         {
             ID = Guid.NewGuid().ToString().Substring(0, 8);
@@ -21,6 +52,11 @@ namespace CircusLunaLibrary.Models
             InitializeSeats();
 
         }
+        /// <summary>
+        /// Programmatically builds the geometric seating matrix configuration layout.
+        /// Distributes VIP structural elements into an initial independent block, then maps standard seating zones 
+        /// into regular bounded horizontal columns across sequential alphabetical rows.
+        /// </summary>
         public void InitializeSeats()
         {
             int seatsPerRow = 20;                           //Vi bestemmer hvor mange s�der per r�kke

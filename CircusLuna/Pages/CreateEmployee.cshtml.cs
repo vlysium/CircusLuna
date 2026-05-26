@@ -75,12 +75,12 @@ namespace CircusLuna.Pages
                     Role = Artist.Role,
                     PaymentInfo = Artist.PaymentInfo
                 };
-                _personService.CreatePerson(newEmployee);
+                _personService.AddPerson(newEmployee);
             }
             else
             {
                 // Fallback to storing as a pure contract/independent Artist record
-                _personService.CreatePerson(Artist);
+                _personService.AddPerson(Artist);
             }
 
             return RedirectToPage("Admin");
