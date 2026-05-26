@@ -3,6 +3,7 @@ using CircusLunaLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace CircusLuna.Pages
 {
@@ -25,7 +26,20 @@ namespace CircusLuna.Pages
         /// Bound from the incoming form submission.
         /// </summary>
         [BindProperty]
-        public Customer Customer { get; set; }
+        public string Name { get; set; }
+
+        [BindProperty]
+        [Required(ErrorMessage = "Phone number is required.")]
+        [Phone(ErrorMessage = "Invalid phone number format.")]
+        // Example Regex: Enforces exactly 8 digits (Standard for Denmark/Scandinavia)
+        [RegularExpression(@"^\d{8}$", ErrorMessage = "Phone number must be exactly 8 digits without spaces.")]
+        public string Number { get; set; }
+
+        [BindProperty]
+        [Required(ErrorMessage = "Email address is required.")]
+        // 2. Enforces strict server-side email pattern matching (.com, .dk, etc.)
+        [EmailAddress(ErrorMessage = "Invalid email format. Example: name@domain.com")]
+        public string Email { get; set; }
 
         /// <summary>
         /// Gets or sets the unique identifier of the selected performance.
@@ -79,9 +93,9 @@ namespace CircusLuna.Pages
 
             // This data is saved for ONE redirect lifecycle, safely on the server side or encrypted in a cookie.
             // This architecture keeps highly sensitive/longer customer string structures out of the visible URL query.
-            TempData["CustomerName"] = Customer.Name;
-            TempData["CustomerEmail"] = Customer.Email;
-            TempData["CustomerNumber"] = Customer.Number;
+            TempData["CustomerName"] = Name;
+            TempData["CustomerEmail"] = Email;
+            TempData["CustomerNumber"] = Number;
 
             // The routing properties passed anonymously here will explicitly appear in the destination URL query string.
             return RedirectToPage("Confirmation", new

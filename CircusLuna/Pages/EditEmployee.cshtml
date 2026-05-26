@@ -11,43 +11,43 @@
         </div>
         <div class="card-body">
             <form method="post">
-                <input type="hidden" asp-for="Employee.ID" />
+                <input type="hidden" asp-for="ID" />
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label asp-for="Employee.PaymentInfo" class="form-label">Kontonummer</label>
-                        <input asp-for="Employee.PaymentInfo" class="form-control" placeholder="IBAN453456" />
-                        <span asp-validation-for="Employee.PaymentInfo" class="text-danger"></span>
+                        <label asp-for="PaymentInfo" class="form-label">Kontonummer</label>
+                        <input asp-for="PaymentInfo" class="form-control" placeholder="IBAN453456" />
+                        <span asp-validation-for="PaymentInfo" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label asp-for="Employee.Role" class="form-label">Indtast rolle</label>
-                        <input asp-for="Employee.Role" class="form-control" placeholder="Clown" />
-                        <span asp-validation-for="Employee.Role" class="text-danger"></span>
+                        <label asp-for="Role" class="form-label">Indtast rolle</label>
+                        <input asp-for="Role" class="form-control" placeholder="Clown" />
+                        <span asp-validation-for="Role" class="text-danger"></span>
                     </div>
                 </div>
               
                 <div class="row">
                     <!-- Basic Information -->
                     <div class="col-md-6 mb-3">
-                        <label asp-for="Employee.Name" class="form-label">Navn</label>
-                        <input asp-for="Employee.Name" class="form-control" placeholder="John Doe" />
-                        <span asp-validation-for="Employee.Name" class="text-danger"></span>
+                        <label asp-for="Name" class="form-label">Navn</label>
+                        <input asp-for="Name" class="form-control" placeholder="John Doe" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label asp-for="Employee.Email" class="form-label">Email</label>
-                        <input asp-for="Employee.Email" type="email" class="form-control" placeholder="john@example.com" />
-                        <span asp-validation-for="Employee.Email" class="text-danger"></span>
+                        <label asp-for="Email" class="form-label">Email</label>
+                        <input asp-for="Email" type="email" class="form-control" placeholder="john@example.com" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label asp-for="Employee.Number" class="form-label">Telefon</label>
-                        <input asp-for="Employee.Number" class="form-control" placeholder="+45 12 34 56 78" />
-                        <span asp-validation-for="Employee.Number" class="text-danger"></span>
+                        <label asp-for="Number" class="form-label">Telefon</label>
+                        <input asp-for="Number" class="form-control" placeholder="+45 12 34 56 78" />
+                        <span asp-validation-for="Number" class="text-danger"></span>
                     </div>
                 </div>
 

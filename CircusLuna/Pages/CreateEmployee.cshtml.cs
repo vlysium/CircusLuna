@@ -2,6 +2,7 @@ using CircusLunaLibrary.Models;
 using CircusLunaLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -9,9 +10,9 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace CircusLuna.Pages
 {
     /// <summary>
-    /// Page model for adding new personnel to the circus registry.
-    /// Handles the creation of either independent <see cref="Artist"/> profiles 
-    /// or formal internal <see cref="Employee"/> personnel types based on user selection.
+    /// Page model responsible for handling the creation of personnel records.
+    /// Manages client-side and server-side validation, and programmatically splits 
+    /// inputs to persist either as an administrative <see cref="Employee"/> or an <see cref="Artist"/> performer.
     /// </summary>
     public class CreateEmployeeModel : PageModel
     {
@@ -27,34 +28,71 @@ namespace CircusLuna.Pages
         }
 
         /// <summary>
-        /// Gets or sets the artist data model captured from the creation form.
-        /// Acts as the base data source even if an employee type is selected.
+        /// Gets or sets the name of the individual.
         /// </summary>
         [BindProperty]
-        public Artist Artist { get; set; }
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the email address.
+        /// Validated on both client and server to ensure a proper email structure.
+        /// </summary>
+        [BindProperty]
+        [Required(ErrorMessage = "Email address is required.")]
+        [EmailAddress(ErrorMessage = "Invalid email format. Example: name@domain.com")]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or sets the telephone contact number.
+        /// Enforces an exact 8-digit pattern matching Scandinavian and Danish standard communication configurations.
+        /// </summary>
+        [BindProperty]
+        [Required(ErrorMessage = "Phone number is required.")]
+        [Phone(ErrorMessage = "Invalid phone number format.")]
+        [RegularExpression(@"^\d{8}$", ErrorMessage = "Phone number must be exactly 8 digits without spaces.")]
+        public string Number { get; set; }
+
+        /// <summary>
+        /// Gets or sets the operational performance designation or organizational job title.
+        /// </summary>
+        [BindProperty]
+        public string Role { get; set; }
+
+        /// <summary>
+        /// Gets or sets the banking routing or financial settlement metadata used for payroll processing.
+        /// </summary>
+        [BindProperty]
+        public string PaymentInfo { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the target individual maintains a permanent contract staff status.
+        /// Only evaluated if <see cref="Employee"/> is set to <see langword="false"/> (signifying an <see cref="Artist"/>).
+        /// </summary>
+        [BindProperty]
+        public bool IsPermanent { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the new person should be classified 
-        /// as a internal/formal employee rather than an independent artist.
+        /// as an internal administrative employee rather than an independent performing artist.
         /// </summary>
         [BindProperty]
         public bool Employee { get; set; }
 
         /// <summary>
-        /// Handles HTTP GET requests to render the empty employee/artist creation form.
+        /// Handles HTTP GET requests to render the empty employee or artist creation form.
         /// </summary>
         public void OnGet()
         {
         }
 
         /// <summary>
-        /// Handles HTTP POST requests to save the new personnel entry.
-        /// Inspects the <see cref="Employee"/> flag to dynamically downcast/map 
-        /// the form data into the appropriate database entity before saving.
+        /// Handles HTTP POST requests to validate form inputs and persist the record.
+        /// Evaluates the <see cref="ModelState"/> framework and programmatically roots data into either 
+        /// an <see cref="Employee"/> or <see cref="Artist"/> entity type based on user flags.
         /// </summary>
         /// <returns>
-        /// The current form view if model states are invalid; 
-        /// otherwise, a redirect back to the 'Admin' dashboard.
+        /// The current page view if model validation checks fail; 
+        /// otherwise, redirects to the admin panel overview page view upon successful entity mapping.
         /// </returns>
         public IActionResult OnPost()
         {
@@ -63,24 +101,16 @@ namespace CircusLuna.Pages
                 return Page();
             }
 
+           
             if (Employee)
             {
-                // Map fields over to an official Employee structure if designated
-                Employee newEmployee = new Employee
-                {
-                    ID = Artist.ID,
-                    Name = Artist.Name,
-                    Email = Artist.Email,
-                    Number = Artist.Number,
-                    Role = Artist.Role,
-                    PaymentInfo = Artist.PaymentInfo
-                };
+                Employee newEmployee = new Employee(PaymentInfo, Role, Name, Number, Email);
                 _personService.AddPerson(newEmployee);
             }
             else
             {
-                // Fallback to storing as a pure contract/independent Artist record
-                _personService.AddPerson(Artist);
+                Artist newArtist = new Artist(PaymentInfo, Role, IsPermanent, Name, Number, Email);
+                _personService.AddPerson(newArtist);
             }
 
             return RedirectToPage("Admin");
