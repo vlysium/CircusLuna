@@ -98,5 +98,11 @@ namespace CircusLuna.Pages
                 }
             }
         }
+
+        public IActionResult OnPostDelete(string performanceId)
+        {
+            _performanceService.DeletePerformance(performanceId);
+            return RedirectToPage("/EditTourPlan");
+        }
     }
 }
