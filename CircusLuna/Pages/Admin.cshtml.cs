@@ -32,7 +32,7 @@ namespace CircusLuna.Pages
         /// Automatically bound from the query string.
         /// </summary>
         [BindProperty(SupportsGet = true)]
-        public string SearchTerm { get; set; }
+        public string SearchFilterWord { get; set; }
 
         /// <summary>
         /// Gets or sets the sorting criteria (e.g., column name or direction) for the list.
@@ -46,7 +46,7 @@ namespace CircusLuna.Pages
         /// </summary>
         public void OnGet()
         {
-            People = _personService.FilterAndSearch(SearchTerm);
+            People = _personService.FilterAndSearch(SearchFilterWord);
 
             if (!String.IsNullOrWhiteSpace(SortBy))
             {

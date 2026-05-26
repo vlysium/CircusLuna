@@ -83,7 +83,17 @@ namespace CircusLuna.Pages
         {
             Person person = _personService.GetById(id);
 
-            if (person is Employee employeePerson)
+            if (person is Artist artistPerson)
+            {
+                ID = artistPerson.ID;
+                Name = artistPerson.Name;
+                Email = artistPerson.Email;
+                Number = artistPerson.Number;
+                Role = artistPerson.Role;
+                PaymentInfo = artistPerson.PaymentInfo;
+                IsPermanent = artistPerson.IsPermanent;
+            }
+            else if (person is Employee employeePerson)
             {
                 ID = employeePerson.ID;
                 Name = employeePerson.Name;
@@ -91,10 +101,6 @@ namespace CircusLuna.Pages
                 Number = employeePerson.Number;
                 Role = employeePerson.Role;
                 PaymentInfo = employeePerson.PaymentInfo;
-            }
-            if (person is Artist artisPerson)
-            {
-                IsPermanent = artisPerson.IsPermanent;
             }
         }
 

@@ -127,35 +127,35 @@ namespace CircusLunaLibrary.Services
         /// <summary>
         /// Filters personnel list metrics using multi-field text matching across identities, labels, roles, and status flags.
         /// </summary>
-        /// <param name="SearchTerm">The string text variable deployed to isolate target rows.</param>
+        /// <param name="searchFilterWord">The string text variable deployed to isolate target rows.</param>
         /// <returns>A filtered dataset containing matching records.</returns>
-        public List<Person> FilterAndSearch(string SearchTerm)
+        public List<Person> FilterAndSearch(string searchFilterWord)
         {
-            List<Person> People = GetAll();
-            if (!string.IsNullOrWhiteSpace(SearchTerm))
+            List<Person> people = GetAll();
+            if (!string.IsNullOrWhiteSpace(searchFilterWord))
             {
-                List<Person> SearchTermList = new List<Person>();
-                string searchTermClean = SearchTerm.Trim().ToLower();
-                foreach (Employee e in People)
+                List<Person> searchFilterList = new List<Person>();
+                string searchFilterWordClean = searchFilterWord.Trim().ToLower();
+                foreach (Employee e in people)
                 {
-                    bool nameMatches = e.Name != null && e.Name.ToLower().Contains(searchTermClean);
-                    bool numberMatches = e.Number != null && e.Number.Contains(searchTermClean);
-                    bool roleMatches = e.Role != null && e.Role.ToLower().Contains(searchTermClean);
+                    bool nameMatches = e.Name != null && e.Name.ToLower().Contains(searchFilterWordClean);
+                    bool numberMatches = e.Number != null && e.Number.Contains(searchFilterWordClean);
+                    bool roleMatches = e.Role != null && e.Role.ToLower().Contains(searchFilterWordClean);
                     bool permanentMatches = false;
 
                     if (e is Artist a)
                     {
-                        if (a.IsPermanent && searchTermClean == "permanent") { permanentMatches = true; }
+                        if (a.IsPermanent && searchFilterWordClean == "permanent") { permanentMatches = true; }
                     }
 
                     if (nameMatches || numberMatches || roleMatches || permanentMatches)
                     {
-                        SearchTermList.Add(e);
+                        searchFilterList.Add(e);
                     }
                 }
-                People = SearchTermList;
+                people = searchFilterList;
             }
-            return People;
+            return people;
         }
 
         /// <summary>
