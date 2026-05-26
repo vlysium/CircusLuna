@@ -4,12 +4,13 @@
 	box-sizing: border-box;
 }
 
-html {
-    box-sizing: border-box !important;
-}
-
 body {
     position: relative;
+
+    /* lock scrolling while modal is open */
+    &:has(dialog[open]) {
+        overflow: hidden;
+    }
 }
 
 main {

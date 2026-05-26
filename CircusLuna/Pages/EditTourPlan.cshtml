@@ -1,9 +1,9 @@
-﻿@page "/tour-plan/{SearchTerm?}/{SortBy?}"
+﻿@page "/admin/tour-plan/{SearchTerm?}/{SortBy?}"
 @using CircusLunaLibrary.Models
-@model CircusLuna.Pages.TourPlanModel
+@model CircusLuna.Pages.EditTourPlanModel
 @{
 }
-<h1>Tour Plan</h1>
+<h1>Manage Tour Plan</h1>
 
 <form class="tour-plan-form" method="get">
 
@@ -71,7 +71,7 @@
         <th scope="col">Date</th>
         <th scope="col">City</th>
         <th scope="col">Artists</th>
-        <th scope="col">Tickets</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -92,7 +92,29 @@
             </ul>
             }
           </td>
-          <td><a asp-page="/BookSeats" asp-route-performanceId="@performance.PerformanceId" class="btn btn-primary">Buy Tickets</a></td>
+          <td>
+            <a asp-page="/EditPerformance" asp-route-id="@performance.PerformanceId" class="btn btn-primary">Edit</a>
+            <button command="show-modal" commandfor="delete-performance-modal" class="btn btn-danger">
+              Delete
+            </button>
+            <dialog id="delete-performance-modal">
+              <div class="delete-performance-modal-content">
+                <h2 class="fs-4 text-start text-body">Are you sure you want to delete this performance?</h2>
+                <p>This action cannot be undone.</p>
+                <div class="delete-performance-modal-actions">
+                  <button type="button" class="btn btn-primary w-100" command="close" commandfor="delete-performance-modal">
+                    Cancel
+                  </button>
+                  <form method="post" asp-page-handler="Delete">
+                    <input type="hidden" name="performanceId" value="@performance.PerformanceId" />
+                    <button type="submit" class="btn btn-danger w-100">
+                      Delete performance
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </dialog>
+          </td>
         </tr>
       }
     </tbody>

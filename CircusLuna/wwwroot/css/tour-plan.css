@@ -9,3 +9,37 @@
 	display: flex;
 	flex-direction: row;
 }
+
+.delete-performance-modal-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+#delete-performance-modal {
+  background-color: transparent;
+  position: fixed;
+  max-width: 36rem;
+  padding: 1rem;
+  margin: auto;
+  border: none;
+}
+
+.delete-performance-modal-content {
+  background-color: var(--bs-body-bg);
+  padding: 1.5rem;
+}
+
+.delete-performance-modal-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+
+  @media (min-width: 576px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
