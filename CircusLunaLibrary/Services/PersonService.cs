@@ -1,5 +1,6 @@
 using CircusLunaLibrary.Models;
 using CircusLunaLibrary.Repositories;
+using System.Globalization;
 
 namespace CircusLunaLibrary.Services
 {
@@ -23,7 +24,11 @@ namespace CircusLunaLibrary.Services
                 throw new ArgumentException("ID cannot be null or empty", nameof(id));
             }
             _personRepository.DeletePerson(id);
+        }
 
+        public void UpdateEmployee(string id, Employee employee)
+        {
+            _personRepository.UpdatePerson(id, employee);
         }
         public Person GetById(string id)
         {
@@ -33,9 +38,18 @@ namespace CircusLunaLibrary.Services
             }
             return _personRepository.GetById(id);
         }
+
+        public List<Person> GetAll()
+        {
+            List<Person> People = new List<Person>();
+            People = _personRepository.GetAll();
+            return People;
+        }
+
+
         public List<Artist> GetAllArtists()
         {
-            List<Person> AllPeople=_personRepository.GetAll();
+            List<Person> AllPeople = GetAll();
             List<Artist> AllArtists= new List<Artist>();
             foreach(Person p in AllPeople)
             {
@@ -46,18 +60,55 @@ namespace CircusLunaLibrary.Services
             }
             return AllArtists;
         }
-        public List<Person> GetAll()
+     
+
+        public List<Person> FilterAndSearch(string SearchTerm)
         {
-            return _personRepository.GetAll();
+            List<Person> People = GetAll();
+            if (!string.IsNullOrWhiteSpace(SearchTerm))  
+            {
+                List<Person> SearchTermList = new List<Person>();
+                string searchTermClean = SearchTerm.Trim().ToLower();
+                foreach (Employee e in People)
+                {
+                    bool nameMatches = e.Name != null && e.Name.ToLower().Contains(searchTermClean);
+                    bool numberMatches = e.Number != null && e.Number.Contains(searchTermClean);
+                    bool roleMatches = e.Role != null && e.Role.ToLower().Contains(searchTermClean);
+                    bool permanentMatches = false;
+                    if(e is Artist a)
+                    {
+                        if (a.IsPermanent&&searchTermClean=="permanent") { permanentMatches=true; }                        
+                    }
+
+                    if (nameMatches || numberMatches || roleMatches||permanentMatches)
+                    {
+                        SearchTermList.Add(e);
+                    }
+                }
+                People = SearchTermList;
+            }
+            return People;
         }
-       
-        public void UpdateEmployee(string id, Employee employee)
+
+
+        public List<Person> SortByNameAZ(List<Person> allPeople, string SortBy)
         {
-            _personRepository.UpdatePerson(id, employee);
-        }
-        public List<Person> SortByNameAZ(List<Person> allPeople, bool AZ)
-        {
+            bool AZ = true;
             List<Person> people = allPeople;
+
+            switch (SortBy)
+            {
+                case "sortByNameZA":
+                    AZ = false;
+                    break;
+                case "sortByNameAZ":
+                    AZ = true;
+                    break;
+                default:
+                    AZ = true;
+                    break;
+            }
+            
             int counter = 0;
             while (counter < people.Count)
             {
