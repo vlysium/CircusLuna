@@ -4,102 +4,106 @@
 @{
     ViewData["Title"] = "Create New Performance";
 }
+<div class="tourplan-container">
+    <div class="tourplan-textbox">
+        
+        <h1 class="mb-7 pb-4" style="font-size: clamp(1.8rem, 5vw, 3rem); text-align: center;">Tilføj Forestilling</h1>
+        
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h3 class="mb-0">Add New Performance</h3>
-                </div>
-                <div class="card-body">
-                    <form method="post">
-                        <!-- Name -->
-                        <div class="mb-3">
-                            <label asp-for="Name" class="form-label">Performance Name</label>
-                            <input asp-for="Name" class="form-control" placeholder="e.g. Moonlight Spectacle" />
-                            <span asp-validation-for="Name" class="text-danger"></span>
-                        </div>
-
-                        <!-- Description -->
-                        <div class="mb-3">
-                            <label asp-for="Description" class="form-label">Description</label>
-                            <textarea asp-for="Description" class="form-control" placeholder="Enter performance description"></textarea>
-                            <span asp-validation-for="Description" class="text-danger"></span>
-                        </div>
-
-                        <!-- Date -->
-                        <div class="mb-3">
-                            <label asp-for="Date" class="form-label">Date and Time</label>
-                            <input asp-for="Date" class="form-control" type="datetime-local" />
-                            <span asp-validation-for="Date" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="Region">Filter by region</label>
-                            <select class="form-select" asp-for="Region" required>
-                                <option value="" selected disabled hidden>Select a region</option>
-                                @foreach (Region region in Enum.GetValues(typeof(Region)).Cast<Region>())
-                                {
-                                <option value="@region"> @region</option>
-                                }
-                            </select>
-                        </div>
-
-                        <!-- City -->
-                        <div class="mb-3">
-                            <label asp-for="City" class="form-label">City</label>
-                            <input asp-for="City" class="form-control" placeholder="e.g. Aarhus" />
-                            <span asp-validation-for="City" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label asp-for="PostalCode" class="form-label">Postnummer</label>
-                            <input asp-for="PostalCode" class="form-control" placeholder="e.g. Aarhus" />
-                            <span asp-validation-for="PostalCode" class="text-danger"></span>
-                        </div>
-
-                        <!-- Venue Name -->
-                        <div class="mb-3">
-                            <label asp-for="SelectedVenueId" class="form-label">Telt / Venue</label>
-                            <select asp-for="SelectedVenueId" class="form-select">
-                                <option value="">-- Select a Venue --</option>
-                                @foreach (var venue in Model.AllVenues)
-                                {
-                                    <option value="@venue.ID">@venue.Name</option>
-                                }
-                            </select>
-                            <span asp-validation-for="SelectedVenueId" class="text-danger"></span>
-                        </div>
-
-                        <!-- Artists (Comma separated input) -->
-                        <div class="mb-3">
-                            <label class="form-label d-block">Vælg Artister</label>
-                            <div class="card p-3" style="max-height: 200px; overflow-y: auto;">
-                                @foreach (var artist in Model.AllArtists)
-                                {
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                               name="SelectedArtistIds"
-                                               value="@artist.ID"
-                                               id="artist-@artist.ID">
-                                        <label class="form-check-label" for="artist-@artist.ID">
-                                            @artist.Name (@artist.Role)
-                                        </label>
-                                    </div>
-                                }
-                            </div>
-                            <small class="text-muted">Sæt kryds ved alle de artister, der deltager i forestillingen.</small>
-                        </div>
-                        <div class="d-grid gap-2">
-                            <!-- Using asp-page-handler to point to OnPostCreate -->
-                            <button type="submit" class="btn btn-success">
-                                Save Performance
-                            </button>
-                            <a asp-page="/Index" class="btn btn-outline-secondary">Cancel</a>
-                        </div>
-                    </form>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label asp-for="Name" class="form-label font-weight-bold">Navn</label>
+                    <input asp-for="Name" class="form-control" placeholder="e.g. Moonlight Spectacle" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
             </div>
-        </div>
+
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label asp-for="Description" class="form-label font-weight-bold">Beskrivelse</label>
+                    <textarea asp-for="Description" class="form-control" placeholder="Indtast beskrivelse.." rows="3"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Date" class="form-label font-weight-bold">Dato og tid</label>
+                    <input asp-for="Date" class="form-control" type="datetime-local" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Region" class="form-label font-weight-bold">Vælg Region</label>
+                    <select class="form-select" asp-for="Region" required>
+                        <option value="" selected disabled hidden>Select a region</option>
+                        @foreach (Region region in Enum.GetValues(typeof(Region)).Cast<Region>())
+                        {
+                            <option value="@region">@region</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Region" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="City" class="form-label font-weight-bold">By</label>
+                    <input asp-for="City" class="form-control" placeholder="e.g. Aarhus" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="PostalCode" class="form-label font-weight-bold">Postnummer</label>
+                    <input asp-for="PostalCode" class="form-control" placeholder="e.g. 8000" />
+                    <span asp-validation-for="PostalCode" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label asp-for="SelectedVenueId" class="form-label font-weight-bold">Telt / Venue</label>
+                    <select asp-for="SelectedVenueId" class="form-select">
+                        <option value="">-- Select a Venue --</option>
+                        @foreach (var venue in Model.AllVenues)
+                        {
+                            <option value="@venue.ID">@venue.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="SelectedVenueId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label class="form-label font-weight-bold d-block">Vælg Artister</label>
+                    <div class="card p-3" style="max-height: 200px; overflow-y: auto; background-color: transparent;">
+                        @foreach (var artist in Model.AllArtists)
+                        {
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox"
+                                       name="SelectedArtistIds"
+                                       value="@artist.ID"
+                                       id="artist-@artist.ID">
+                                <label class="form-check-label" for="artist-@artist.ID">
+                                    @artist.Name (@artist.Role)
+                                </label>
+                            </div>
+                        }
+                    </div>
+                    <small class="text-muted d-block mt-1">Sæt kryds ved alle de artister, der deltager i forestillingen.</small>
+                </div>
+            </div>
+
+            <div class="mt-4 pt-2">
+                <button type="submit" class="btn btn-success px-4">Save Performance</button>
+                <a asp-page="/Index" class="btn btn-outline-secondary px-4 ms-2">Cancel</a>
+            </div>
+        </form>
+
     </div>
 </div>

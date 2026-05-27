@@ -4,9 +4,9 @@
 @{
 }
 
-<div class="blogpost-container">   
-    <div class="turplan-textbox">
-        <h1 class="pb-2">Ansatte</h1>
+<div class="tourplan-container">   
+    <div class="tourplan-textbox">
+        <h1 class="pb-2">Administrer ansatte</h1>
 
         <!-- Table Structure -->
         <div class="table-responsive">
@@ -88,74 +88,3 @@
         </div>
     </div>
 </div>
-@* 
-<div class="blogpost-container">   
-   <div class="turplan-textbox">
-
-<h1>Ansatte</h1>
-
-<form method="get" class="tour-plan-search-form">
-    <div class="form-floating">
-        <input type="text" class="tour-plan-search-form-input form-control" placeholder="Indtast søgeord..." asp-for="SearchFilterWord" />
-        <label asp-for="SearchFilterWord"  class="tour-plan-search-form-label">Søg medarbejder (navn, telefon, rolle, permanent)</label>
-    </div>
-    
-    <div class="row mb-3">
-        <div class="col-md-4">
-            <form method="get" asp-page="./Index">
-                <div class="form-group">
-                    <label for="SortBy" class="form-label font-weight-bold">Sort By:</label>
-                    <select asp-for="SortBy"
-                            class="form-select form-control"
-                            onchange="this.form.submit();">
-                        <option value="sortByNameAZ">Navn (A-Z)</option>
-                        <option value="sortByNameZA">Navn (Z-A)</option>
-                    </select>
-                </div>
-            </form>
-        </div>
-    </div>
-    
-</form>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Navn</th>
-            <th scope="col">Telefon</th>
-            <th scope="col">Email</th>
-            <th scope="col">Rolle</th>
-            <th scope="col">Permanent Artist?</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Employee e in Model.People)
-        {
-            <tr>
-                <th scope="row">@e.ID</th>
-                <td>@e.Name</td>
-                <td>@e.Number</td>
-                <td>@e.Email</td>
-                <td>@e.Role</td>
-                <td>
-                    @if(e is Artist)
-                    {
-                        Artist a = (Artist)e;
-                        @(a.IsPermanent?"Ja":"Nej");
-                    }
-                    
-                </td>
-                <td><a asp-page="EditEmployee" asp-route-id="@e.ID" class="btn btn-primary">Redigér</a></td>
-                <td>
-                    <form method="post" asp-route-id="@e.ID">
-                        <button type="submit" class="btn btn-primary">Slet</button>
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-    <a asp-page="CreateEmployee" class="btn btn-primary">Opret Ny Ansat</a>
-</table>
-    </div>
-</div> *@

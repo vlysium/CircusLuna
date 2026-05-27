@@ -2,112 +2,100 @@
 @model CircusLuna.Pages.CreateEmployeeModel
 @{
 }
+<div class="tourplan-container">
+    <div class="tourplan-textbox">
+        
+        <h1 class="mb-7 pb-4" style="font-size: clamp(1.8rem, 5vw, 3rem); text-align: center;">Opret Medarbejder</h1>
+        
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Employee" class="form-label font-weight-bold">Medarbejdertype</label>
+                    <select asp-for="Employee" class="form-select" id="typeSelect">
+                        <option value="false">Artist (Cirkusartist)</option>
+                        <option value="true">Almindelig medarbejder (Admin/Ansat)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <hr />
 
-<div class="container mt-5">
-    <div class="card shadow">
-        <div class="card-header bg-primary text-white">
-            <h3 class="mb-0">Tilføj Medarbejder / Artist</h3>
-        </div>
-        <div class="card-body">
-            <form method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-                
-                <!-- Dropdown Selector -->
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label asp-for="Employee" class="form-label">Medarbejdertype</label>
-                        <select asp-for="Employee" class="form-select" id="typeSelect">
-                            <option value="false">Artist (Cirkusartist)</option>
-                            <option value="true">Almindelig medarbejder (Admin/Ansat)</option>
-                        </select>
-                    </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="PaymentInfo" class="form-label font-weight-bold">Kontonummer</label>
+                    <input asp-for="PaymentInfo" class="form-control" placeholder="IBAN453456" />
+                    <span asp-validation-for="PaymentInfo" class="text-danger"></span>
                 </div>
                 
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Role" class="form-label font-weight-bold">Indtast rolle</label>
+                    <input asp-for="Role" class="form-control" placeholder="Clown" />
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>
+            </div>
+          
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Name" class="form-label font-weight-bold">Navn</label>
+                    <input asp-for="Name" class="form-control" placeholder="John Doe" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Email" class="form-label font-weight-bold">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="john@example.com" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Number" class="form-label font-weight-bold">Telefon</label>
+                    <input asp-for="Number" class="form-control" placeholder="+45 12 34 56 78" />
+                    <span asp-validation-for="Number" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div id="artistFieldsSection">
                 <hr />
-
-                <!-- Account and Role details -->
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label asp-for="PaymentInfo" class="form-label">Kontonummer</label>
-                        <input asp-for="PaymentInfo" class="form-control" placeholder="IBAN453456" />
-                        <span asp-validation-for="PaymentInfo" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label asp-for="Role" class="form-label">Indtast rolle</label>
-                        <input asp-for="Role" class="form-control" placeholder="Clown" />
-                        <span asp-validation-for="Role" class="text-danger"></span>
-                    </div>
-                </div>
-              
-                <div class="row">
-                    <!-- Basic Information -->
-                    <div class="col-md-6 mb-3">
-                        <label asp-for="Name" class="form-label">Navn</label>
-                        <input asp-for="Name" class="form-control" placeholder="John Doe" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label asp-for="Email" class="form-label">Email</label>
-                        <input asp-for="Email" type="email" class="form-control" placeholder="john@example.com" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label asp-for="Number" class="form-label">Telefon</label>
-                        <input asp-for="Number" class="form-control" placeholder="+45 12 34 56 78" />
-                        <span asp-validation-for="Number" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <!-- Artist-specific checkbox section (Wrapped in an ID container) -->
-                <div id="artistFieldsSection">
-                    <hr />
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <div class="form-check form-switch mt-2">
-                                <input asp-for="IsPermanent" class="form-check-input" type="checkbox" id="permanentCheck">
-                                <label class="form-check-label" for="permanentCheck">
-                                    Fastansat (Permanent Artist)
-                                </label>
-                            </div>
-                            <span asp-validation-for="IsPermanent" class="text-danger"></span>
+                        <div class="form-check form-switch mt-2">
+                            <input asp-for="IsPermanent" class="form-check-input" type="checkbox" id="permanentCheck">
+                            <label class="form-check-label font-weight-bold" for="permanentCheck">
+                                Fastansat (Permanent Artist)
+                            </label>
                         </div>
+                        <span asp-validation-for="IsPermanent" class="text-danger"></span>
                     </div>
                 </div>
+            </div>
 
-                <div class="mt-4">
-                    <button type="submit" class="btn btn-success px-4">Gem</button>
-                    <a asp-page="/Admin" class="btn btn-outline-secondary px-4 ms-2">Cancel</a>
-                </div>
-            </form>
-        </div>
+            <div class="mt-4 pt-2">
+                <button type="submit" class="btn btn-success px-4">Gem</button>
+                <a asp-page="/Admin" class="btn btn-outline-secondary px-4 ms-2">Cancel</a>
+            </div>
+        </form>
+
     </div>
 </div>
 
-<!-- JavaScript to control visual toggle -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const typeSelect = document.getElementById('typeSelect');
         const artistFields = document.getElementById('artistFieldsSection');
 
         function toggleArtistFields() {
-            // value === "true" means "Almindelig medarbejder" is selected
             if (typeSelect.value === "true") {
-                artistFields.style.display = 'none';  // Hide the section
+                artistFields.style.display = 'none';
             } else {
-                artistFields.style.display = 'block'; // Show the section
+                artistFields.style.display = 'block';
             }
         }
 
-        // Run the logic immediately on page load to match the initial selection state
         toggleArtistFields();
-
-        // Run the logic whenever the user modifies the dropdown selection
         typeSelect.addEventListener('change', toggleArtistFields);
     });
 </script>

@@ -4,8 +4,8 @@
 @{
 }
 
-<div class="blogpost-container" class="mt-3">
-    <div class="turplan-textbox">
+<div class="tourplan-container">
+    <div class="tourplan-textbox">
         <h1 class="pb-2">Tour Plan</h1>
     <form class="tour-plan-form" method="get">
 
@@ -18,7 +18,7 @@
               <option value="@sortOption.Key" selected="@(Model.SortBy == sortOption.Key)">@sortOption.Value</option>
             }
           </select>
-          <label for="performance-sort">Sort by</label>
+          <label for="performance-sort">Sorter</label>
         </div>
       </div>
 
@@ -59,7 +59,7 @@
             value="@Model.SearchTerm"
             data-submit-on="blur"
           />
-          <label for="search-term" class="tour-plan-search-label">Search Performances</label>
+          <label for="search-term" class="tour-plan-search-label">Søg forestilling</label>
         </div>
       </div>
 
@@ -69,11 +69,11 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Performance</th>
-            <th scope="col">Date</th>
-            <th scope="col">City</th>
-            <th scope="col">Artists</th>
-            <th scope="col">Tickets</th>
+            <th scope="col">Forestilling</th>
+            <th scope="col">Dato</th>
+            <th scope="col">By</th>
+            <th scope="col">Artister</th>
+            <th scope="col">Billetter</th>
           </tr>
         </thead>
         <tbody>

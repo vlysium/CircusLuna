@@ -85,23 +85,93 @@ html, body {
     background-attachment: fixed;
 }
 
+/*INDEX PAGE *********************************************************************/
 .frontpage-photo {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height:100%;
     width: 100%;
     max-width: 90%;
+    height: 90svh;
     margin: 0 auto;
-
+    overflow: hidden;
+    position: relative; /* Holder gennemsigtighedslaget på plads */
 }
 
-.viewport-img {
+    .frontpage-photo img, .viewport-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        margin-bottom: 0;
+    }
+
+    /* DET NYE LAG: Skaber den flydende, gennemsigtige overgang */
+    .frontpage-photo::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+        /* Her toner vi fra en solid blå i toppen, til gennemsigtig i midten, og til solid blå i bunden */
+        background: linear-gradient(to right, rgba(122, 223, 250, 0.3) 0%, /* Helt solid lyseblå på venstre kant */
+        rgba(122, 223, 250, 0) 10%, /* Fader ud, så billedet bliver synligt */
+        transparent 50%, rgba(122, 223, 250, 0) 90%, /* Begynder at tone ind igen mod højre */
+        rgba(122, 223, 250, 0.3) 100% /* Helt solid lyseblå på højre kant */
+        );
+    }
+
+.index-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Changed from stretch to center */
+    background-image: url('/images/baloons.jpg');
+    max-width: 90%;
+    margin: 8% auto;
+    /* Removed flex-grow: 1; so it doesn't fight for viewport height */
     width: 100%;
-    height: auto;
-    object-fit: cover;
-    margin-bottom: 50px;
 }
+
+/* TEXTBOX SETUP */
+.index-textbox {
+    background-color: white;
+    width: 100%;
+    /* Max-width is 100% on mobile, but scales nicely to 80% on larger screens */
+    max-width: 100%;
+    padding: 2rem 5%; /* Slightly tighter padding on mobile prevents clamping */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Media query to make it look incredibly sharp on desktop screens */
+@media (min-width: 768px) {
+    .index-textbox {
+        max-width: 80%;
+        padding: 3rem 10%;
+    }
+}
+@media (max-width: 800px) {
+    .frontpage-photo {
+        max-width: 100% !important; /* Spans edge-to-edge on mobile for a cleaner look */
+        height: 60svh; /* Shrinks the height so it's not full screen */
+    }
+    .index-container {
+        display: flex;
+        justify-content: center;
+        align-items: stretch; /* Demands child elements fill absolute height edge-to-edge */
+        background-image: url('/images/baloons.jpg');
+        max-width: 100%;
+        margin: 0 auto;
+        flex-grow: 1; /* Inherits the remaining display height from <main> */
+        width: 100%;
+    }
+
+}
+/*INDEX PAGE DONE ***************************************************************************/
 
 .border-bottom[b-gnmj0n0bo2] {
     border-bottom: 1px solid black !important;
@@ -125,10 +195,7 @@ html, body {
     letter-spacing: 0.2em;
 }
 
-/* 
-   CONTAINER SETUP:
-   Stretches to fill vertical layout while keeping balloon walls to the left/right 
-*/
+
 .blogpost-container {
     display: flex;
     justify-content: center;
@@ -140,10 +207,7 @@ html, body {
     width: 100%;
 }
 
-/* 
-   TEXTBOX SETUP: 
-   Spans ALL height instantly, pinning itself to top and bottom margins 
-*/
+
 .blogpost-textbox {
     background-color: white;
     max-width: 80%;
@@ -155,11 +219,62 @@ html, body {
     flex-grow: 1; /* Force-stretches the white canvas block down over the background */
 }
 
+/*TURPLAN************************************************************************************/
+.tourplan-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Changed from stretch to center */
+    background-image: url('/images/baloons.jpg');
+    max-width: 90%;
+    margin: 5% auto;
+    /* Removed flex-grow: 1; so it doesn't fight for viewport height */
+    width: 100%;
+}
+
+/* TEXTBOX SETUP */
+.tourplan-textbox {
+    background-color: white;
+    width: 100%;
+    /* Max-width is 100% on mobile, but scales nicely to 80% on larger screens */
+    max-width: 100%;
+    padding: 2rem 5%; /* Slightly tighter padding on mobile prevents clamping */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Media query to make it look incredibly sharp on desktop screens */
+@media (min-width: 768px) {
+    .tourplan-textbox {
+        max-width: 80%;
+        padding: 2rem 5%;
+    }
+}
+
+@media (max-width: 800px) {
+  
+
+    .tourplan-container {
+        display: flex;
+        justify-content: center;
+        align-items: stretch; /* Demands child elements fill absolute height edge-to-edge */
+        background-image: url('/images/baloons.jpg');
+        max-width: 100%;
+        margin: 0 auto;
+        flex-grow: 1; /* Inherits the remaining display height from <main> */
+        width: 100%;
+    }
+}
+
+
+/*TURPLAN SLUT**************************************************************************/
+
+
 .turplan-textbox {
     background-color: white;
     max-width: 80%;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    padding-top: 2rem;
+    padding-bottom: 2rem%;
     padding-right: 5%;
     padding-left: 5%;
   /*  text-align: center;*/
@@ -188,6 +303,59 @@ html, body {
         max-width: 90%;
     }
 }
+
+
+/*BOOK SEATS*************************************************************************************/
+.booking-card {
+    /*border: 5px solid lightblue !important;*/ /* Thick red solid border on left */
+    margin-bottom:5%;
+}
+/*BOOK SEATS END************************************************************************************/
+
+.create-customer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Changed from stretch to center */
+    background-image: url('/images/baloons.jpg');
+    max-width: 90%;
+    margin: 8% auto;
+    /* Removed flex-grow: 1; so it doesn't fight for viewport height */
+    width: 100%;
+}
+
+/* TEXTBOX SETUP */
+.create-customer-textbox {
+    background-color: white;
+    width: 100%;
+    /* Max-width is 100% on mobile, but scales nicely to 80% on larger screens */
+    max-width: 100%; 
+    padding: 2rem 5%; /* Slightly tighter padding on mobile prevents clamping */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Media query to make it look incredibly sharp on desktop screens */
+@media (min-width: 768px) {
+    .create-customer-textbox {
+        max-width: 80%;
+        padding: 3rem 10%;
+    }
+}
+/*.create-customer-textbox {
+    background-color: white;
+    max-width: 80%;
+    width: 100%;*/
+    /* Reduced top/bottom padding so it hugs the actual content forms/buttons */
+    /*padding: 1.5rem 10%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding-bottom:5%;
+    padding-top:5%;*/
+    /* Removed flex-grow: 1; so the white canvas stops stretching down */
+/*}*/
+
 
 /*FOOTER***********************************************************************************/
 footer {

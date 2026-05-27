@@ -3,8 +3,8 @@
 @model CircusLuna.Pages.PerformanceDetailsModel
 @{
 }
-<div class="blogpost-container">
-	<div class="turplan-textbox">
+<div class="tourplan-container">
+	<div class="tourplan-textbox">
 		<h1 class="mb-4">@Model.Performance.Name</h1>
 		<div class="container px-5">
 
@@ -20,7 +20,7 @@
 				<li>@artist.Name (@artist.Role)</li>
 			}
 		</ul>
-		<a asp-page="/BookSeats" asp-route-performanceId="@Model.Performance.PerformanceId" class="btn btn-primary">Buy Tickets</a>
+		<a asp-page="/BookSeats" asp-route-performanceId="@Model.Performance.PerformanceId" class="btn btn-primary">Køb billetter</a>
 		</div>
 	</div>
 </div>
