@@ -4,6 +4,95 @@
 @{
 }
 
+<div class="blogpost-container">   
+    <div class="turplan-textbox">
+        <h1>Ansatte</h1>
+
+        <!-- Table Structure -->
+        <div class="table-responsive">
+         
+            <table class="table">
+                <form method="get" class="tour-plan-search-form mb-4">
+            
+                    <!-- Grid Row combining all 3 components on one line -->
+                    <div class="row align-items-end">
+                
+                        <!-- 1. Search Field (Takes up half the space on medium+ screens) -->
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="tour-plan-search-form-input form-control" placeholder="Indtast søgeord..." asp-for="SearchFilterWord" />
+                                <label asp-for="SearchFilterWord" class="tour-plan-search-form-label">Søg medarbejder (navn, telefon...)</label>
+                            </div>
+                        </div>
+                
+                        <!-- 2. Sort Dropdown (Takes up roughly a third of the remaining space) -->
+                        <div class="col-md-3">
+                            <div class="form-floating">
+                        
+                                <select asp-for="SortBy" class="form-select form-control" onchange="this.form.submit();">
+                                    <option value="sortByNameAZ">Navn (A-Z)</option>
+                                    <option value="sortByNameZA">Navn (Z-A)</option>
+                                </select>
+                                <label for="SortBy">Sort by</label>
+                            </div>
+                        </div>
+                
+                        <!-- 3. Create Button (Fills the remaining right-aligned gap) -->
+                   
+                        <div class="col-md-3 text-end ms-auto">
+                            <a asp-page="CreateEmployee" class="btn btn-primary w-100 py-2 font-weight-bold" style="max-width: 90px;">Opret</a>
+                        </div>
+                    </div>
+                </form>
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Navn</th>
+                        <th scope="col">Telefon</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Rolle</th>
+                        <th scope="col">Permanent Artist?</th>
+                        <th scope="col">Handlinger</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Employee e in Model.People)
+                    {
+                        <tr>
+                            <th scope="row">@e.ID</th>
+                            <td>@e.Name</td>
+                            <td>@e.Number</td>
+                            <td>@e.Email</td>
+                            <td>@e.Role</td>
+                            <td>
+                                @if(e is Artist)
+                                {
+                                    Artist a = (Artist)e;
+                                    @(a.IsPermanent ? "Ja" : "Nej")
+                                }
+                            </td>
+                            <td>
+                                <div class="d-flex flex-column gap-2">
+                                    <a asp-page="EditEmployee" asp-route-id="@e.ID" class="btn btn-primary btn-sm w-100">Redigér</a>
+                    
+                                    <form method="post" asp-route-id="@e.ID" class="m-0 p-0">
+                                        <button type="submit" class="btn btn-danger btn-sm w-100">Slet</button>
+                                    </form>
+                                </div>
+                            </td>
+              
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@* 
+<div class="blogpost-container">   
+   <div class="turplan-textbox">
+
 <h1>Ansatte</h1>
 
 <form method="get" class="tour-plan-search-form">
@@ -69,3 +158,5 @@
     </tbody>
     <a asp-page="CreateEmployee" class="btn btn-primary">Opret Ny Ansat</a>
 </table>
+    </div>
+</div> *@

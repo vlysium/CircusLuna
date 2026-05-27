@@ -3,98 +3,102 @@
 @model CircusLuna.Pages.TourPlanModel
 @{
 }
-<h1>Tour Plan</h1>
 
-<form class="tour-plan-form" method="get">
+<div class="blogpost-container" class="mt-3">
+    <div class="turplan-textbox">
+        <h1>Tour Plan</h1>
+    <form class="tour-plan-form" method="get">
 
-  <div class="tour-plan-sort">
-    <div class="form-floating">
-      <select class="form-select" id="performance-sort" name="SortBy" asp-for="SortBy" data-submit-on="change">
-        <option value="" selected="@(string.IsNullOrEmpty(Model.SortBy))" disabled hidden>Sort performances</option>
-        @foreach (KeyValuePair<string, string> sortOption in Model.SortOptions)
-        {
-          <option value="@sortOption.Key" selected="@(Model.SortBy == sortOption.Key)">@sortOption.Value</option>
-        }
-      </select>
-      <label for="performance-sort">Sort by</label>
-    </div>
-  </div>
-
-  <div class="tour-plan-filter-region">
-    <div class="form-floating">
-      <select class="form-select" id="performance-filter-region" name="SelectedRegion" asp-for="SelectedRegion" data-submit-on="change">
-        <option value="" selected="@(Model.SelectedRegion == null)">All Regions</option>
-        @foreach (Region region in Enum.GetValues(typeof(Region)).Cast<Region>())
-        {
-          <option value="@region" selected="@(Model.SelectedRegion == region.ToString())"> @region</option>
-        }
-      </select>
-      <label for="performance-filter-region">Filter by region</label>
-    </div>
-  </div>
-
-  <div class="tour-plan-filter-artist">
-    <div class="form-floating">
-      <select class="form-select" id="performance-filter-artist" name="SelectedArtist" asp-for="SelectedArtist" data-submit-on="change">
-        <option value="" selected="@(Model.SelectedArtist == null)">All Artists</option>
-        @foreach (Artist artist in Model.Artists)
-        {
-          <option value="@artist.ID" selected="@(Model.SelectedArtist == artist.ID)"> @artist.Name</option>
-        }
-      </select>
-      <label for="performance-filter-artist">Filter by artist</label>
-    </div>
-  </div>
-
-  <div class="tour-plan-search">
-    <div class="form-floating">
-      <input
-        type="text"
-        class="tour-plan-search-input form-control"
-        id="search-term"
-        placeholder="Enter search term..."
-        asp-for="SearchTerm"
-        value="@Model.SearchTerm"
-        data-submit-on="blur"
-      />
-      <label for="search-term" class="tour-plan-search-label">Search Performances</label>
-    </div>
-  </div>
-
-</form>
-
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Performance</th>
-        <th scope="col">Date</th>
-        <th scope="col">City</th>
-        <th scope="col">Artists</th>
-        <th scope="col">Tickets</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach (Performance performance in Model.Performances)
-      {
-        <tr>
-          <th scope="row">@performance.Name</th>
-          <td>@performance.Date.ToString("MMMM d, HH:mm")</td>
-          <td>@performance.City.Name - @performance.City.Region</td>
-          <td>
-            @if (performance.Artists != null)
+      <div class="tour-plan-sort">
+        <div class="form-floating">
+          <select class="form-select" id="performance-sort" name="SortBy" asp-for="SortBy" data-submit-on="change">
+            <option value="" selected="@(string.IsNullOrEmpty(Model.SortBy))" disabled hidden>Sort performances</option>
+            @foreach (KeyValuePair<string, string> sortOption in Model.SortOptions)
             {
-            <ul class="list-unstyled mb-0">
-              @foreach (Artist artist in performance.Artists)
-              {
-              <li>@artist.Name</li>
-              }
-            </ul>
+              <option value="@sortOption.Key" selected="@(Model.SortBy == sortOption.Key)">@sortOption.Value</option>
             }
-          </td>
-          <td><a asp-page="/BookSeats" asp-route-performanceId="@performance.PerformanceId" class="btn btn-primary">Buy Tickets</a></td>
-        </tr>
-      }
-    </tbody>
-  </table>
+          </select>
+          <label for="performance-sort">Sort by</label>
+        </div>
+      </div>
+
+      <div class="tour-plan-filter-region">
+        <div class="form-floating">
+          <select class="form-select" id="performance-filter-region" name="SelectedRegion" asp-for="SelectedRegion" data-submit-on="change">
+            <option value="" selected="@(Model.SelectedRegion == null)">All Regions</option>
+            @foreach (Region region in Enum.GetValues(typeof(Region)).Cast<Region>())
+            {
+              <option value="@region" selected="@(Model.SelectedRegion == region.ToString())"> @region</option>
+            }
+          </select>
+          <label for="performance-filter-region">Filter by region</label>
+        </div>
+      </div>
+
+      <div class="tour-plan-filter-artist">
+        <div class="form-floating">
+          <select class="form-select" id="performance-filter-artist" name="SelectedArtist" asp-for="SelectedArtist" data-submit-on="change">
+            <option value="" selected="@(Model.SelectedArtist == null)">All Artists</option>
+            @foreach (Artist artist in Model.Artists)
+            {
+              <option value="@artist.ID" selected="@(Model.SelectedArtist == artist.ID)"> @artist.Name</option>
+            }
+          </select>
+          <label for="performance-filter-artist">Filter by artist</label>
+        </div>
+      </div>
+
+      <div class="tour-plan-search">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="tour-plan-search-input form-control"
+            id="search-term"
+            placeholder="Enter search term..."
+            asp-for="SearchTerm"
+            value="@Model.SearchTerm"
+            data-submit-on="blur"
+          />
+          <label for="search-term" class="tour-plan-search-label">Search Performances</label>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Performance</th>
+            <th scope="col">Date</th>
+            <th scope="col">City</th>
+            <th scope="col">Artists</th>
+            <th scope="col">Tickets</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (Performance performance in Model.Performances)
+          {
+            <tr>
+              <th scope="row">@performance.Name</th>
+              <td>@performance.Date.ToString("MMMM d, HH:mm")</td>
+              <td>@performance.City.Name - @performance.City.Region</td>
+              <td>
+                @if (performance.Artists != null)
+                {
+                <ul class="list-unstyled mb-0">
+                  @foreach (Artist artist in performance.Artists)
+                  {
+                  <li>@artist.Name</li>
+                  }
+                </ul>
+                }
+              </td>
+              <td><a asp-page="/BookSeats" asp-route-performanceId="@performance.PerformanceId" class="btn btn-primary">Buy Tickets</a></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    </div>
 </div>
