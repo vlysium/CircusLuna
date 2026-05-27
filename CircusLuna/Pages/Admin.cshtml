@@ -6,7 +6,7 @@
 
 <div class="blogpost-container">   
     <div class="turplan-textbox">
-        <h1>Ansatte</h1>
+        <h1 class="pb-2">Ansatte</h1>
 
         <!-- Table Structure -->
         <div class="table-responsive">
@@ -75,7 +75,6 @@
                             <td>
                                 <div class="d-flex flex-column gap-2">
                                     <a asp-page="EditEmployee" asp-route-id="@e.ID" class="btn btn-primary btn-sm w-100">Redigér</a>
-                    
                                     <form method="post" asp-route-id="@e.ID" class="m-0 p-0">
                                         <button type="submit" class="btn btn-danger btn-sm w-100">Slet</button>
                                     </form>

@@ -2,23 +2,17 @@
 @model CircusLuna.Pages.BookSeatsModel
 @{
 }
+<div>
+
 
 <form method="post">
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Vælg siddepladser til: </h1>
-        <h2 class="text-center mb-4">@Model.CurrentPerformance.Name</h2>
-
-        <!-- Legend -->
-        <div class="d-flex justify-content-center mb-4">
-            <div class="me-3"><span class="badge bg-primary">&nbsp;</span> Ledig</div>
-            <div class="me-3"><span class="badge bg-secondary">&nbsp;</span> Optaget</div>
-            <div><span class="badge bg-success">&nbsp;</span> Valgt</div>
-        </div>
 
         <div class="card p-4 shadow-sm bg-light">
-            <div class="text-center border-bottom mb-4 pb-2">
-                <strong>MANAGE / STAGE</strong>
-            </div>
+        <div class="border-bottom mb-3">
+            <h1 class="text-center mb-4">Vælg siddepladser til: </h1>
+            <h2 class="text-center mb-4 ">@Model.CurrentPerformance.Name</h2>
+       </div>
             
             <div class="text-center">
                 <h5 class="mb-3">Vælg Billettype:</h5>
@@ -50,7 +44,8 @@
                                        class="btn-check"
                                 @(isBusy ? "disabled" : "")>
                                 
-                                <label class="btn @(isBusy ? "btn-secondary" : "btn-outline-warning") seat-label"
+                                <!-- Added 'seat-vip' class -->
+                                <label class="btn @(isBusy ? "btn-secondary" : "btn-outline-warning") seat-label seat-vip"
                                        for="seat-@seat.SeatId"
                                        style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">
                                     @seat.SeatRow@seat.SeatColumn
@@ -76,7 +71,8 @@
                                        class="btn-check"
                                 @(isBusy ? "disabled" : "")>
                                 
-                                <label class="btn @(isBusy ? "btn-secondary" : "btn-outline-primary") seat-label"
+                                <!-- Added 'seat-standard' class -->
+                                <label class="btn @(isBusy ? "btn-secondary" : "btn-outline-primary") seat-label seat-standard"
                                        for="seat-@seat.SeatId"
                                        style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">
                                     @seat.SeatRow@seat.SeatColumn
@@ -87,11 +83,18 @@
                 </div>
 
             </div>
-
+            <div class="text-center border-top pt-4">
+                <div class="d-flex justify-content-center">
+                    <div class="me-3"><span class="badge bg-primary">&nbsp;</span> Ledig</div>
+                    <div class="me-3"><span class="badge bg-secondary">&nbsp;</span> Optaget</div>
+                    <div><span class="badge bg-success">&nbsp;</span> Valgt</div>
+                </div>
+            </div>
             <input type="hidden" asp-for="PerformanceId" />
-            <div class="text-center mt-5">
+            <div class="text-center mt-3">
                 <button type="submit" class="btn btn-success btn-lg px-5">Bekræft Reservation</button>
             </div>
+
         </div>
     </div>
 </form>
@@ -117,22 +120,64 @@
         height: 45px;
     }
     
+    /* Global seat adjustments to create a "cushion" feeling */
     .seat-label {
-        transition: all 0.2s;
+        font-weight: 700;
+        transition: all 0.2s ease-in-out;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 2px 4px rgba(0,0,0,0.1);
+        border-radius: 6px;
         cursor: pointer;
     }
 
-    /* Visual style for disabled seats */
-    .btn-secondary {
-        opacity: 0.5;
+        /* Interactive hover scaling for non-disabled seats */
+        .seat-label:not(.btn-secondary):hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+
+    /* --- STANDARD SEAT FILLING (Sleek Blue Gradient) --- */
+    .seat-standard:not(.btn-secondary) {
+        background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #bae6fd 100%);
+        border: 2px solid #0284c7 !important;
+        color: #0369a1;
+    }
+
+    /* --- VIP SEAT FILLING (Premium Gold & Amber Gradient) --- */
+    .seat-vip:not(.btn-secondary) {
+        background: linear-gradient(135deg, #fffbeb 0%, #fde047 50%, #eab308 100%);
+        border: 2px solid #ca8a04 !important; /* Rich Gold Border */
+        color: #854d0e; /* Darker brass/gold color for text legibility */
+        box-shadow: 0 0 8px rgba(234, 179, 8, 0.3), inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+    
+        /* Slight extra sparkle hover effect for VIP seats */
+        .seat-vip:not(.btn-secondary):hover {
+            box-shadow: 0 0 12px rgba(234, 179, 8, 0.6);
+            background: linear-gradient(135deg, #ffffff 0%, #fef08a 50%, #f59e0b 100%);
+        }
+
+    /* Visual style for disabled / taken seats */
+    .btn-secondary.seat-label {
+        opacity: 0.45;
+        background-color: #e2e8f0 !important;
+        border: 2px dashed #cbd5e1 !important;
+        color: #94a3b8 !important;
+        box-shadow: none;
         cursor: not-allowed;
     }
 
-    /* Colors selected seats green */
-    .btn-check:checked + .btn-outline-primary,
-    .btn-check:checked + .btn-outline-warning {
-        background-color: #198754 !important;
+    /* Colors selected seats green (Universal) */
+    .btn-check:checked + .seat-label {
+        background: #198754 !important;
+        background-image: none !important; /* Clears gradient when active */
         border-color: #198754 !important;
-        color: white;
+        color: white !important;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.25);
+    }
+
+    /* Extra gold-rimmed touch for selected VIP seats so they stay recognizable even when selected! */
+    .btn-check:checked + .seat-vip {
+        border: 2px solid #facc15 !important;
+        box-shadow: 0 0 10px rgba(250, 204, 21, 0.6), inset 0 2px 4px rgba(0,0,0,0.3);
     }
 </style>

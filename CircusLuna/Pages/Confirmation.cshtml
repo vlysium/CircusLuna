@@ -3,27 +3,57 @@
 @{
 }
 
-@* <p>Debug - Seats Count: @Model.SeatIds?.Count</p>
-<p>Debug - Ticket Type: @Model.TicketTypeString</p> *@
+<div class="blogpost-container">
+    <div class="blogpost-textbox text-start">
+        <!-- text-start ensures clean left alignment for your data -->
+        <!-- Responsive, clean header -->
+        <h1 class="mb-3 pb-3" style="white-space: nowrap; font-size: clamp(1.8rem, 5vw, 3rem);">Gennemse ordre</h1>
+        <p class="text-muted text-center mb-4 pb-2 fs-5">Kære @Model.CustomerName, venligst bekræft at dine oplysninger er korrekte.</p>
+        
+        <!-- Order Overview Grid -->
+        <div class="order-summary-box p-4 mb-4 bg-light rounded border border-light-subtle">
+            <dl class="row mb-0">
+                
+                <dt class="col-sm-4 text-secondary fw-bold mb-2">Telefonnummer:</dt>
+                <dd class="col-sm-8 mb-2">@Model.CustomerNumber</dd>
 
-<h3>Gennemse din ordre, @Model.CustomerName</h3>
-<p>Nummer: @Model.CustomerNumber</p>
-<p>Email: @Model.CustomerEmail</p>
-<p>Forestilling: @Model.Performance.Name</p>
-<p>Siddepladser: @string.Join(", ", Model.SeatIds)</p>
-<p>Samlet pris: @Model.TotalPrice</p>
+                <dt class="col-sm-4 text-secondary fw-bold mb-2">E-mailadresse:</dt>
+                <dd class="col-sm-8 mb-2">@Model.CustomerEmail</dd>
 
-<form method="post">
+                <dt class="col-sm-4 text-secondary fw-bold mb-2">Forestilling:</dt>
+                <dd class="col-sm-8 mb-2 text-primary fw-bold">@Model.Performance.Name</dd>
 
-    <input type="hidden" asp-for="PerformanceId" />
-    <input type="hidden" asp-for="TicketTypeString" />
-    @for (int i = 0; i < Model.SeatIds.Count; i++)
-    {
-        <input type="hidden" asp-for="SeatIds[i]" />
-    }
-    <input type="hidden" asp-for="CustomerName" />
-    <input type="hidden" asp-for="CustomerEmail" />
-    <input type="hidden" asp-for="CustomerNumber" />
-    <button type="submit" class="btn btn-success">Bekræft og betal</button>
-    <a asp-page="Index" class="btn btn-outline-secondary px-4 ms-2">Afbryd</a>
-</form>
+                <dt class="col-sm-4 text-secondary fw-bold mb-2">Valgte siddepladser:</dt>
+                <dd class="col-sm-8 mb-2">
+                    <span class="badge bg-success px-2.5 py-1.5 fs-6">@string.Join(", ", Model.SeatIds)</span>
+                </dd>
+
+                <!-- Clean divider before the grand total -->
+                <div class="col-12 my-2 border-top"></div>
+
+                <dt class="col-sm-4 text-dark fw-bolder fs-5 pt-2">Samlet pris:</dt>
+                <dd class="col-sm-8 text-dark fw-bolder fs-5 pt-2">@Model.TotalPrice kr.</dd>
+                
+            </dl>
+        </div>
+       
+        <!-- Form & Actions Layout -->
+        <form method="post" class="mt-4">
+            <input type="hidden" asp-for="PerformanceId" />
+            <input type="hidden" asp-for="TicketTypeString" />
+            @for (int i = 0; i < Model.SeatIds.Count; i++)
+            {
+                <input type="hidden" asp-for="SeatIds[i]" />
+            }
+            <input type="hidden" asp-for="CustomerName" />
+            <input type="hidden" asp-for="CustomerEmail" />
+            <input type="hidden" asp-for="CustomerNumber" />
+
+            <div class="d-flex align-items-center gap-2 mb-2 mt-2">
+                <button type="submit" class="btn btn-success btn-lg px-4 shadow-sm fw-bold">Bekræft og betal</button>
+                <a asp-page="Index" class="btn btn-outline-secondary btn-lg px-4">Afbryd</a>
+            </div>
+        </form>
+
+    </div>
+</div>

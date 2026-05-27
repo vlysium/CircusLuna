@@ -1,31 +1,34 @@
-
 *, *::before, *::after {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fixed syntax error: changed '=' to ':' to enable height inheritance */
+html, body {
+    height: 100%;
 }
 
 body {
-
     position: relative;
-
+    margin: 0 !important;
+    padding: 0;
+    min-height: 100%; /* Keeps your background repeating */
     /* lock scrolling while modal is open */
     &:has(dialog[open]) {
         overflow: hidden;
     }
 }
 
+/* Converted to a flex container so child elements can seamlessly span full height */
 main {
     min-height: 100svh;
+    display: flex;
+    flex-direction: column;
 }
 
 header, footer {
-    background-color: yellow!important;
-
-    /* 1. Gives the header a 50% see-through black background veil */
-    /* color: rgba(0, 0, 0, 0.5); */
-    /* 2. Optional but recommended: ensures the header sticks to the top 
-          and spans the full width of the screen over your background */
+    background-color: yellow !important;
     width: 100%;
 }
 
@@ -36,99 +39,70 @@ header {
 }
 
 .navbar {
-    height: 100px%;
-
-    /* 3. If Bootstrap is giving your navbar a default white or grey background, 
-          this rule forces it to become completely see-through so the header's veil works */
+    height: 100%; /* Fixed typographic glitch '100px%' to '100%' */
 }
 
-
-body {
-    margin: 0 !important;
-    padding: 0;
-    min-height: 100%; /* Keeps your background repeating */
-    }
 h1 {
     font-family: "DynaPuff", system-ui;
     font-optical-sizing: auto;
     font-weight: 900;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    background-image: url('/images/baloons.jpg') !important; /* Update with your actual image path */
+    background-image: url('/images/baloons.jpg') !important;
     background-size: cover;
     background-position: center;
-    /* 2. The magic trick: Clips the background to the text shapes */
     -webkit-background-clip: text;
     background-clip: text;
-    /* 3. Makes the default text color transparent so the background shows through */
     color: transparent !important;
-    /* 4. Keeps your thick black outline from before */
     -webkit-text-stroke: 1px #000;
     text-align: center;
     margin-bottom: 2%;
-    /* Optional: Making the font thick/bold helps the background pattern show up better! */
-  
-    /*font-size: 4rem;*/
     letter-spacing: 0.05em;
-    /* Minimum: 2.2rem, Scalable fluid size: 8vw, Maximum: 4.5rem */
     font-size: clamp(2.2rem, 8vw, 4.5rem);
-    line-height: 1.2; /* Prevents text from overlapping vertically if it wraps */
+    line-height: 1.2;
     word-break: break-word;
 }
 
-h2, h3, h4, h5, h6 {
+h2 {
     font-family: "DynaPuff", system-ui;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
     font-variation-settings: "wdth" 100;
     color: black;
-   
-    /*text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000,*/ /* Diagonals */
-    /*-2px 0px 0 #000, 2px 0px 0 #000, 0px -2px 0 #000, 0px 2px 0 #000;*/ /* Straights */
-    /*    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
     text-align: center;
     margin-bottom: 2%;
     margin-top: -1%;
     letter-spacing: 0.2em;
 }
 
-html, body {
-    background-image: url('/images/blue-curve-background.jpg');
-    /* Makes the background image fixed in place */
-    background-attachment: fixed;
-    /* repeat-y repeats vertically; use 'repeat' if you want it grid-like (X and Y) */
-    /* background-repeat: repeat-y; */
-    /* This ensures the background stays its natural size and doesn't stretch */
-    /* background-size: cover; */
-    /*background-color: #0B132B;*/
+h3, h4, h5, h6 {
+    text-align: center;
 }
 
-/* 1) Centering the image container */
+html, body {
+    background-image: url('/images/blue-curve-background.jpg');
+    background-attachment: fixed;
+}
+
 .frontpage-photo {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 90%; /* Match the blogpost-container max-width */
+    max-width: 90%;
     margin: 0 auto;
 }
 
-/* 2) Adding the thick yellow border directly to the image */
 .viewport-img {
     width: 100%;
     height: auto;
-    object-fit:cover;
-    margin-bottom:50px;
-    
+    object-fit: cover;
+    margin-bottom: 50px;
 }
 
 .border-bottom[b-gnmj0n0bo2] {
-    border-bottom: 1px solid black!important;
-}
-
-.text-dark {
-    /* color: #FFD700 !important; */
+    border-bottom: 1px solid black !important;
 }
 
 .navbar-brand {
@@ -137,8 +111,6 @@ html, body {
     font-weight: 500;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    
-
     padding-top: var(--bs-navbar-brand-padding-y);
     padding-bottom: var(--bs-navbar-brand-padding-y);
     margin-right: var(--bs-navbar-brand-margin-end);
@@ -151,72 +123,74 @@ html, body {
     letter-spacing: 0.2em;
 }
 
+/* 
+   CONTAINER SETUP:
+   Stretches to fill vertical layout while keeping balloon walls to the left/right 
+*/
 .blogpost-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch; /* Demands child elements fill absolute height edge-to-edge */
     background-image: url('/images/baloons.jpg');
     max-width: 90%;
     margin: 0 auto;
-}
-.blogpost-textbox{
-    background-color:white;
-    max-width:80%;
-    padding-top: 1%;
-    padding-bottom:1%;
-    padding-right:10%;
-    padding-left:10%;
-    text-align:center;
-    
+    flex-grow: 1; /* Inherits the remaining display height from <main> */
+    width: 100%;
 }
 
-.turplan-textbox{
+/* 
+   TEXTBOX SETUP: 
+   Spans ALL height instantly, pinning itself to top and bottom margins 
+*/
+.blogpost-textbox {
+    background-color: white;
+    max-width: 80%;
+    width: 100%;
+    padding: 3rem 10%; /* Replaced fluid percentage heights with stable spacing layout steps */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Force-stretches the white canvas block down over the background */
+}
+
+.turplan-textbox {
     background-color: white;
     max-width: 80%;
     padding-top: 1%;
     padding-bottom: 1%;
     padding-right: 5%;
     padding-left: 5%;
-    text-align: center;
+  /*  text-align: center;*/
 }
 
 @media (min-width: 768px) {
     .container, .container-md, .container-sm {
         max-width: 90%;
     }
-
 }
+
 @media (min-width: 992px) {
     .container, .container-md, .container-sm {
         max-width: 90%;
     }
 }
+
 @media (min-width: 1200px) {
     .container, .container-md, .container-sm {
         max-width: 90%;
     }
 }
+
 @media (min-width: 1400px) {
     .container, .container-md, .container-sm {
         max-width: 90%;
     }
 }
 
-
-
-
-
-
-
-
-
-    /*FOOTER***********************************************************************************/
-    footer {
-        color: rgba(0, 0, 0) !important;
-        /* 1. Gives the header a 50% see-through black background veil */
-        background-color: rgba(0, 0, 0, 0.5);
-        /* 2. Optional but recommended: ensures the header sticks to the top 
-          and spans the full width of the screen over your background */
-        width: 100%;
-        padding-block: 1rem;
-    }
+/*FOOTER***********************************************************************************/
+footer {
+    color: rgba(0, 0, 0) !important;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    padding-block: 1rem;
+}
