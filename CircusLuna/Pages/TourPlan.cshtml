@@ -3,7 +3,13 @@
 @model CircusLuna.Pages.TourPlanModel
 @{
 }
-
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i> @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 <div class="tourplan-container">
     <div class="tourplan-textbox">
         <h1 class="pb-2">Tour Plan</h1>
@@ -98,7 +104,7 @@
                 </ul>
                 }
               </td>
-              <td><a asp-page="/BookSeats" asp-route-performanceId="@performance.PerformanceId" class="btn btn-primary">Buy Tickets</a></td>
+              <td><a asp-page="/BookSeats" asp-route-performanceId="@performance.PerformanceId" class="btn btn-primary">Køb billetter</a></td>
             </tr>
           }
         </tbody>

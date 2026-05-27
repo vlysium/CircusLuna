@@ -69,12 +69,20 @@ namespace CircusLuna.Pages
         /// Handles HTTP GET requests to initialize the seat selection view for a specific performance.
         /// </summary>
         /// <param name="performanceId">The unique identifier of the performance to display.</param>
-        public void OnGet(string performanceId)
+        public IActionResult OnGet(string performanceId)
         {
             PerformanceId = performanceId;
             CurrentPerformance = _performanceService.GetPerformance(performanceId);
+
+            // Tjek om forestillingen er i fortiden
+            if (CurrentPerformance != null && CurrentPerformance.Date < DateTime.Now)
+            {
+                TempData["ErrorMessage"] = "Hov - datoen for denne forestilling er overskredet. Vælg venligst en anden forestilling";
+                return RedirectToPage("TourPlan");
+            }
             BusySeatIds = _reservationService.GetBusySeatIds(performanceId);
             CurrentVenue = _venueService.GetById(CurrentPerformance.VenueId);
+            return Page();
         }
 
         /// <summary>
