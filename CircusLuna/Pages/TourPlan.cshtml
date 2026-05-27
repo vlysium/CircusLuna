@@ -80,7 +80,11 @@
           @foreach (Performance performance in Model.Performances)
           {
             <tr>
-              <th scope="row">@performance.Name</th>
+              <th scope="row">
+                <a asp-page="/PerformanceDetails" asp-route-id="@performance.PerformanceId">
+                  @performance.Name
+                </a>
+              </th>
               <td>@performance.Date.ToString("MMMM d, HH:mm")</td>
               <td>@performance.City.Name - @performance.City.Region</td>
               <td>
