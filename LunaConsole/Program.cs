@@ -1,77 +1,96 @@
 ﻿using CircusLunaLibrary.Models;
+using CircusLunaLibrary.Repositories;
+using CircusLunaLibrary.Services;
+using System.Collections.Concurrent;
+using System.Diagnostics.Metrics;
+using System.Security.Cryptography.X509Certificates;
 namespace LunaConsole
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Person p1 = new Employee("dfsf", "clown", "Linda", "123456", "mail.dk");
-            Person p2 = new Artist("sdfd", "strongMan", true, "mads", "6784364", "mads.dk");
-            Person p3 = new Employee("IBAN343", "linedancer", "Camilla", "5678907", "nmkl");
-            Person p4 = new Employee("rwjdsk", "dsjf", "Linds", "5647i", "dsjk");
 
-            List<Person> sortedAlphabetically = new List<Person>();
-            List<Person> allPeople = new List<Person>
+            PersonRepository repo = new PersonRepository();
+            List<Person> people = repo.GetAll();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //Vi laver et produkt katalog som dictionary. Lynhurtige opslag!
+            Item product1 = new Item("This Shampoo is great", "BestShampoo");
+            Item product2 = new Item("A conditioner that leaves your hair smooth like silk", "BestConditioner");
+            Item product3 = new Item("This Lotion is great", "BestLotion");
+            Item product4 = new Item("This Handcreme is great", "BestHandcreme");
+            Item product5 = new Item("Beautiful luxery bag", "Chanel");
+            Item product6 = new Item("Toiletbrush", "CleanUpNow");
+            Item product7 = new Item("Sunscreen", "Avene");
+
+            Dictionary<int, Item> productCatalogue = new Dictionary<int, Item>();
+            productCatalogue.Add(product1.ID, product1);
+            productCatalogue.Add(product2.ID, product2);
+            productCatalogue.Add(product3.ID, product3);
+            productCatalogue.Add(product4.ID, product4);
+            productCatalogue.Add(product5.ID, product5);
+            productCatalogue.Add(product6.ID, product6);
+            productCatalogue.Add(product7.ID, product7);
+
+            //varer i kurven gemmes som IDs. 
+            List<int> CartItemsById = new List<int>();
+            CartItemsById.Add(1);
+            CartItemsById.Add(3);
+            CartItemsById.Add(5);
+            CartItemsById.Add(6);
+            
+            //nu bruges ID til at filtrere i dictionary og få en liste af udvalgte produkter. 
+            List<Item> CartItems = new List<Item>();
+            foreach(int i in CartItemsById)
             {
-                p1,
-                p2,
-                p3,
-                p4
-            };
-
-
-            int counter = 0;            
-            while (counter < allPeople.Count)
-            {
-                int iterations = allPeople.Count - counter;
-                for (int i = 0; i < iterations-1; i++)
+                if (productCatalogue.ContainsKey(i))
                 {
-                    char[] person0 = allPeople[i].Name.ToLower().ToCharArray();
-                    char[] person1 = allPeople[i + 1].Name.ToLower().ToCharArray();
-
-                    int shortestArray = 0;
-                    if (person0.Length < person1.Length)
-                    {
-                        shortestArray = person0.Length;
-                    }
-                    else
-                    {
-                        shortestArray = person1.Length;
-                    }
-                    //int shortestArray = Math.Min(person0.Length, person1.Length);
-
-                    for (int j=0; j<shortestArray; j++)
-                    {
-                        if ((person0[j] < person1[j]))
-                        {
-                            break; // Already in the right order, break the loop
-                        }
-                        else if (person1[j] < person0[j])
-                        {
-                            Person person = allPeople[i];
-                            allPeople[i] = allPeople[i + 1];
-                            allPeople[i + 1] = person;
-                            break;
-                        }
-
-                    }                   
+                    CartItems.Add(productCatalogue[i]);
                 }
-                counter++;
             }
-
-            foreach(Person p in allPeople)
-            {
-                Console.WriteLine(p);
-            }
+            //hvis vi har en liste over kundeIDer fra VIPS.
+            //og en kæmpe liste med transaktioner, hvori der bla er gemt kundeIDer. 
+            //vi behandler VIP transaktioner først -> filtrer den rå datalise med transaktioner vha dictionary med VIP kunderIDer.
 
 
-            //if (person1[0] < person0[0] || (person1[0] == person0[0] && person1[1] < person0[1]))
-            //{
-            //    Person person = allPeople[i];
-            //    allPeople[i] = allPeople[i + 1];
-            //    allPeople[i + 1] = person;
-            //}
 
         }
     }
 }
+
+

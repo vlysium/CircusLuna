@@ -23,7 +23,7 @@ namespace CircusLunaLibrary.Services
         public ReservationService(IReservationRepository repository, VenueService venueService)
         {
             _reservationRepository = repository;
-            _reservations = repository.GetAll();
+            
             _venueService = venueService;
         }
 
@@ -34,6 +34,7 @@ namespace CircusLunaLibrary.Services
         /// <returns>A flat <see cref="List{String}"/> containing structural seat coordinates that are currently occupied.</returns>
         public List<string> GetBusySeatIds(string performanceID)
         {
+            _reservations = _reservationRepository.GetAll();
             List<string> busySeatIds = new List<string>();
             for (int i = 0; i < _reservations.Count; i++)
             {
@@ -83,14 +84,21 @@ namespace CircusLunaLibrary.Services
         /// <param name="SeatIds">The list of distinct seat labels selected by the customer.</param>
         /// <param name="TicketTypeString">The pricing category or tier requested for the ticket selection.</param>
         /// <returns>A collection of structural <see cref="Ticket"/> models mapped against concrete seat instances.</returns>
-        public List<Ticket> CreateTickets(string VenueId, List<string> SeatIds, string TicketTypeString)
+        public List<Ticket> CreateTickets(string VenueId, List<string> SeatIds, string TicketTypeString, string performanceId)
         {
             TicketType TicketTypeEnum = StringToTicketType(TicketTypeString);
             Venue venue = _venueService.GetById(VenueId);
             List<Ticket> tickets = new List<Ticket>();
+            List<string> busySeatIds = new List<string>();
+
+            busySeatIds = GetBusySeatIds(performanceId);
 
             foreach (string seatId in SeatIds)
             {
+                if (busySeatIds.Contains(seatId)){
+                    throw new InvalidOperationException("De valgte biletter er optagede, vælg venligst nye siddepladser");
+                }
+                
                 foreach (Seat s in venue.Seats)
                 {
                     if (s.SeatId == seatId)

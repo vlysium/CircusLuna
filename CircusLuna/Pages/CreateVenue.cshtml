@@ -2,6 +2,14 @@
 @model CircusLuna.Pages.CreateVenueModel
 @{
 }
+@if(TempData["ErrorMessage"]!=null)
+{
+<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i> @TempData["ErrorMessage"];
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+}
+
 <div class="create-customer-container">
     <div class="create-customer-textbox">
         
@@ -9,14 +17,14 @@
         <h1 class="mb-7 pb-4" style="font-size: clamp(1.8rem, 5vw, 3rem); text-align: center;">Create Venue</h1>
         
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+          
 
             <!-- Venue Name -->
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <label asp-for="Venue.Name" class="form-label font-weight-bold">Venue Name</label>
                     <input asp-for="Venue.Name" class="form-control" placeholder="Indtast navn på teltet" />
-                    <span asp-validation-for="Venue.Name" class="text-danger"></span>
+                    
                 </div>
             </div>
 
@@ -24,14 +32,14 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label asp-for="Venue.VipSeats" class="form-label font-weight-bold">Antal VIP sæder</label>
-                    <input asp-for="Venue.VipSeats" class="form-control" type="number" min="0" />
-                    <span asp-validation-for="Venue.VipSeats" class="text-danger"></span>
+                    <input asp-for="Venue.VipSeats" class="form-control" type="number"  />
+                 
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label asp-for="Venue.StandardSeats" class="form-label font-weight-bold">Antal standard sæder</label>
-                    <input asp-for="Venue.StandardSeats" class="form-control" type="number" min="0" />
-                    <span asp-validation-for="Venue.StandardSeats" class="text-danger"></span>
+                    <input asp-for="Venue.StandardSeats" class="form-control" type="number"  />
+               
                 </div>
             </div>
 
@@ -47,6 +55,6 @@
 
 @section Scripts {
     @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        // await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }

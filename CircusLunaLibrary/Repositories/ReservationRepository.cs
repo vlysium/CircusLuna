@@ -26,11 +26,13 @@ namespace CircusLunaLibrary.Repositories
         }
         public void SaveFile()
         {
+
             string json = JsonSerializer.Serialize<List<Reservation>>(_reservations, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(_filePath,json);
         }
         public void AddReservation(Reservation reservation)
         {
+            LoadFile();
             _reservations.Add(reservation);
             SaveFile();
         }
@@ -44,6 +46,7 @@ namespace CircusLunaLibrary.Repositories
 
         public List<Reservation> GetAll()
         {
+            LoadFile();
             return _reservations;
         }
 

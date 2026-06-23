@@ -1,0 +1,184 @@
+[
+  {
+    "ReservationID": "954153b7",
+    "Customer": {
+      "ID": "d06705d5",
+      "Name": "sd",
+      "Number": "30276013",
+      "Address": null,
+      "Email": "r.chmeis@outlook.com"
+    },
+    "Performance": {
+      "PerformanceId": "4f274e01",
+      "Name": "M\u00E5nelys og Magi",
+      "Description": "Under det s\u00F8lvglimtende m\u00E5nelys udfolder M\u00E5nelys og Magi sig som en poetisk forestilling fyldt med elegance, mystik og eventyrlige \u00F8jeblikke. Luftakrobater, dansere og illusionister skaber sammen en stemningsfuld rejse gennem nattens hemmeligheder, hvor alt synes muligt.",
+      "Date": "2026-09-15T16:00:00",
+      "City": {
+        "CityID": "82886d97",
+        "Name": "K\u00F8ge",
+        "PostalCode": "4600",
+        "Region": 1
+      },
+      "VenueId": "19e01782",
+      "Artists": [
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN468732423",
+          "Role": "LineDancer",
+          "ID": "53fa0faf",
+          "Name": "Line Hansen",
+          "Number": "12121212",
+          "Address": null,
+          "Email": "line@luna.dk"
+        },
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN65876546",
+          "Role": "Klovn",
+          "ID": "25d0dcb0",
+          "Name": "Henrik Madsen",
+          "Number": "67346712",
+          "Address": null,
+          "Email": "Henrik@luna.dk"
+        },
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN5434576",
+          "Role": "StrongMan",
+          "ID": "378ede6f",
+          "Name": "Bent Nielsen",
+          "Number": "87653451",
+          "Address": null,
+          "Email": "bent@luna.dk"
+        }
+      ]
+    },
+    "Tickets": [
+      {
+        "TicketID": "2d428241",
+        "Type": 0,
+        "Seat": {
+          "SeatId": "B7",
+          "SeatRow": "B",
+          "SeatColumn": 7,
+          "SeatType": 0
+        },
+        "Price": 150
+      },
+      {
+        "TicketID": "58c2a40d",
+        "Type": 0,
+        "Seat": {
+          "SeatId": "B8",
+          "SeatRow": "B",
+          "SeatColumn": 8,
+          "SeatType": 0
+        },
+        "Price": 150
+      },
+      {
+        "TicketID": "da2089d2",
+        "Type": 0,
+        "Seat": {
+          "SeatId": "B9",
+          "SeatRow": "B",
+          "SeatColumn": 9,
+          "SeatType": 0
+        },
+        "Price": 150
+      }
+    ],
+    "TotalPrice": 450
+  },
+  {
+    "ReservationID": "9a83a600",
+    "Customer": {
+      "ID": "f39464f2",
+      "Name": "sd",
+      "Number": "30276013",
+      "Address": null,
+      "Email": "r.chmeis@outlook.com"
+    },
+    "Performance": {
+      "PerformanceId": "4f274e01",
+      "Name": "M\u00E5nelys og Magi",
+      "Description": "Under det s\u00F8lvglimtende m\u00E5nelys udfolder M\u00E5nelys og Magi sig som en poetisk forestilling fyldt med elegance, mystik og eventyrlige \u00F8jeblikke. Luftakrobater, dansere og illusionister skaber sammen en stemningsfuld rejse gennem nattens hemmeligheder, hvor alt synes muligt.",
+      "Date": "2026-09-15T16:00:00",
+      "City": {
+        "CityID": "82886d97",
+        "Name": "K\u00F8ge",
+        "PostalCode": "4600",
+        "Region": 1
+      },
+      "VenueId": "19e01782",
+      "Artists": [
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN468732423",
+          "Role": "LineDancer",
+          "ID": "53fa0faf",
+          "Name": "Line Hansen",
+          "Number": "12121212",
+          "Address": null,
+          "Email": "line@luna.dk"
+        },
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN65876546",
+          "Role": "Klovn",
+          "ID": "25d0dcb0",
+          "Name": "Henrik Madsen",
+          "Number": "67346712",
+          "Address": null,
+          "Email": "Henrik@luna.dk"
+        },
+        {
+          "IsPermanent": true,
+          "PaymentInfo": "IBAN5434576",
+          "Role": "StrongMan",
+          "ID": "378ede6f",
+          "Name": "Bent Nielsen",
+          "Number": "87653451",
+          "Address": null,
+          "Email": "bent@luna.dk"
+        }
+      ]
+    },
+    "Tickets": [
+      {
+        "TicketID": "cde9adb8",
+        "Type": 0,
+        "Seat": {
+          "SeatId": "C5",
+          "SeatRow": "C",
+          "SeatColumn": 5,
+          "SeatType": 0
+        },
+        "Price": 150
+      },
+      {
+        "TicketID": "ceb325b0",
+        "Type": 0,
+        "Seat": {
+          "SeatId": "C6",
+          "SeatRow": "C",
+          "SeatColumn": 6,
+          "SeatType": 0
+        },
+        "Price": 150
+      },
+      {
+        "TicketID": "d4ee910e",
+        "Type": 0,
+        "Seat": {
+          "SeatId": "C7",
+          "SeatRow": "C",
+          "SeatColumn": 7,
+          "SeatType": 0
+        },
+        "Price": 150
+      }
+    ],
+    "TotalPrice": 450
+  }
+]

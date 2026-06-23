@@ -91,7 +91,7 @@ namespace CircusLuna.Pages
         /// <param name="performanceId">The ID of the target performance.</param>
         /// <param name="selectedSeatIds">The list of seats chosen in the previous step.</param>
         /// <param name="ticketTypeString">The selected category/tier of tickets.</param>
-        public void OnGet(string performanceId, List<string> selectedSeatIds, string ticketTypeString)
+        public IActionResult OnGet(string performanceId, List<string> selectedSeatIds, string ticketTypeString)
         {
             PerformanceId = performanceId;
             SeatIds = selectedSeatIds;
@@ -104,13 +104,22 @@ namespace CircusLuna.Pages
             CustomerNumber = TempData["CustomerNumber"]?.ToString();
 
             // Generate a transient reservation preview to calculate totals dynamically for the view
-            List<Ticket> tempTickets = _reservationService.CreateTickets(Performance.VenueId, SeatIds, TicketTypeString);
-            Customer tempCust = new Customer(CustomerName ?? "", "", "");
-            Reservation previewRes = new Reservation(tempCust, Performance, tempTickets);
-            TotalPrice = previewRes.TotalPrice;
+            try
+            {
+                List<Ticket> tempTickets = _reservationService.CreateTickets(Performance.VenueId, SeatIds, TicketTypeString, performanceId);
+                Customer tempCust = new Customer(CustomerName ?? "", "", "");
+                Reservation previewRes = new Reservation(tempCust, Performance, tempTickets);
+                TotalPrice = previewRes.TotalPrice;
 
-            // Ensures TempData values are not dropped after this request lifecycle, keeping them available for the OnPost handler
-            TempData.Keep();
+                // Ensures TempData values are not dropped after this request lifecycle, keeping them available for the OnPost handler
+                TempData.Keep();
+                return Page();
+            }
+            catch (InvalidOperationException ex)
+            {
+                TempData["ErrorMessage"] = ex.Message;
+                return RedirectToPage("BookSeats", new { performanceId = PerformanceId });
+            }
         }
 
         /// <summary>
@@ -122,12 +131,20 @@ namespace CircusLuna.Pages
         {
             Performance performance = _performanceService.GetPerformance(PerformanceId);
             Customer customer = new Customer(CustomerName, CustomerNumber, CustomerEmail);
-            List<Ticket> tickets = _reservationService.CreateTickets(performance.VenueId, SeatIds, TicketTypeString);
+            try
+            {
+                List<Ticket> tickets = _reservationService.CreateTickets(performance.VenueId, SeatIds, TicketTypeString, PerformanceId);
 
-            Reservation finalRes = new Reservation(customer, performance, tickets);
-            _reservationService.AddReservation(finalRes);
+                Reservation finalRes = new Reservation(customer, performance, tickets);
+                _reservationService.AddReservation(finalRes);
 
-            return RedirectToPage("Index");
+                return RedirectToPage("Index");
+            }
+            catch (InvalidOperationException ex)
+            {
+                TempData["ErrorMessage"] = ex.Message;
+                return RedirectToPage("BookSeats", new { performanceId = PerformanceId });
+            }
         }
     }
 }
