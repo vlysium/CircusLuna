@@ -127,33 +127,37 @@ namespace CircusLunaLibrary.Services
         /// <summary>
         /// Filters personnel list metrics using multi-field text matching across identities, labels, roles, and status flags.
         /// </summary>
-        /// <param name="searchFilterWord">The string text variable deployed to isolate target rows.</param>
+        /// <param name="input">The string text variable deployed to isolate target rows.</param>
         /// <returns>A filtered dataset containing matching records.</returns>
-        public List<Person> FilterAndSearch(string searchFilterWord)
+        public List<Person> FilterAndSearch(string input)
         {
             List<Person> people = GetAll();
-            if (!string.IsNullOrWhiteSpace(searchFilterWord))
-            {
-                List<Person> searchFilterList = new List<Person>();
-                string searchFilterWordClean = searchFilterWord.Trim().ToLower();
+            List<Person> results = new List<Person>();
+            if (!string.IsNullOrWhiteSpace(input))
+            {                
+                string inputClean = input.Trim().ToLower();
                 foreach (Employee e in people)
                 {
-                    bool nameMatches = e.Name != null && e.Name.ToLower().Contains(searchFilterWordClean);
-                    bool numberMatches = e.Number != null && e.Number.Contains(searchFilterWordClean);
-                    bool roleMatches = e.Role != null && e.Role.ToLower().Contains(searchFilterWordClean);
-                    bool permanentMatches = false;
-
-                    if (e is Artist a)
+                    if(e.Name != null && e.Name.ToLower().Contains(inputClean))
                     {
-                        if (a.IsPermanent && searchFilterWordClean == "permanent") { permanentMatches = true; }
+                        results.Add(e);
                     }
-
-                    if (nameMatches || numberMatches || roleMatches || permanentMatches)
+                    else if(e.Number != null && e.Number.Contains(inputClean))
                     {
-                        searchFilterList.Add(e);
+                        results.Add(e);
                     }
+                    else if(e.Role != null && e.Role.ToLower().Contains(inputClean))
+                    {
+                        results.Add(e);
+                    }
+                    
+                    else if (e is Artist a)
+                    {
+                        if ("artist".Contains(inputClean)) { results.Add(a); }
+                        else if (a.IsPermanent && "permanent".Contains(inputClean)){ results.Add(a); }
+                    }                    
                 }
-                people = searchFilterList;
+                people = results;
             }
             return people;
         }
