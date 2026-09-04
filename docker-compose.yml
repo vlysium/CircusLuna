@@ -1,0 +1,24 @@
+services:
+
+  circus-luna:
+    image: vlysiumdev/circus-luna:latest
+    container_name: circus-luna_web
+    expose:
+      - "8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    networks:
+      - nginx
+    volumes:
+      - app_data:/app/Data
+    restart: unless-stopped
+    mem_limit: 256m
+
+# use reverse proxy container on cloud server
+networks:
+  nginx:
+    external: true
+
+volumes:
+  app_data:
